@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/500100-simple-web-app-to-azure-vm/terraform-manifests/
+cd ./src/500100-simple-web-app-to-azure-vm/tf-files/
 
 cd ../../..
 
