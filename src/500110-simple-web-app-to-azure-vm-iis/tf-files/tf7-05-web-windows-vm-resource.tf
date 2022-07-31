@@ -33,7 +33,7 @@ resource "azurerm_virtual_machine_extension" "iis-windows-vm-extension" {
   type_handler_version = "1.9"
   settings             = <<SETTINGS
     { 
-      "commandToExecute": "powershell Install-WindowsFeature -name Web-Server -IncludeManagementTools;"
+      "commandToExecute": "powershell Install-WindowsFeature -name Web-Server -IncludeManagementTools;Install-WindowsFeature -Name Web-Mgmt-Service -IncludeAllSubFeature;Set-ItemProperty -Path 'HKLM:\\Software\\Microsoft\\WebManagement\\Server' -Name EnableRemoteManagement -Value 1"
     } 
   SETTINGS
 }
