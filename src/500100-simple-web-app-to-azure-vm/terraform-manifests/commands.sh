@@ -4,27 +4,6 @@ cd ./src/500100-simple-web-app-to-azure-vm/terraform-manifests/
 
 cd ../../..
 
-cd ssh-keys
-
-# Run the following in bash prompt. In pwershell it will not work.
-ssh-keygen \
-    -m PEM \
-    -t rsa \
-    -b 4096 \
-    -C "azureuser@myserver" \
-    -f terraform-azure.pem 
-
-
-Get-ChildItem . 
-
-Get-ChildItem ./ssh-keys
-
-cd ssh-keys
-
-Rename-Item ./terraform-azure.pem.pub ./terraform-azure.pub
-
-cd ..
-
 terraform fmt
 
 terraform init
