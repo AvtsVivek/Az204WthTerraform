@@ -3,8 +3,8 @@ resource "azurerm_windows_virtual_machine" "web_windowsvm" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   size                = "Standard_F2"
-  admin_username      = "adminuser"
-  admin_password      = "P@$$w0rd1234!"
+  admin_username      = "admin"
+  admin_password      = "123" # "P@$$w0rd1234!"
   network_interface_ids = [
     azurerm_network_interface.web_windowsvm_nic.id,
   ]
@@ -32,10 +32,15 @@ resource "azurerm_virtual_machine_extension" "iis-windows-vm-extension" {
   publisher            = "Microsoft.Compute"
   type                 = "CustomScriptExtension"
   type_handler_version = "1.9"
-  settings             = <<SETTINGS
-    { 
-      "commandToExecute": "powershell Install-WindowsFeature -name Web-Server -IncludeManagementTools;Install-WindowsFeature -Name Web-Mgmt-Service -IncludeAllSubFeature;Set-ItemProperty -Path 'HKLM:\\Software\\Microsoft\\WebManagement\\Server' -Name EnableRemoteManagement -Value 1"
-    } 
-  SETTINGS
-  
+  # settings             = <<SETTINGS
+  #   { 
+  #     "commandToExecute": "powershell Install-WindowsFeature -name Web-Server -IncludeManagementTools;Install-WindowsFeature -Name Web-Mgmt-Service -IncludeAllSubFeature;Set-ItemProperty -Path 'HKLM:\\Software\\Microsoft\\WebManagement\\Server' -Name EnableRemoteManagement -Value 1"
+  #   } 
+  # SETTINGS
+  settings = <<SETTINGS
+    {
+        "commandToExecute": "powershell -ExecutionPolicy unrestricted -NoProfile -NonInteractive -command \"cp c:/azuredata/customdata.bin c:/azuredata/install.ps1; c:/azuredata/install.ps1\""
+    }
+    SETTINGS
+
 }
