@@ -23,6 +23,7 @@ resource "azurerm_windows_virtual_machine" "web_windowsvm" {
     # sku       = "2019-datacenter-gensecond"
     version = "latest"
   }
+  custom_data = filebase64("./${var.powershell_script_file_name}")
 }
 
 resource "azurerm_virtual_machine_extension" "iis-windows-vm-extension" {
@@ -36,4 +37,5 @@ resource "azurerm_virtual_machine_extension" "iis-windows-vm-extension" {
       "commandToExecute": "powershell Install-WindowsFeature -name Web-Server -IncludeManagementTools;Install-WindowsFeature -Name Web-Mgmt-Service -IncludeAllSubFeature;Set-ItemProperty -Path 'HKLM:\\Software\\Microsoft\\WebManagement\\Server' -Name EnableRemoteManagement -Value 1"
     } 
   SETTINGS
+  
 }
