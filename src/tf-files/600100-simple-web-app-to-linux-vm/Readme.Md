@@ -1,13 +1,18 @@
 # Create a VM with a network security group
 
+- This builds [on this](https://github.com/AvtsVivek/AzureWithTerraformAdvanced/tree/main/iac/2101100-vnet-vm-nsg)
+
+- Bastion subnet, app subnet and db subnet are removed.
+
 - Web Network Security Group can be considered as the first level.
 
 - VM Network Security Group(Optional) can be considered as the second level.
- 
-- Port 80 is to connect to app on this VM, and 22 is to connect to the VM.
- 
-- One VM can be associated with multiple VM Network Interfaces. So the following is a list.
-network_interface_ids = [azurerm_network_interface.web_linuxvm_nic.id]
+
+- Get the dotnet-install.sh script from here. https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+
+- Then place that /src/in dotnet-apps folder
+
+
 
 ![The layout](./Images/Layout.jpg)
 
