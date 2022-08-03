@@ -46,7 +46,7 @@ terraform plan -out main.tfplan
 
 terraform show main.tfplan
 
-terraform apply main.tfplan
+terraform apply main.tfplan 
 
 # Once successfully applied, Review the resources.
 # Download the topology diagram. Go to the created vnet and then diagram.
@@ -60,7 +60,7 @@ terraform apply main.tfplan
 # azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
 # then you are not in the correct directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@52.168.183.244
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.106.131.65
 
 exit
 
@@ -111,10 +111,14 @@ ls -lrta
 # check if the web server is running.
 ps -ef | grep dotnet
 
+ps -ef | grep nginx
+
 # look for port 5000
 netstat -lntp
 
 curl localhost:5000
+
+curl localhost
 
 ## Thats it.
 
