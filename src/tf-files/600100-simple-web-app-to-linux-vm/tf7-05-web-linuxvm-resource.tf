@@ -8,6 +8,11 @@ sudo systemctl enable nginx
 sudo systemctl start nginx
 sudo systemctl stop firewalld
 sudo systemctl disable firewalld
+
+sudo chmod 777 /etc/nginx/nginx.conf
+sudo chmod 777 /etc/nginx/default.d
+sudo chmod 777 /etc/nginx/conf.d
+
 CUSTOM_DATA
 }
 

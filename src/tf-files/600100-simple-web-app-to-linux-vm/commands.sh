@@ -60,17 +60,21 @@ terraform apply main.tfplan
 # azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
 # then you are not in the correct directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.106.131.65
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.122.156
 
 exit
 
 # For a single file transfer
 scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@52.168.183.244:/home/azureuser
 
+scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/home/azureuser/
+scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/default.d/
+scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/conf.d/
+
 # Trasfer the install script
 # Get the script from here. https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
 
-scp -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/dotnet-install.sh azureuser@52.168.183.244:/home/azureuser
+scp -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/dotnet-install.sh azureuser@20.232.122.156:/home/azureuser
 
 # The following directly download, is not woring.
 scp -i ssh-keys/terraform-azure.pem https://dot.net/v1/dotnet-install.sh azureuser@52.168.183.244:/home/azureuser
@@ -78,7 +82,7 @@ scp -i ssh-keys/terraform-azure.pem https://dot.net/v1/dotnet-install.sh azureus
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@52.168.183.244:/home/azureuser
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@20.232.122.156:/home/azureuser
 
 # Now ssh into the machine and run the script to intall the .net
 ssh -i ssh-keys/terraform-azure.pem azureuser@52.168.183.244
@@ -112,6 +116,8 @@ ls -lrta
 ps -ef | grep dotnet
 
 ps -ef | grep nginx
+
+yum list installed nginx
 
 # look for port 5000
 netstat -lntp
