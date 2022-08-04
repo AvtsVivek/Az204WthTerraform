@@ -23,7 +23,9 @@ locals {
     # If the key starts with a number, you must use the colon syntax ":" instead of "="
     "100" : "80",
     "110" : "443",
-    "120" : "22"
+    "120" : "22",
+    "130" : "5000", # This is for the web app.
+    "140" : "5001" # This is for the web app.
   }
 }
 

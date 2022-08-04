@@ -60,7 +60,7 @@ terraform apply main.tfplan
 # azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
 # then you are not in the correct directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.122.156
+ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.146.185
 
 exit
 

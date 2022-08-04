@@ -12,6 +12,7 @@
 
 - Then place that /src/in dotnet-apps folder
 
+- Trying to follow [this tutorial](https://docs.microsoft.com/en-us/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/introduction)
 
 
 ![The layout](./Images/Layout.jpg)
@@ -20,3 +21,4 @@
 
 ![The Diagram](./Images/topology.svg)
 
+- This is still not running as expected. 

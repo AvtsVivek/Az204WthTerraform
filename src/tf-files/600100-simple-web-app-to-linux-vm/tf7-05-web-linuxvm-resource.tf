@@ -1,17 +1,24 @@
 # Locals Block for custom data
+
+# sudo yum install -y nginx
+# sudo systemctl enable nginx
+# sudo systemctl start nginx
+# sudo systemctl stop firewalld
+# sudo systemctl disable firewalld
+
+# sudo chmod 777 /etc/nginx/nginx.conf
+# sudo chmod 777 /etc/nginx/default.d
+# sudo chmod 777 /etc/nginx/conf.d
+
 locals {
   webvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
 
-sudo yum install -y nginx
-sudo systemctl enable nginx
-sudo systemctl start nginx
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
+sudo curl -L "https://dot.net/v1/dotnet-install.sh" -o /tmp/dotnet-install.sh
 
-sudo chmod 777 /etc/nginx/nginx.conf
-sudo chmod 777 /etc/nginx/default.d
-sudo chmod 777 /etc/nginx/conf.d
+sudo chmod 777 /tmp/dotnet-install.sh
+
+sudo /tmp/dotnet-install.sh -c 6.0
 
 CUSTOM_DATA
 }

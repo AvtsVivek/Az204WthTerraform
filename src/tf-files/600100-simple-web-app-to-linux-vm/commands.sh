@@ -15,6 +15,11 @@ dotnet publish ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.cs
 dotnet publish -c Release ./../../dotnet-apps/simple-web-app/simple-web-app/simple-web-app.csproj
 dotnet publish -c Release ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.csproj
 
+# Once published, just verify and see.
+dotnet ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish/simple-web-app.dll
+
+# Now brwose to localhost:5000
+
 cd ssh-keys
 
 # Run the following in bash prompt. In pwershell it will not work.
@@ -60,7 +65,17 @@ terraform apply main.tfplan
 # azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
 # then you are not in the correct directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.122.156
+cd ..
+
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.197.158
+
+sudo -i
+
+sudo find / -type d -iname '.dotnet'
+
+sudo find / -iname 'dotnet-install.sh'
+
+ps -ef | grep dotnet
 
 exit
 
@@ -71,28 +86,13 @@ scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.15
 scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/default.d/
 scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/conf.d/
 
-# Trasfer the install script
-# Get the script from here. https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
-
-scp -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/dotnet-install.sh azureuser@20.232.122.156:/home/azureuser
-
-# The following directly download, is not woring.
-scp -i ssh-keys/terraform-azure.pem https://dot.net/v1/dotnet-install.sh azureuser@52.168.183.244:/home/azureuser
-
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@20.232.122.156:/home/azureuser
-
-# Now ssh into the machine and run the script to intall the .net
-ssh -i ssh-keys/terraform-azure.pem azureuser@52.168.183.244
-./dotnet-install.sh -c 6.0
-
-./dotnet-install.sh --runtime dotnet --version 6.0.7
-# Ensure the dotnet is installed. It should be in ~/.dotnet folder
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@20.232.197.158:/home/azureuser
 
 # Finally to start the app
-.dotnet/dotnet publish/simple-web-app.dll
+sudo /root/.dotnet/dotnet publish/simple-web-app.dll
 
 # Now that you are in the VM, you can run the following commands.
 hostname
