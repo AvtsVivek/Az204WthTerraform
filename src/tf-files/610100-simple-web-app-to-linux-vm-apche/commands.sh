@@ -1,9 +1,9 @@
 
 # cd into the directory.
-cd ./src/tf-files/630100-simple-web-app-to-linux-vm/
+cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
 
-cd ../..
+cd ../../..
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
@@ -14,6 +14,12 @@ dotnet publish ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.cs
 #  -c Release
 dotnet publish -c Release ./../../dotnet-apps/simple-web-app/simple-web-app/simple-web-app.csproj
 dotnet publish -c Release ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.csproj
+
+# Once published, just verify and see.
+dotnet ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish/simple-web-app.dll
+
+
+# Now brwose to localhost:5000
 
 cd ssh-keys
 
@@ -60,39 +66,45 @@ terraform apply main.tfplan
 # azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
 # then you are not in the correct directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.146.185
+cd ..
+
+# cd into the directory.
+cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
+
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.127.29.204
+
+sudo -i
+
+sudo find / -type d -iname '.dotnet'
+
+sudo find / -iname 'dotnet-install.sh'
+
+ps -ef | grep dotnet
 
 exit
 
+# proxy:error pid Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:5000 (127.0.0.1) failed
+# http://sysadminsjourney.com/content/2010/02/01/apache-modproxy-error-13permission-denied-error-rhel/
+
+scp -r -i ssh-keys/terraform-azure.pem azureuser@52.147.193.126:/etc/httpd/conf.d/ ./confbackup.d
+scp -r -i ssh-keys/terraform-azure.pem azureuser@52.147.193.126:/etc/httpd/conf/ ./confbackup
+
 # For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@52.168.183.244:/home/azureuser
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.127.29.204:/etc/httpd/conf/
 
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/home/azureuser/
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/default.d/
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/conf.d/
-
-# Trasfer the install script
-# Get the script from here. https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
-
-scp -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/dotnet-install.sh azureuser@20.232.122.156:/home/azureuser
-
-# The following directly download, is not woring.
-scp -i ssh-keys/terraform-azure.pem https://dot.net/v1/dotnet-install.sh azureuser@52.168.183.244:/home/azureuser
+sudo systemctl restart httpd
 
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@20.232.122.156:/home/azureuser
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@20.127.29.204:/home/azureuser
 
-# Now ssh into the machine and run the script to intall the .net
-ssh -i ssh-keys/terraform-azure.pem azureuser@52.168.183.244
-./dotnet-install.sh -c 6.0
-
-./dotnet-install.sh --runtime dotnet --version 6.0.7
-# Ensure the dotnet is installed. It should be in ~/.dotnet folder
+sudo find / -iname 'simple-web-app.dll'
 
 # Finally to start the app
-.dotnet/dotnet publish/simple-web-app.dll
+sudo /root/.dotnet/dotnet publish/simple-web-app.dll
+
+
 
 # Now that you are in the VM, you can run the following commands.
 hostname
