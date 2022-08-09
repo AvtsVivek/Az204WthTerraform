@@ -20,3 +20,7 @@
 
 ![The Diagram](./Images/topology.svg)
 
+- Reference. https://www.c-sharpcorner.com/article/deploying-asp-net-web-application-to-a-linux-virtual-machine-in-azure/
+
+- 
+
