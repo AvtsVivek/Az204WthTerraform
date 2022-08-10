@@ -18,8 +18,7 @@ dotnet publish -c Release ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
 # Once published, just verify and see.
 dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
 
-dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/simple-webapp.dll
-
+dotnet run --project ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
 
 # Now brwose to localhost:5000
 
@@ -73,9 +72,11 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.102.48.192
 
 sudo -i
+
+# Wait for at least 5 minutes. Then run the following commands.
 
 sudo find / -type d -iname '.dotnet'
 
@@ -92,19 +93,19 @@ scp -r -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45:/etc/httpd/conf.d/ 
 scp -r -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45.126:/etc/httpd/conf/ ./confbackup
 
 # For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.25.70.45:/etc/httpd/conf/
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.102.48.192:/etc/httpd/conf/
 
 sudo systemctl restart httpd
 
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@20.127.29.204:/home/azureuser
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.102.48.192:/home/azureuser
 
-sudo find / -iname 'simple-web-app.dll'
+sudo find / -iname 'simple-webapp.dll'
 
 # Finally to start the app
-sudo /root/.dotnet/dotnet publish/simple-web-app.dll
+sudo /root/.dotnet/dotnet publish/simple-webapp.dll
 
 
 
@@ -129,10 +130,6 @@ ls -lrta
 # check if the web server is running.
 ps -ef | grep dotnet
 
-ps -ef | grep nginx
-
-yum list installed nginx
-
 # look for port 5000
 netstat -lntp
 
@@ -141,7 +138,6 @@ curl localhost:5000
 curl localhost
 
 ## Thats it.
-
 cd /var/www/html
 
 cd ./app1

@@ -1,13 +1,19 @@
 
-// var webApplicationOptions = new WebApplicationOptions{
-//     Args = args,
-//     ApplicationName = "Simple Web App",
-//     ContentRootPath = "",
-//     WebRootPath = "",
-//     EnvironmentName = ""
-// };
 
-var builder = WebApplication.CreateBuilder(args);
+
+var contentRootPath = System.Reflection.Assembly.GetEntryAssembly()!.Location;
+
+contentRootPath = contentRootPath.Substring(0, contentRootPath.LastIndexOf(@"\") + 1);
+
+var webApplicationOptions = new WebApplicationOptions{
+    Args = args,
+    // ApplicationName = "Simple Web App",
+    ContentRootPath = contentRootPath,
+    // WebRootPath = "",
+    // EnvironmentName = ""
+};
+
+var builder = WebApplication.CreateBuilder(webApplicationOptions);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -22,7 +28,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+
+// app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -31,15 +39,15 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
-app.Run();
+// app.Run();
 
 // app.Run("http://127.0.0.1:5000");
 
-//if (app.Environment.IsDevelopment())
-//{
-//    app.Run();
-//}
-//else
-//{
-//    app.Run("http://127.0.0.1:5000");
-//}
+if (app.Environment.IsDevelopment())
+{
+   app.Run();
+}
+else
+{
+   app.Run("http://127.0.0.1:5000");
+}
