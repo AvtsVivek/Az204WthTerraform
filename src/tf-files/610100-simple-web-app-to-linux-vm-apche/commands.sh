@@ -8,15 +8,17 @@ cd ../../..
 # First ensure the simple web app is published. 
 # Run either of the following two comands
 
-dotnet publish ./../../dotnet-apps/simple-web-app/simple-web-app/simple-web-app.csproj
-dotnet publish ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.csproj
+dotnet publish ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
+dotnet publish ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
 
 #  -c Release
-dotnet publish -c Release ./../../dotnet-apps/simple-web-app/simple-web-app/simple-web-app.csproj
-dotnet publish -c Release ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.csproj
+dotnet publish -c Release ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
+dotnet publish -c Release ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
 
 # Once published, just verify and see.
-dotnet ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish/simple-web-app.dll
+dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
+
+dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/simple-webapp.dll
 
 
 # Now brwose to localhost:5000
@@ -71,7 +73,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.127.29.204
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45
 
 sudo -i
 
@@ -86,11 +88,11 @@ exit
 # proxy:error pid Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:5000 (127.0.0.1) failed
 # http://sysadminsjourney.com/content/2010/02/01/apache-modproxy-error-13permission-denied-error-rhel/
 
-scp -r -i ssh-keys/terraform-azure.pem azureuser@52.147.193.126:/etc/httpd/conf.d/ ./confbackup.d
-scp -r -i ssh-keys/terraform-azure.pem azureuser@52.147.193.126:/etc/httpd/conf/ ./confbackup
+scp -r -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45:/etc/httpd/conf.d/ ./confbackup.d
+scp -r -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45.126:/etc/httpd/conf/ ./confbackup
 
 # For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.127.29.204:/etc/httpd/conf/
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.25.70.45:/etc/httpd/conf/
 
 sudo systemctl restart httpd
 
