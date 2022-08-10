@@ -1,3 +1,12 @@
+
+// var webApplicationOptions = new WebApplicationOptions{
+//     Args = args,
+//     ApplicationName = "Simple Web App",
+//     ContentRootPath = "",
+//     WebRootPath = "",
+//     EnvironmentName = ""
+// };
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
