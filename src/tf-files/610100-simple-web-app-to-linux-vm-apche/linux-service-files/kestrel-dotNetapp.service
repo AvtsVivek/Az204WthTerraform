@@ -1,0 +1,12 @@
+[Unit]
+Description=Aspnet 6 Web App running on Linux
+[Service]
+WorkingDirectory=/home/azureuser/publish/
+ExecStart=/root/.dotnet/dotnet /home/azureuser/publish/simple-webapp.dll
+Restart=always
+RestartSec=10
+SyslogIdentifier=dotnet-demo
+User=sudo
+Environment=ASPNETCORE_ENVIRONMENT=Production
+[Install]
+WantedBy=multi-user.target

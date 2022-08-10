@@ -7,7 +7,7 @@ cd ../../..
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
-
+# Debug
 dotnet publish ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
 dotnet publish ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
 
@@ -72,7 +72,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.102.48.192
+ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.238.187
 
 sudo -i
 
@@ -89,18 +89,21 @@ exit
 # proxy:error pid Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:5000 (127.0.0.1) failed
 # http://sysadminsjourney.com/content/2010/02/01/apache-modproxy-error-13permission-denied-error-rhel/
 
-scp -r -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45:/etc/httpd/conf.d/ ./confbackup.d
-scp -r -i ssh-keys/terraform-azure.pem azureuser@20.25.70.45.126:/etc/httpd/conf/ ./confbackup
+scp -r -i ssh-keys/terraform-azure.pem azureuser@13.68.238.187:/etc/httpd/conf.d/ ./confbackup.d
+scp -r -i ssh-keys/terraform-azure.pem azureuser@13.68.238.187:/etc/httpd/conf/ ./confbackup
 
 # For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.102.48.192:/etc/httpd/conf/
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@13.68.238.187:/etc/httpd/conf/
+
+scp -i ssh-keys/terraform-azure.pem ./linux-service-files/kestrel-dotNetapp.service azureuser@13.68.238.187:/etc/systemd/system/
+
 
 sudo systemctl restart httpd
 
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.102.48.192:/home/azureuser
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@13.68.238.187:/home/azureuser
 
 sudo find / -iname 'simple-webapp.dll'
 
