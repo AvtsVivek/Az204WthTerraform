@@ -6,6 +6,8 @@ ExecStart=/usr/dotnet/dotnet /home/azureuser/simple-web-app/simple-webapp.dll
 Restart=always
 RestartSec=10
 SyslogIdentifier=dotnet-demo
+# Use your username to keep things simple.
+# In this case, this can root or azureuser
 User=azureuser
 Environment=ASPNETCORE_ENVIRONMENT=Production
 [Install]
