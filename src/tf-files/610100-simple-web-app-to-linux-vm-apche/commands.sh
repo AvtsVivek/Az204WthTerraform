@@ -90,7 +90,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39
+ssh -i ssh-keys/terraform-azure.pem azureuser@40.71.250.187
 
 sudo -i
 
@@ -116,9 +116,9 @@ exit
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.127.81.39:/home/azureuser/simple-web-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@40.71.250.187:/home/azureuser/simple-web-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@20.127.81.39:/home/azureuser/simple-console-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@40.71.250.187:/home/azureuser/simple-console-app
 
 sudo find / -iname 'simple-webapp.dll'
 
@@ -130,11 +130,11 @@ sudo find / -iname 'simple-console-app.dll'
 /usr/dotnet/dotnet /home/azureuser/simple-web-app/simple-webapp.dll
 
 # For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.127.81.39:/etc/httpd/conf/
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@40.71.250.187:/etc/httpd/conf/
 
 sudo systemctl restart httpd
 
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@20.127.81.39:/usr/tmp/
+scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@40.71.250.187:/usr/tmp/
 
 sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
 

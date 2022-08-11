@@ -25,5 +25,17 @@
 ![The Diagram](./Images/topology.svg)
 
 - Reference. https://www.c-sharpcorner.com/article/deploying-asp-net-web-application-to-a-linux-virtual-machine-in-azure/
+
+- Note: The following two commands must be run on the linux system.
+  - sudo /usr/sbin/setsebool httpd_can_network_connect 1
+  - sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
+  
+  - Without them, it the services will not be accisible from outside. [See this](https://unix.stackexchange.com/q/8854/404099)
+
+![Not able to connect](./Images/NotAbleToConnect.jpg)
+
+ 
+
+
  
 
