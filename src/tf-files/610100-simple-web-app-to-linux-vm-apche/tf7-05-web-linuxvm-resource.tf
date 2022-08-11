@@ -22,6 +22,10 @@ sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
 sudo chmod 777 /etc/httpd/conf/
 sudo chmod 777 /etc/httpd/conf/httpd.conf
 
+sudo cp -r /root/.dotnet /usr/dotnet
+
+sudo rm -r -f /root/.dotnet
+
 CUSTOM_DATA
 }
 
