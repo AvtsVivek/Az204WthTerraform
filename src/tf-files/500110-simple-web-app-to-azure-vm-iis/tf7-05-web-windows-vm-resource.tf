@@ -3,7 +3,7 @@ resource "azurerm_windows_virtual_machine" "web_windowsvm" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   size                = "Standard_F2"
-  admin_username      = "adminuser" # "admin" This simple one is not working.
+  admin_username      = "adminuser"     # "admin" This simple one is not working.
   admin_password      = "P@$$w0rd1234!" # "123" This simple is not working.
   network_interface_ids = [
     azurerm_network_interface.web_windowsvm_nic.id,

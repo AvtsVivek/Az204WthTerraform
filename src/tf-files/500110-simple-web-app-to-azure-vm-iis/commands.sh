@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/500110-simple-web-app-to-azure-vm-iis/tf-files/
+cd ./src/tf-files/500110-simple-web-app-to-azure-vm-iis/
 
 cd ../../..
 

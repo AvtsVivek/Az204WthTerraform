@@ -103,6 +103,7 @@ $MSIArguments = @(
     ('"{0}"' -f $whb_installer_file)
     "/qn"
     "/norestart"
+    "ADDLOCAL=ALL"
     "/L*v"
     $logFile
 )
@@ -115,6 +116,7 @@ $MSIArguments = @(
     ('"{0}"' -f $wd_installer_file)
     "/qn"
     "/norestart"
+    "ADDLOCAL=ALL"
     "/L*v"
     $logFile
 )
