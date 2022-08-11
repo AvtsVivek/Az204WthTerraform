@@ -90,7 +90,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.127.94.132
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39
 
 sudo -i
 
@@ -109,30 +109,16 @@ exit
 # proxy:error pid Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:5000 (127.0.0.1) failed
 # http://sysadminsjourney.com/content/2010/02/01/apache-modproxy-error-13permission-denied-error-rhel/
 
-scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.94.132:/etc/httpd/conf.d/ ./confbackup.d
-scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.94.132:/etc/httpd/conf/ ./confbackup
-
-# For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.127.94.132:/etc/httpd/conf/
-
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@20.127.94.132:/usr/tmp/
-
-sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
-
-sudo systemctl daemon-reload
-
-sudo systemctl enable kestrel-dotNetapp.service
-
-sudo systemctl restart kestrel-dotNetapp.service
-
-sudo systemctl restart httpd
+# The following two are not necessary as of now.
+# scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39:/etc/httpd/conf.d/ ./confbackup.d
+# scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39:/etc/httpd/conf/ ./confbackup
 
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.127.94.132:/home/azureuser/simple-web-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.127.81.39:/home/azureuser/simple-web-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@20.127.94.132:/home/azureuser/simple-console-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@20.127.81.39:/home/azureuser/simple-console-app
 
 sudo find / -iname 'simple-webapp.dll'
 
@@ -143,6 +129,30 @@ sudo find / -iname 'simple-console-app.dll'
 # Finally to start the app
 /usr/dotnet/dotnet /home/azureuser/simple-web-app/simple-webapp.dll
 
+# For a single file transfer
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.127.81.39:/etc/httpd/conf/
+
+sudo systemctl restart httpd
+
+scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@20.127.81.39:/usr/tmp/
+
+sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
+
+sudo systemctl daemon-reload
+
+# First the console app
+sudo systemctl enable console-app.service
+
+sudo systemctl restart console-app.service
+
+sudo systemctl status console-app.service
+
+# Now the dotnet app.
+sudo systemctl enable kestrel-dotNetapp.service
+
+sudo systemctl restart kestrel-dotNetapp.service
+
+sudo systemctl status kestrel-dotNetapp.service
 
 # Now that you are in the VM, you can run the following commands.
 hostname
@@ -170,8 +180,6 @@ netstat -lntp
 
 curl localhost:5000
 
-curl localhost
-
 ## Thats it.
 cd /var/www/html
 
@@ -182,34 +190,6 @@ ls -lrta
 Now browse the vm. 
 
 # use ip address or dns name.
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/metadata.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/index.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/status.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/hostname.html
-
-cd /var/log/httpd/
-
-tail -100f access_log
-
-# Run any of the following commands and then see the logs.
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/metadata.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/index.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/status.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/hostname.html
-
-exit
 
 exit
 
