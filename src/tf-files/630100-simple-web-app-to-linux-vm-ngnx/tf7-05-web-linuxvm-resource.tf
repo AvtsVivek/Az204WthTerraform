@@ -16,9 +16,16 @@ sudo curl -L "https://dot.net/v1/dotnet-install.sh" -o /tmp/dotnet-install.sh
 sudo chmod 777 /tmp/dotnet-install.sh
 sudo /tmp/dotnet-install.sh -c 6.0
 
+sudo /usr/sbin/setsebool httpd_can_network_connect 1
+sudo /usr/sbin/setsebool -P httpd_can_network_connect 1
+
 sudo chmod 777 /etc/nginx/nginx.conf
 sudo chmod 777 /etc/nginx/default.d
 sudo chmod 777 /etc/nginx/conf.d
+
+sudo cp -r /root/.dotnet /usr/dotnet
+
+sudo rm -r -f /root/.dotnet
 
 CUSTOM_DATA
 }
