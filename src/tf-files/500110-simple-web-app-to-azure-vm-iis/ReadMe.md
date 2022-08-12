@@ -48,7 +48,9 @@
 - Stuck at this. We are able to see the same from internet.  
 ![Web Deploy On Win Server](./Images/WebDeployOnWinServer5.jpg)
 
-- Not sure what to do.
+- Now this is resolved. The problem is with the dotnet hosting bundle installation. It was not getting installed.
+  
+- Currently this is resolved with sku = "2019-Datacenter". There seems to be some problem with sku = "2022-Datacenter". Its not working.
 
 
 

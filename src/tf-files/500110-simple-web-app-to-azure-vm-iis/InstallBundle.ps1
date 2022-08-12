@@ -39,8 +39,8 @@ if( ![System.IO.Directory]::Exists( $temp_path ) )
 # The installer URL was obtained from:
 # https://dotnet.microsoft.com/download/dotnet-core/thank-you/runtime-aspnetcore-3.1.0-windows-hosting-bundle-installer
 #
-
-$whb_installer_url ="https://download.visualstudio.microsoft.com/download/pr/7de08ae2-75e6-49b8-b04a-31526204fa7b/c1cee44a509495e4bb0bba49f52c719a/dotnet-hosting-6.0.7-win.exe"
+# $whb_installer_url ="https://download.visualstudio.microsoft.com/download/pr/7de08ae2-75e6-49b8-b04a-31526204fa7b/c1cee44a509495e4bb0bba49f52c719a/dotnet-hosting-6.0.7-win.exe"
+$whb_installer_url ="https://download.visualstudio.microsoft.com/download/pr/c5e0609f-1db5-4741-add0-a37e8371a714/1ad9c59b8a92aeb5d09782e686264537/dotnet-hosting-6.0.8-win.exe"
 
 $whb_installer_file = $temp_path + [System.IO.Path]::GetFileName( $whb_installer_url )
 
@@ -96,18 +96,9 @@ Catch
 
 }
 
-$DataStamp = get-date -Format yyyyMMddTHHmmss
-$logFile = '{0}-{1}.log' -f $whb_installer_file,$DataStamp
-$MSIArguments = @(
-    "/i"
-    ('"{0}"' -f $whb_installer_file)
-    "/qn"
-    "/norestart"
-    "ADDLOCAL=ALL"
-    "/L*v"
-    $logFile
-)
-Start-Process "msiexec.exe" -ArgumentList $MSIArguments -Wait -NoNewWindow
+Start-Process -FilePath $whb_installer_file -Wait -ArgumentList /passive
+net stop was /y
+net start w3svc
 
 $DataStamp = get-date -Format yyyyMMddTHHmmss
 $logFile = '{0}-{1}.log' -f $wd_installer_file,$DataStamp
@@ -122,4 +113,5 @@ $MSIArguments = @(
 )
 Start-Process "msiexec.exe" -ArgumentList $MSIArguments -Wait -NoNewWindow
 
-
+net stop was /y
+net start w3svc
