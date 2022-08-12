@@ -446,3 +446,5 @@ profile.arm.json
 
 confbackup
 confbackup.d
+
+nginxconfbackup

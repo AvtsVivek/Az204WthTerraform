@@ -10,7 +10,7 @@ sudo systemctl start nginx
 sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 
-sudo systemctl restart httpd
+sudo systemctl restart nginx
 
 sudo curl -L "https://dot.net/v1/dotnet-install.sh" -o /tmp/dotnet-install.sh
 sudo chmod 777 /tmp/dotnet-install.sh
@@ -26,6 +26,10 @@ sudo chmod 777 /etc/nginx/conf.d
 sudo cp -r /root/.dotnet /usr/dotnet
 
 sudo rm -r -f /root/.dotnet
+
+sudo mkdir /etc/nginx/sites-enabled
+
+sudo chmod 777 /etc/nginx/sites-enabled
 
 CUSTOM_DATA
 }

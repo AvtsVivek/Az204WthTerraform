@@ -22,7 +22,6 @@ dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish/simple-webap
 
 # Now brwose to localhost:5000
 
-
 # Now for the console app.
 
 dotnet run --project ./../../dotnet-apps/simple-console-app/simple-console-app.csproj
@@ -90,7 +89,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@40.112.59.71
+ssh -i ssh-keys/terraform-azure.pem azureuser@13.92.60.43
 
 sudo -i
 
@@ -116,9 +115,9 @@ exit
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@40.112.59.71:/home/azureuser/simple-web-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@13.92.60.43:/home/azureuser/simple-web-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@40.112.59.71:/home/azureuser/simple-console-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@13.92.60.43:/home/azureuser/simple-console-app
 
 sudo find / -iname 'simple-webapp.dll'
 
@@ -129,12 +128,24 @@ sudo find / -iname 'simple-console-app.dll'
 # Finally to start the app
 /usr/dotnet/dotnet /home/azureuser/simple-web-app/simple-webapp.dll
 
-# For a single file transfer
-# scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@40.71.250.187:/etc/httpd/conf/
+
+# First take a backup of the conf file.
+# cd /etc/nginx/nginx.conf
+
+mkdir nginxconfbackup
+
+scp -i ssh-keys/terraform-azure.pem azureuser@13.92.60.43:/etc/nginx/nginx.conf nginxconfbackup/
+
+# Now copy the nginx.conf file.
+
+scp -i ssh-keys/terraform-azure.pem nginx-default.conf azureuser@13.92.60.43:/etc/nginx/nginx.conf 
+
+scp -i ssh-keys/terraform-azure.pem ./nginxconf/dotnetapp.conf azureuser@13.92.60.43:/etc/nginx/sites-enabled/
+
 
 # sudo systemctl restart httpd
 
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@40.112.59.71:/usr/tmp/
+scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@13.92.60.43:/usr/tmp/
 
 sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
 
@@ -153,6 +164,17 @@ sudo systemctl enable kestrel-dotNetapp.service
 sudo systemctl restart kestrel-dotNetapp.service
 
 sudo systemctl status kestrel-dotNetapp.service
+
+ps -ef | grep dotnet
+
+# look for port 5000
+netstat -lntp
+
+curl localhost:5000
+
+sudo systemctl restart nginx
+
+sudo systemctl status nginx
 
 # Now that you are in the VM, you can run the following commands.
 hostname
@@ -182,11 +204,6 @@ yum list installed nginx
 cd /etc/nginx
 
 ls -lrta
-
-# First take a backup of the conf file.
-# cd /etc/nginx/nginx.conf
-
-scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39:/etc/nginx/nginx.conf ./confbackup.d
 
 # look for port 5000
 netstat -lntp
