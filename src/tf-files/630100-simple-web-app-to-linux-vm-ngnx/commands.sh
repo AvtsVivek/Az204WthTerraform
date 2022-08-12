@@ -2,7 +2,6 @@
 # cd into the directory.
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
-
 cd ../../..
 
 dotnet run --project ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
@@ -38,6 +37,26 @@ dotnet publish -c Release ..\..\dotnet-apps\simple-console-app\simple-console-ap
 
 # Once published, just verify and see.
 dotnet ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish/simple-console-app.dll
+
+# Now for Web api project.
+
+dotnet run --project ./../../dotnet-apps/simple-web-api/simple-web-api.csproj --urls http://localhost:6000
+
+# First ensure the simple web api is published.
+# Run either of the following two comands
+# Debug
+dotnet publish ./../../dotnet-apps/simple-web-api/simple-web-api.csproj
+dotnet publish .\..\..\dotnet-apps\simple-web-api\simple-web-api.csproj
+
+#  -c Release
+dotnet publish -c Release ./../../dotnet-apps/simple-web-api/simple-web-api.csproj
+dotnet publish -c Release .\..\..\dotnet-apps\simple-web-api\simple-web-api.csproj
+
+# Once published, just verify and see.
+# dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100;https://localhost:5101"
+dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100"
+
+# Now brwose to localhost:6000/weatherforcaste
 
 cd ssh-keys
 
@@ -119,9 +138,13 @@ scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Rel
 
 scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@13.92.60.43:/home/azureuser/simple-console-app
 
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish azureuser@13.92.60.43:/home/azureuser/simple-web-api
+
 sudo find / -iname 'simple-webapp.dll'
 
 sudo find / -iname 'simple-console-app.dll'
+
+sudo find / -iname 'simple-web-api.dll'
 
 /usr/dotnet/dotnet /home/azureuser/simple-console-app/simple-console-app.dll
 
@@ -138,11 +161,11 @@ scp -i ssh-keys/terraform-azure.pem azureuser@13.92.60.43:/etc/nginx/nginx.conf 
 
 # Now copy the nginx.conf file.
 
-scp -i ssh-keys/terraform-azure.pem nginx-default.conf azureuser@13.92.60.43:/etc/nginx/nginx.conf 
+scp -i ssh-keys/terraform-azure.pem ./nginxconf/nginx-default.conf azureuser@13.92.60.43:/etc/nginx/nginx.conf 
 
 scp -i ssh-keys/terraform-azure.pem ./nginxconf/dotnetapp.conf azureuser@13.92.60.43:/etc/nginx/sites-enabled/
 
-
+sudo systemctl restart nginx
 # sudo systemctl restart httpd
 
 scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@13.92.60.43:/usr/tmp/
@@ -164,6 +187,13 @@ sudo systemctl enable kestrel-dotNetapp.service
 sudo systemctl restart kestrel-dotNetapp.service
 
 sudo systemctl status kestrel-dotNetapp.service
+
+# Now the dotnet web api.
+sudo systemctl enable kestrel-api.service
+
+sudo systemctl restart kestrel-api.service
+
+sudo systemctl status kestrel-api.service
 
 ps -ef | grep dotnet
 
@@ -233,37 +263,6 @@ ls -lrta
 
 Now browse the vm. 
 
-# use ip address or dns name.
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/metadata.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/index.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/status.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/hostname.html
-
-cd /var/log/httpd/
-
-tail -100f access_log
-
-# Run any of the following commands and then see the logs.
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/metadata.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/index.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/status.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/hostname.html
-
-exit
-
-exit
 
 terraform state list
 

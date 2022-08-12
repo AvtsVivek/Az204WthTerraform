@@ -1,5 +1,7 @@
 # Create a VM with a network security group
 
+- Nginx Reverse proxy is done for /(root). But its not working for /api. Not sure whats the issue.
+
 - This builds [on this](https://github.com/AvtsVivek/AzureWithTerraformAdvanced/tree/main/iac/2101100-vnet-vm-nsg)
 
 - Bastion subnet, app subnet and db subnet are removed.
@@ -11,6 +13,7 @@
 - Get the dotnet-install.sh script from here. https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
 
 - Then place that /src/in dotnet-apps folder
+
 
 
 
