@@ -3,8 +3,7 @@ environment             = "dev"
 resource_group_name     = "rg-vivrag"
 resource_group_location = "eastus"
 
-service_plan = "tf-service-plan"
-windows_web_app = "tf-service-web-app"
+storage_account_name = "vivmssqlstoraccnt"
+mssql_server_name    = "ms-sql-server"
+mssql_database_name  = "ms-sql-db"
 
-sku_name            = "P1v2"
-os_type             = "Windows"

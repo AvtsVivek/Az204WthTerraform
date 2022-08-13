@@ -1,25 +1,19 @@
 ## service plan name
 
-variable "service_plan_name" {
-  description = "service plan name"
+variable "storage_account_name" {
+  description = "Storage account for Sql Server db"
   type        = string
-  default     = "win-service-plan"
+  default     = "mssqlstorageaccount"
 }
 
-variable "windows_web_app_name" {
-  description = "windows web app name"
+variable "mssql_server_name" {
+  description = "Ms Sql server name"
   type        = string
-  default     = "win-web-app"
+  default     = "ms-sql-server"
 }
 
-variable "windows_sku_name" {
-  description = "windows web app SKU name "
+variable "mssql_database_name" {
+  description = "Ms Sql Database Name "
   type        = string
-  default     = "P1v2"
-}
-
-variable "windows_os_type" {
-  description = "windows web app OS Type "
-  type        = string
-  default     = "Windows"
+  default     = "ms-sql-db"
 }
