@@ -1,7 +1,8 @@
 # Resource-2: Azure Service Plan
 
 resource "azurerm_service_plan" "service_plan" {
-  name                = "tf-service-plan"
+  # name                = "tf-service-plan"
+  name                = "${local.resource_name_prefix}-${var.service_plan_name}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   sku_name            = "P1v2"
@@ -11,10 +12,12 @@ resource "azurerm_service_plan" "service_plan" {
 # Resource-3: Azure Windows Web App
 
 resource "azurerm_windows_web_app" "windows_web_app" {
-  name                = "tf-service-web-app"
+  name                = "${local.resource_name_prefix}-${var.windows_web_app_name}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_service_plan.service_plan.location
   service_plan_id     = azurerm_service_plan.service_plan.id
 
   site_config {}
 }
+
+
