@@ -40,7 +40,7 @@ dotnet ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish/simple-
 
 # Now for Web api project.
 
-dotnet run --project ./../../dotnet-apps/simple-web-api/simple-web-api.csproj --urls http://localhost:6000
+dotnet run --project ./../../dotnet-apps/simple-web-api/simple-web-api.csproj --urls "http://localhost:5100;https://localhost:5101"
 
 # First ensure the simple web api is published.
 # Run either of the following two comands
@@ -53,8 +53,8 @@ dotnet publish -c Release ./../../dotnet-apps/simple-web-api/simple-web-api.cspr
 dotnet publish -c Release .\..\..\dotnet-apps\simple-web-api\simple-web-api.csproj
 
 # Once published, just verify and see.
-# dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100;https://localhost:5101"
-dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100"
+dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100;https://localhost:5101"
+# dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100"
 
 # Now brwose to localhost:6000/weatherforcaste
 
@@ -108,17 +108,17 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@13.92.60.43
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.119.71.75
 
 sudo -i
 
 # Wait for at least 5 minutes. Then run the following commands.
 
+sudo find / -iname 'dotnet-install.sh'
+
 sudo find / -type d -iname '.dotnet'
 
 sudo find / -type d -iname 'dotnet'
-
-sudo find / -iname 'dotnet-install.sh'
 
 ps -ef | grep dotnet
 
@@ -134,11 +134,11 @@ exit
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@13.92.60.43:/home/azureuser/simple-web-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@13.92.60.43:/home/azureuser/simple-console-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-console-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish azureuser@13.92.60.43:/home/azureuser/simple-web-api
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-api
 
 sudo find / -iname 'simple-webapp.dll'
 
@@ -148,27 +148,38 @@ sudo find / -iname 'simple-web-api.dll'
 
 /usr/dotnet/dotnet /home/azureuser/simple-console-app/simple-console-app.dll
 
-# Finally to start the app
+# Start the app and check
 /usr/dotnet/dotnet /home/azureuser/simple-web-app/simple-webapp.dll
 
+# Api
+/usr/dotnet/dotnet /home/azureuser/simple-web-api/simple-web-api.dll --urls "http://localhost:5100"
 
 # First take a backup of the conf file.
 # cd /etc/nginx/nginx.conf
 
 mkdir nginxconfbackup
 
-scp -i ssh-keys/terraform-azure.pem azureuser@13.92.60.43:/etc/nginx/nginx.conf nginxconfbackup/
+scp -i ssh-keys/terraform-azure.pem azureuser@20.119.71.75:/etc/nginx/nginx.conf nginxconfbackup/
 
 # Now copy the nginx.conf file.
 
-scp -i ssh-keys/terraform-azure.pem ./nginxconf/nginx-default.conf azureuser@13.92.60.43:/etc/nginx/nginx.conf 
+scp -i ssh-keys/terraform-azure.pem ./nginxconf/nginx-default.conf azureuser@20.119.71.75:/etc/nginx/nginx.conf 
 
-scp -i ssh-keys/terraform-azure.pem ./nginxconf/dotnetapp.conf azureuser@13.92.60.43:/etc/nginx/sites-enabled/
+scp -i ssh-keys/terraform-azure.pem ./nginxconf/dotnetapp.conf azureuser@20.119.71.75:/etc/nginx/sites-enabled/
+
+sudo systemctl stop nginx
+
+sudo systemctl start nginx
+
+sudo systemctl status nginx
+
+sudo systemctl status nginx.service
+
+sudo journalctl -xe
 
 sudo systemctl restart nginx
-# sudo systemctl restart httpd
 
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@13.92.60.43:/usr/tmp/
+scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@20.119.71.75:/usr/tmp/
 
 sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
 
@@ -197,10 +208,12 @@ sudo systemctl status kestrel-api.service
 
 ps -ef | grep dotnet
 
-# look for port 5000
+# look for port 5000 and 5100
 netstat -lntp
 
 curl localhost:5000
+
+curl localhost:5100/weatherforecast
 
 sudo systemctl restart nginx
 

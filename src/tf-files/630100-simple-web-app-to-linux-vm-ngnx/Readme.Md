@@ -2,6 +2,8 @@
 
 - Nginx Reverse proxy is done for /(root). But its not working for /api. Not sure whats the issue.
 
+- ToDo: Need to check why /api configuration for nginx is not working.
+
 - This builds [on this](https://github.com/AvtsVivek/AzureWithTerraformAdvanced/tree/main/iac/2101100-vnet-vm-nsg)
 
 - Bastion subnet, app subnet and db subnet are removed.
