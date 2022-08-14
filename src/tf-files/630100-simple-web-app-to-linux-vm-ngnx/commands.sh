@@ -23,20 +23,20 @@ dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish/simple-webap
 
 # Now for the console app.
 
-dotnet run --project ./../../dotnet-apps/simple-console-app/simple-console-app.csproj
+dotnet run --project ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
 # Debug
-dotnet publish ./../../dotnet-apps/simple-console-app/simple-console-app.csproj
-dotnet publish ..\..\dotnet-apps\simple-console-app\simple-console-app.csproj
+dotnet publish ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
+dotnet publish ..\..\dotnet-apps\0010-simple-console-app\simple-console-app.csproj
 
 #  -c Release
-dotnet publish -c Release ./../../dotnet-apps/simple-console-app/simple-console-app.csproj
-dotnet publish -c Release ..\..\dotnet-apps\simple-console-app\simple-console-app.csproj
+dotnet publish -c Release ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0010-simple-console-app\simple-console-app.csproj
 
 # Once published, just verify and see.
-dotnet ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish/simple-console-app.dll
+dotnet ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish/simple-console-app.dll
 
 # Now for Web api project.
 
@@ -136,7 +136,7 @@ exit
 # copy the publish directory.
 scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-console-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-console-app
 
 scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-api
 

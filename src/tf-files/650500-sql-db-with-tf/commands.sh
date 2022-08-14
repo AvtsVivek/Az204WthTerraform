@@ -1,10 +1,8 @@
+cd ../../..
 
 # cd into the directory.
 cd ./src/tf-files/650500-sql-db-with-tf/
 
-cd ../../..
-
-cd ..
 
 terraform fmt
 
