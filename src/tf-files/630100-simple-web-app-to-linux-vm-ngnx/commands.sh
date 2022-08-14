@@ -4,20 +4,20 @@ cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
 cd ../../..
 
-dotnet run --project ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
+dotnet run --project ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
 # Debug
-dotnet publish ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
-dotnet publish ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
+dotnet publish ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+dotnet publish ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
 
 #  -c Release
-dotnet publish -c Release ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
-dotnet publish -c Release ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
+dotnet publish -c Release ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
 
 # Once published, just verify and see.
-dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
+dotnet ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
 
 # Now brwose to localhost:5000
 
@@ -134,7 +134,7 @@ exit
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-app
 
 scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-console-app
 
