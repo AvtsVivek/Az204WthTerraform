@@ -40,21 +40,21 @@ dotnet ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish/si
 
 # Now for Web api project.
 
-dotnet run --project ./../../dotnet-apps/simple-web-api/simple-web-api.csproj --urls "http://localhost:5100;https://localhost:5101"
+dotnet run --project ./../../dotnet-apps/0030-simple-web-api/simple-web-api.csproj --urls "http://localhost:5100;https://localhost:5101"
 
 # First ensure the simple web api is published.
 # Run either of the following two comands
 # Debug
-dotnet publish ./../../dotnet-apps/simple-web-api/simple-web-api.csproj
-dotnet publish .\..\..\dotnet-apps\simple-web-api\simple-web-api.csproj
+dotnet publish ./../../dotnet-apps/0030-simple-web-api/simple-web-api.csproj
+dotnet publish .\..\..\dotnet-apps\0030-simple-web-api\simple-web-api.csproj
 
 #  -c Release
-dotnet publish -c Release ./../../dotnet-apps/simple-web-api/simple-web-api.csproj
-dotnet publish -c Release .\..\..\dotnet-apps\simple-web-api\simple-web-api.csproj
+dotnet publish -c Release ./../../dotnet-apps/0030-simple-web-api/simple-web-api.csproj
+dotnet publish -c Release .\..\..\dotnet-apps\0030-simple-web-api\simple-web-api.csproj
 
 # Once published, just verify and see.
-dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100;https://localhost:5101"
-# dotnet ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100"
+dotnet ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100;https://localhost:5101"
+# dotnet ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100"
 
 # Now brwose to localhost:6000/weatherforcaste
 
@@ -138,7 +138,7 @@ scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bi
 
 scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-console-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-api/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-api
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish azureuser@20.119.71.75:/home/azureuser/simple-web-api
 
 sudo find / -iname 'simple-webapp.dll'
 
