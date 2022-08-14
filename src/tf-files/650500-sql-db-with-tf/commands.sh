@@ -18,8 +18,13 @@ terraform apply main.tfplan
 
 terraform state list
 
-# To create diagram, run the following command.
-code . -r 
+# Once successifully provisioned, The next step is to load data into the database. run the data.sql script.
+
+# See the image AddData.jpg
+
+# Once the data is added, now prepare the project. Ensure the credentials are in place. 
+
+dotnet run --project ./../../dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlapp/ConnectToSqlapp.csproj
 
 terraform state show 
 

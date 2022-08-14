@@ -13,6 +13,8 @@ var webApplicationOptions = new WebApplicationOptions{
 
 var builder = WebApplication.CreateBuilder(webApplicationOptions);
 
+// var builder = WebApplication.CreateBuilder(args);
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -26,9 +28,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-
-// app.UseHttpsRedirection();
-
+app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -38,14 +38,3 @@ app.UseAuthorization();
 app.MapRazorPages();
 
 app.Run();
-
-// app.Run("http://127.0.0.1:80");
-
-//if (app.Environment.IsDevelopment())
-//{
-//   app.Run();
-//}
-//else
-//{
-//   app.Run("http://127.0.0.1:80");
-//}
