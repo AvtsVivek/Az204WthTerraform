@@ -6,6 +6,7 @@ resource "azurerm_service_plan" "service_plan" {
   location            = azurerm_resource_group.rg.location
   sku_name            = var.windows_sku_name
   os_type             = var.windows_os_type
+  # depends_on          = [azurerm_mssql_database.mssql_database]
 }
 
 # Resource-3: Azure Windows Web App

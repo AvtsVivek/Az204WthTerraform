@@ -1,11 +1,11 @@
 
-resource "azurerm_storage_account" "storage_account" {
-  name                     = "${var.storage_account_name}${random_string.myrandom.id}"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
+# resource "azurerm_storage_account" "storage_account" {
+#   name                     = "${var.storage_account_name}${random_string.myrandom.id}"
+#   resource_group_name      = azurerm_resource_group.rg.name
+#   location                 = azurerm_resource_group.rg.location
+#   account_tier             = "Standard"
+#   account_replication_type = "LRS"
+# }
 
 resource "azurerm_mssql_server" "mssql_server" {
   name                         = "${local.resource_name_prefix}-${var.mssql_server_name}"
@@ -27,4 +27,13 @@ resource "azurerm_mssql_database" "mssql_database" {
   zone_redundant = false
 
   tags = local.common_tags
+}
+
+
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_firewall_rule#argument-reference
+resource "azurerm_mssql_firewall_rule" "sql_server_firewall_rules_for_azure_access" {
+  name             = "AzureAccessFirewallRule"
+  server_id        = azurerm_mssql_server.mssql_server.id
+  start_ip_address = "0.0.0.0"
+  end_ip_address   = "0.0.0.0"
 }
