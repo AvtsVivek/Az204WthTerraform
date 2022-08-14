@@ -1,10 +1,10 @@
 ## service plan name
 
-variable "storage_account_name" {
-  description = "Storage account for Sql Server db"
-  type        = string
-  default     = "mssqlstorageaccount"
-}
+# variable "storage_account_name" {
+#   description = "Storage account for Sql Server db"
+#   type        = string
+#   default     = "mssqlstorageaccount"
+# }
 
 variable "mssql_server_name" {
   description = "Ms Sql server name"
