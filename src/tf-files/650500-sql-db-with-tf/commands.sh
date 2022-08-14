@@ -24,6 +24,10 @@ terraform state list
 
 # Once the data is added, now prepare the project. Ensure the credentials are in place. 
 
+# Take a look at the following file.
+
+# https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlApp/Services/ProductService.cs
+
 dotnet run --project ./../../dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlapp/ConnectToSqlapp.csproj
 
 terraform state show 
