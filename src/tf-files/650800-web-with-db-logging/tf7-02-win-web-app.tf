@@ -22,6 +22,22 @@ resource "azurerm_windows_web_app" "windows_web_app" {
     value = "Server=tcp:hr-dev-ms-sql-server.database.windows.net,1433;Initial Catalog=hr-dev-ms-sql-db;Persist Security Info=False;User ID=adm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
   }
   site_config {}
+
+  logs {
+
+    application_logs {
+      file_system_level = "Information" 
+    }
+
+    http_logs {
+      file_system{
+        retention_in_days = 1
+        retention_in_mb = 25
+      }
+    }
+
+    detailed_error_messages = true
+
+    failed_request_tracing = true
+  }
 }
-
-
