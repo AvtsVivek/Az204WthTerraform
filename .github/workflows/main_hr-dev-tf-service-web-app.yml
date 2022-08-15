@@ -23,10 +23,12 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release ./../../src/dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+        # run: dotnet build --configuration Release ./../../src/dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+        run: dotnet build --configuration Release ./src/dotnet-apps/0020-simple-webapp/simple-webapp.csproj        
 
       - name: dotnet publish
-        run: dotnet publish -c Release ./../../src/dotnet-apps/0020-simple-webapp/simple-webapp.csproj -o ${{env.DOTNET_ROOT}}/myapp
+        # run: dotnet publish -c Release ./../../src/dotnet-apps/0020-simple-webapp/simple-webapp.csproj -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish -c Release ./src/dotnet-apps/0020-simple-webapp/simple-webapp.csproj -o ${{env.DOTNET_ROOT}}/myapp        
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
