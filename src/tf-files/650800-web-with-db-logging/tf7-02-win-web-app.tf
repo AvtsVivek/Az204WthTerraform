@@ -26,13 +26,13 @@ resource "azurerm_windows_web_app" "windows_web_app" {
   logs {
 
     application_logs {
-      file_system_level = "Information" 
+      file_system_level = "Information"
     }
 
     http_logs {
-      file_system{
+      file_system {
         retention_in_days = 1
-        retention_in_mb = 25
+        retention_in_mb   = 25
       }
     }
 

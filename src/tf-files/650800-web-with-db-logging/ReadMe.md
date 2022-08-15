@@ -10,6 +10,5 @@ Sql Server and Sql Database
 ![Vs code Extension](./Images/VsCodeExtensions.jpg)
 
 - Now deploy
-
 ![Vs code Extension](./Images/DeployWithVsCodeExtensions.jpg)
 
