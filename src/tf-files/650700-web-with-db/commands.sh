@@ -19,7 +19,7 @@ terraform state list
 
 # Once successifully provisioned, The next step is to load data into the database. run the data.sql script.
 
-# See the image AddData.jpg
+# See the image AddData.jpg in the images folder.
 
 # Once the data is added, now prepare the project. Ensure the credentials are in place. 
 
