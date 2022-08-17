@@ -1,8 +1,50 @@
 Sql Server and Sql Database
 
-- Creates a Sql Server and Sql Database
+- To add a custom domain do the following.
 
-- Visual Studio 2022 Deployment is not woring. So you can use Vs Code.
+- Custom Domain
+![Custom Domain](./Images/CustomDomain.jpg)
 
-- Builds on from the provious exericse and adds auto scaling to the previous exercise.
+- Custom Domain
+![Custom Domain](./Images/CustomDomain1.jpg)
+
+- Custom Domain
+![Custom Domain](./Images/CustomDomain2.jpg)
+
+- Custom Domain
+![Custom Domain](./Images/CustomDomain3.jpg)
+
+- Custom Domain
+![Custom Domain](./Images/CustomDomain4.jpg)
+
+- Custom Domain
+![Custom Domain](./Images/CustomDomain5.jpg)
+
+- To impliment SSL
+
+- S S L
+![S S L](./Images/ConfigureSSL.jpg)
+
+- S S L
+![S S L](./Images/ConfigureSSL2.jpg)
+
+- S S L
+![S S L](./Images/ConfigureSSL3.jpg)
+
+- S S L
+![S S L](./Images/ConfigureSSL4.jpg)
+
+- S S L
+![S S L](./Images/ConfigureSSL5.jpg)
+
+- S S L
+![S S L](./Images/ConfigureSSL6.jpg)
+
+- S S L
+![S S L](./Images/ConfigureSSL7.jpg)
+
+- S S L
+![S S L](./Images/ConfigureSSL8.jpg)
+
+
 
