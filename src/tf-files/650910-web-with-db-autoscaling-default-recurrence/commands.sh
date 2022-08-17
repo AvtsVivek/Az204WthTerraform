@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/650900-web-with-db-autoscaling/
+cd ./src/tf-files/650910-web-with-db-autoscaling-default-recurrence/
 
 terraform fmt
 
