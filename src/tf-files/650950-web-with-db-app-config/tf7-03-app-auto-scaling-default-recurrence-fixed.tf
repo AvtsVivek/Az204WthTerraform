@@ -1,3 +1,7 @@
+## To reduce the complexity and just to keep the focus on the lesson at hand(deployment slots)
+## this is commented out.
+## If you wish, you can uncomment and run the exercise.
+
 /*
 
 resource "azurerm_monitor_autoscale_setting" "service_plan_auto_scale" {
