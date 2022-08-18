@@ -4,8 +4,9 @@ Sql Server and Sql Database
 
 - In this example, you can see both default, recurrence profile and also fixed profile in action.
 
-- Custom Domain
-![Custom Domain](./Images/customdomain.jpg)
+- Custom Domain 
+  
+![Custom Domain why](./Images/customdomain.jpg)
 
 - Custom Domain
 ![Custom Domain](./Images/CustomDomain1.jpg)
