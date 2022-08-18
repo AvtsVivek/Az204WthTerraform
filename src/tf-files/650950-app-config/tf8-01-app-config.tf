@@ -1,7 +1,7 @@
 
 # https://github.com/hashicorp/terraform-provider-azurerm/issues/15721
 
-data "azurerm_client_config" "test" { }
+data "azurerm_client_config" "test" {}
 
 resource "azurerm_role_assignment" "test" {
   scope                = azurerm_resource_group.rg.id
@@ -15,7 +15,7 @@ resource "azurerm_app_configuration" "appconf" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   depends_on = [
-    azurerm_windows_web_app.windows_web_app,
+    # azurerm_windows_web_app.windows_web_app,
     azurerm_role_assignment.test
   ]
 }
