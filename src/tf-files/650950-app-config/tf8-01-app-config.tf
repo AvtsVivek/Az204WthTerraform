@@ -1,4 +1,5 @@
 
+# The following data and azurerm_role_assignment are needed. Without that, we get the following error as descirved in the following issue.
 # https://github.com/hashicorp/terraform-provider-azurerm/issues/15721
 
 data "azurerm_client_config" "test" {}

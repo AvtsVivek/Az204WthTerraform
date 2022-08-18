@@ -14,4 +14,6 @@
 8. web app.
 
 
+But instead, if we arrange the dependencies in such a way that azurerm_app_configuration.appconf and azurerm_app_configuration_key. sql_connection are created in the end, after sql and web app, then I am getting errors. So the above is what is working.
+
 
