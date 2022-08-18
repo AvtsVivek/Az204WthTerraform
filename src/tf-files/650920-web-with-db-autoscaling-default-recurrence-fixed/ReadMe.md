@@ -2,6 +2,8 @@ Sql Server and Sql Database
 
 - To add a custom domain do the following.
 
+- In this example, you can see both default, recurrence profile and also fixed profile in action.
+
 - Custom Domain
 ![Custom Domain](./Images/CustomDomain.jpg)
 

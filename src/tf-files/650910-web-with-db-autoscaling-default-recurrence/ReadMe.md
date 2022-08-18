@@ -6,3 +6,5 @@ Sql Server and Sql Database
 
 - Builds on from the provious exericse and adds auto scaling to the previous exercise.
 
+- In this example, you can see both default and recurrence profile.
+
