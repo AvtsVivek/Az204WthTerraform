@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/650940-web-with-db-deployment-slots/
+cd ./src/tf-files/650950-web-with-db-app-config/
 
 terraform fmt
 

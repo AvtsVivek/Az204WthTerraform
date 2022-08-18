@@ -1,3 +1,8 @@
+
+# Web app slots are commented out to keep things simple and on app configuration
+
+/*
+
 resource "azurerm_windows_web_app_slot" "web_app_slot_one" {
   name           = "dev"
   app_service_id = azurerm_windows_web_app.windows_web_app.id
@@ -11,6 +16,8 @@ resource "azurerm_windows_web_app_slot" "web_app_slot_one" {
 
   site_config {}
 }
+
+*/
 
 # You can have more than one deployment slots. For now we are keeping the second one commented.
 # resource "azurerm_windows_web_app_slot" "web_app_slot_two" {
