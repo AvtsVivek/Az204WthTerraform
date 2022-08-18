@@ -2,3 +2,16 @@
 
 - This builds on earlier example, but without autoscaling and also without deployment scaling. All autoscaling code(tf7-03-app-auto-scaling-default-recurrence-fixed.tf) is commented out.
 
+- The dependency sequence is arranged as follows. This is working.
+
+1. data.azurerm_client_config.test
+2. azurerm_role_assignment.test
+3. azurerm_app_configuration.appconf
+4. azurerm_app_configuration_key.sql_connection
+5. azurerm_mssql_server.mssql_server
+6. database
+7. web app service plan
+8. web app.
+
+
+
