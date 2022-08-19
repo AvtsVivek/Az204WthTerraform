@@ -11,7 +11,7 @@ terraform validate
 
 terraform plan -out main.tfplan
 
-terraform show main.tfplan
+# terraform show main.tfplan
 
 terraform apply main.tfplan 
 

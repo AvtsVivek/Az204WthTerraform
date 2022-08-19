@@ -16,11 +16,14 @@ resource "azurerm_windows_web_app" "windows_web_app" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_service_plan.service_plan.location
   service_plan_id     = azurerm_service_plan.service_plan.id
-  connection_string {
-    name  = "SQLConnection"
-    type  = "SQLAzure"
-    value = "Server=tcp:hr-dev-ms-sql-server.database.windows.net,1433;Initial Catalog=hr-dev-ms-sql-db;Persist Security Info=False;User ID=adm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-  }
+
+  # We are removing this because we are using app configuration resource. 
+  # connection_string {
+  #   name  = "SQLConnection"
+  #   type  = "SQLAzure"
+  #   value = "Server=tcp:hr-dev-ms-sql-server.database.windows.net,1433;Initial Catalog=hr-dev-ms-sql-db;Persist Security Info=False;User ID=adm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  # }
+
   site_config {}
 
   logs {

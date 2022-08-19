@@ -17,3 +17,11 @@
 But instead, if we arrange the dependencies in such a way that azurerm_app_configuration.appconf and azurerm_app_configuration_key. sql_connection are created in the end, after sql and web app, then I am getting errors. So the above is what is working.
 
 
+Need to do this.
+https://www.mcbeev.com/how-to-add-azure-app-configuration-and-feature-flags-into-blazor-in-net-5
+
+https://csharp.christiannagel.com/2020/05/19/azureappconfiguration/
+
+https://github.com/ProfessionalCSharp/MoreSamples/tree/main/Azure/AzureAppConfigSample/WebAppWithAzureConfig
+
+
