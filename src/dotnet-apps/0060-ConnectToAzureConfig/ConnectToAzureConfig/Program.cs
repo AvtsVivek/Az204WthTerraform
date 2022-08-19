@@ -3,7 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 // var connectionString = builder.Configuration.GetConnectionString("AppConfig");
 
 // We are hard coding, instead of using the secrets and so on.
-var connectionString = "Endpoint=https://hr-dev-rg-vivrag-new-app-conf-szzwyd.azconfig.io;Id=Asj3-l0-s0:0Pg37iJM4X5Wx3lic9ss;Secret=HNkWwYyFzGqD0m9z/fLeOdwoHgs2yliAWU+xMxoCUmU=";
+var connectionString = "Endpoint=https://hr-dev-rg-vivrag-new-app-conf-jmmgho.azconfig.io;Id=jTk8-l0-s0:eApFdCgDONJo5cyLqC+T;Secret=sMRodX/jwMKj9QSqXEnRJcNEYbhpgMSycx5FTnwDGL0=";
 
 builder.Host.ConfigureAppConfiguration(builder =>
     {

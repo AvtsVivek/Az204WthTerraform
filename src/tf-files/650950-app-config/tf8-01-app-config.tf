@@ -31,6 +31,7 @@ resource "azurerm_app_configuration_key" "sql_connection" {
 resource "azurerm_app_configuration_key" "config_key_backgound_color" {
   configuration_store_id = azurerm_app_configuration.appconf.id
   key                    = "TestApp:Settings:BackgroundColor"
+  # Note: There should be no lable. If you keep any label, the app will not be able to read them.
   # label                  = "somelabel"
   value = "#FFF"
 }
@@ -38,6 +39,7 @@ resource "azurerm_app_configuration_key" "config_key_backgound_color" {
 resource "azurerm_app_configuration_key" "config_key_font_color" {
   configuration_store_id = azurerm_app_configuration.appconf.id
   key                    = "TestApp:Settings:FontColor"
+  # Note: There should be no lable. If you keep any label, the app will not be able to read them.
   # label                  = "somelabel"
   value = "#000"
 }
@@ -46,6 +48,7 @@ resource "azurerm_app_configuration_key" "config_key_font_size" {
   configuration_store_id = azurerm_app_configuration.appconf.id
   key                    = "TestApp:Settings:FontSize"
   # label                  = "somelabel"
+  # Note: There should be no lable. If you keep any label, the app will not be able to read them.
   value = "24"
 }
 
