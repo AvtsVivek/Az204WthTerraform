@@ -1,4 +1,4 @@
-namespace TestAppConfig.Models;
+namespace ConnectToAzureConfig.Models;
 
 public class ErrorViewModel
 {

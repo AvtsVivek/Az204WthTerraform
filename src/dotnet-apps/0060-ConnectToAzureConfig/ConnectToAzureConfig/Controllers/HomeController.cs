@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TestAppConfig.Models;
+using ConnectToAzureConfig.Models;
 
-namespace TestAppConfig.Controllers;
+namespace ConnectToAzureConfig.Controllers;
 
 public class HomeController : Controller
 {
