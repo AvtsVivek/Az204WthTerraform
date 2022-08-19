@@ -35,7 +35,7 @@ terraform show terraform.tfstate
 
 terraform plan -destroy -out main.destroy.tfplan
 
-terraform show main.destroy.tfplan
+# terraform show main.destroy.tfplan
 
 terraform apply main.destroy.tfplan
 
