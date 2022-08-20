@@ -4,7 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // var connectionString = "Endpoint=https://appconfig1000233.azconfig.io;Id=E0j2-l8-s0:ywglWz9a/tngma/7q5/S;Secret=QA16TLCFkzE7j+BmvBnm/zlC2VJ/X4HqViAuA/PMHeQ=";
 
-var connectionString = "Endpoint=https://hr-dev-rg-vivrag-new-app-conf-pwzxts.azconfig.io;Id=JUsw-l0-s0:uWGOMlj9CakbO6JZ7iwD;Secret=NrBgKrBnnFXikUFk2RKhZo9Kh3sz8bS8DikzMJ0yaY0=";
+var connectionString = "Endpoint=https://hr-dev-rg-vivrag-app-conf-mlabqn.azconfig.io;Id=wED1-l0-s0:lrkCZsQpyMK6hNNlUEGv;Secret=bebI3S6E08569+ElO/owZs3SD8hTefwUC/UEM5OIsVw=";
 
 builder.Host.ConfigureAppConfiguration(builder =>
 {

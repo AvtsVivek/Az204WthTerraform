@@ -23,6 +23,6 @@ resource "azurerm_app_configuration" "appconf" {
 resource "azurerm_app_configuration_key" "sql_connection" {
   configuration_store_id = azurerm_app_configuration.appconf.id
   key                    = "SQLConnection"
-  label                  = "somelabel"
-  value                  = "Server=tcp:hr-dev-ms-sql-server.database.windows.net,1433;Initial Catalog=hr-dev-ms-sql-db;Persist Security Info=False;User ID=adm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+  # label                  = "somelabel"
+  value = "Server=tcp:hr-dev-ms-sql-server.database.windows.net,1433;Initial Catalog=hr-dev-ms-sql-db;Persist Security Info=False;User ID=adm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
 }
