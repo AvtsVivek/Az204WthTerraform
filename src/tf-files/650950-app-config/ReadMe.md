@@ -5,5 +5,5 @@
 - One deviation is, we are not using secrets. So 
 
 - https://docs.microsoft.com/en-us/azure/azure-app-configuration/quickstart-aspnet-core-app?tabs=core6x
-
-
+  
+- 

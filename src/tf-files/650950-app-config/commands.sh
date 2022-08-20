@@ -17,17 +17,19 @@ terraform apply main.tfplan
 
 terraform state list
 
-# Once successifully provisioned, The next step is to load data into the database. run the data.sql script.
+# Once successifully provisioned, the next step is to get the access key.
 
-# See the image AddData.jpg in the images folder.
-
-# Once the data is added, now prepare the project. Ensure the credentials are in place. 
+# See the image AppConfiguration1.jpg in the images folder.
 
 # Take a look at the following file.
 
-# https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlApp/Services/ProductService.cs
+# https://github.com/AvtsVivek/Az204WthTerraform/blob/9c325df5ee389ce3e2b742a39f3f1bf62fa43834/src/dotnet-apps/0060-ConnectToAzureConfig/ConnectToAzureConfig/Program.cs#L6
 
-dotnet run --project ./../../dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlapp/ConnectToSqlapp.csproj
+# Get the access key and update it.
+
+dotnet run --project ./../../dotnet-apps/0060-ConnectToAzureConfig/ConnectToAzureConfig/ConnectToAzureConfig.csproj
+
+# See the image AppConfiguration4.jpg in the images folder.
 
 terraform state show 
 
