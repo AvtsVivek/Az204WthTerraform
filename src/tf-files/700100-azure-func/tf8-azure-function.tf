@@ -1,0 +1,23 @@
+
+variable "win_function_app_name" {
+  description = "Windows Function App name"
+  type        = string
+  default     = "win-func-app"
+}
+
+resource "azurerm_windows_function_app" "win_function_app" {
+  # name                = "example-windows-function-app"
+  name                = "${local.resource_name_prefix}-${var.win_function_app_name}-${random_string.myrandom.id}"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+
+  storage_account_name       = azurerm_storage_account.storage_account_for_azure_func.name
+  storage_account_access_key = azurerm_storage_account.storage_account_for_azure_func.primary_access_key
+  service_plan_id            = azurerm_service_plan.service_plan_for_azure_func.id
+
+  site_config {
+    application_stack {
+      dotnet_version = 6.0
+    }
+  }
+}
