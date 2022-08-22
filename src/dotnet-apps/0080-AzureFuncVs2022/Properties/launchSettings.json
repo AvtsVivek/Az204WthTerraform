@@ -1,8 +1,8 @@
 {
   "profiles": {
-    "_0080_AzureFunc": {
+    "AzureFuncVs2022": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7034",
+      "commandLineArgs": "--port 7169",
       "launchBrowser": false
     }
   }

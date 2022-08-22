@@ -68,3 +68,4 @@ cd 0080-AzureFunc
 func init . --worker-runtime dotnet-isolated --target-framework net6.0
 
 code . 
+
