@@ -14,12 +14,6 @@ variable "windows_sku_name" {
   default = "S1"
 }
 
-variable "windows_os_type" {
-  description = "windows web app OS Type "
-  type        = string
-  default     = "Windows"
-}
-
 resource "azurerm_service_plan" "service_plan_for_azure_func" {
   name                = "${local.resource_name_prefix}-${var.service_plan_name}"
   resource_group_name = azurerm_resource_group.rg.name

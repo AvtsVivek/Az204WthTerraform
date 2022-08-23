@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/800140-azure-func-dotnet-conn-string-env-var/
+cd ./src/tf-files/800150-azure-func-with-web-app/
 
 terraform fmt
 

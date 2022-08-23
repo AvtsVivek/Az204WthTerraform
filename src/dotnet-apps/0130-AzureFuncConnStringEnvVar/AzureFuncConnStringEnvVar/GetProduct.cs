@@ -42,9 +42,10 @@ namespace sqlfunction
                     _product_lst.Add(_product);
                 }
             }
-            _connection.Close();            
+            _connection.Close();
 
-            return new OkObjectResult(_product_lst);
+            //return new OkObjectResult(_product_lst);
+            return new OkObjectResult(JsonConvert.SerializeObject(_product_lst));
         }
 
         private static SqlConnection GetConnection()
@@ -80,7 +81,7 @@ namespace sqlfunction
                     _product.ProductName = _reader.GetString(1);
                     _product.Quantity = _reader.GetInt32(2);
                     var response = _product;
-                    return new OkObjectResult(response);
+                     return new OkObjectResult(response);
                 }
             }
             catch(Exception ex)
