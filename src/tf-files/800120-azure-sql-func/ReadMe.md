@@ -1,4 +1,4 @@
-- This demonistrates deployment slots. 
+- This demos azure function running on local machine, not on azure, connecting to a sql server on azure. Then gets the products
 
 - This builds on (earlier example)[https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/650940-web-with-db-deployment-slots] but with only sql resources. 
 
