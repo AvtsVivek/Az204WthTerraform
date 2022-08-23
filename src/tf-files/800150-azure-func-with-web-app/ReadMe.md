@@ -12,5 +12,7 @@
 - Put data into Sql database.
   
 - Next deploy [Azure Function App](https://github.com/AvtsVivek/Az204WthTerraform/blob/f49e733549bb602b550b277247e01eeaf19624f6/src/dotnet-apps/0130-AzureFuncConnStringEnvVar/AzureFuncConnStringEnvVar)
-  
-- Next Run the web app locally .
+
+- Next Run [the web app locally](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/dotnet-apps/0140-simple-webapp/WebAppToAzureFunc). Ensure the [connection string to Azure Function app is correct](https://github.com/AvtsVivek/Az204WthTerraform/blob/cbc6e2a45ea04c589c5285e14817d0375d7bbff4/src/dotnet-apps/0140-simple-webapp/WebAppToAzureFunc/Services/ProductService.cs#L51). Else it would not work.
+
+- Finally deploy the web app to azure and check.
