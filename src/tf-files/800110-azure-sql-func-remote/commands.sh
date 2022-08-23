@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/800120-azure-sql-func/
+cd ./src/tf-files/800110-azure-sql-func-remote/
 
 terraform fmt
 
