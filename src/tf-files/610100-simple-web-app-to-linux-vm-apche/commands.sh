@@ -92,6 +92,8 @@ cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
 ssh -i ssh-keys/terraform-azure.pem azureuser@40.117.36.111
 
+cd /var/log
+
 sudo -i
 
 # Wait for at least 5 minutes. Then run the following commands.

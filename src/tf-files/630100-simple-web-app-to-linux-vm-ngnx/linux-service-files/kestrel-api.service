@@ -2,7 +2,7 @@
 Description=Aspnet 6 Web Api running on Linux
 [Service]
 WorkingDirectory=/home/azureuser/simple-web-app/
-ExecStart=/usr/dotnet/dotnet /home/azureuser/simple-web-api/simple-web-api.dll --urls "http://localhost:5100"
+ExecStart=dotnet /home/azureuser/simple-web-api/simple-web-api.dll --urls "http://localhost:5100"
 Restart=always
 RestartSec=10
 SyslogIdentifier=dotnet-demo-api
