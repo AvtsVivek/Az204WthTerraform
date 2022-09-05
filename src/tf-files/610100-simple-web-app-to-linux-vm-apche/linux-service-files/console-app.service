@@ -4,7 +4,7 @@ Description=Hello World console application
 [Service]
 # systemd will run this executable to start the service
 # if /usr/bin/dotnet doesn't work, use `which dotnet` to find correct dotnet executable path
-ExecStart=/usr/dotnet/dotnet /home/azureuser/simple-console-app/simple-console-app.dll
+ExecStart=dotnet /home/azureuser/simple-console-app/simple-console-app.dll
 # to query logs using journalctl, set a logical name here
 SyslogIdentifier=HelloWorld
 

@@ -1,5 +1,10 @@
 # Locals Block for custom data
 
+# sudo curl -L "https://dot.net/v1/dotnet-install.sh" -o /tmp/dotnet-install.sh
+# sudo chmod 777 /tmp/dotnet-install.sh
+# sudo /tmp/dotnet-install.sh -c 6.0
+
+
 locals {
   webvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
@@ -12,9 +17,11 @@ sudo systemctl disable firewalld
 
 sudo systemctl restart httpd
 
-sudo curl -L "https://dot.net/v1/dotnet-install.sh" -o /tmp/dotnet-install.sh
-sudo chmod 777 /tmp/dotnet-install.sh
-sudo /tmp/dotnet-install.sh -c 6.0
+echo "Installing dotnet by executing the command - sudo dnf install aspnetcore-runtime-6.0"
+
+sudo dnf install aspnetcore-runtime-6.0 -y
+
+echo "Installation complete. Execution of the command 'sudo dnf install aspnetcore-runtime-6.0' is done"
 
 sudo /usr/sbin/setsebool httpd_can_network_connect 1
 sudo /usr/sbin/setsebool -P httpd_can_network_connect 1

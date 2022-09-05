@@ -12,35 +12,34 @@ dotnet build ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
 # First ensure the simple web app is published. 
 # Run either of the following two comands
 # Debug
-dotnet publish ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
-dotnet publish ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
+dotnet publish ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+dotnet publish ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
 
 #  -c Release
-dotnet publish -c Release ./../../dotnet-apps/simple-webapp/simple-webapp.csproj
-dotnet publish -c Release ..\..\dotnet-apps\simple-webapp\simple-webapp.csproj
+dotnet publish -c Release ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
 
 # Once published, just verify and see.
-dotnet ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
+dotnet ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
 
 # Now brwose to localhost:5000
 
-
 # Now for the console app.
 
-dotnet run --project ./../../dotnet-apps/simple-console-app/simple-console-app.csproj
+dotnet run --project ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
 # Debug
-dotnet publish ./../../dotnet-apps/simple-console-app/simple-console-app.csproj
-dotnet publish ..\..\dotnet-apps\simple-console-app\simple-console-app.csproj
+dotnet publish ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
+dotnet publish ..\..\dotnet-apps\0010-simple-console-app\simple-console-app.csproj
 
 #  -c Release
-dotnet publish -c Release ./../../dotnet-apps/simple-console-app/simple-console-app.csproj
-dotnet publish -c Release ..\..\dotnet-apps\simple-console-app\simple-console-app.csproj
+dotnet publish -c Release ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0010-simple-console-app\simple-console-app.csproj
 
 # Once published, just verify and see.
-dotnet ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish/simple-console-app.dll
+dotnet ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish/simple-console-app.dll
 
 cd ssh-keys
 
@@ -92,7 +91,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@137.117.41.214
+ssh -i ssh-keys/terraform-azure.pem azureuser@40.117.36.111
 
 sudo -i
 
@@ -106,6 +105,12 @@ sudo find / -iname 'dotnet-install.sh'
 
 ps -ef | grep dotnet
 
+sudo dotnet --list-runtimes
+
+dotnet --list-sdks
+
+dotnet --version
+
 exit
 
 # proxy:error pid Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:5000 (127.0.0.1) failed
@@ -118,9 +123,8 @@ exit
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-webapp/bin/Release/net6.0/publish azureuser@137.117.41.214:/home/azureuser/simple-web-app
-
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-console-app/bin/Release/net6.0/publish azureuser@137.117.41.214:/home/azureuser/simple-console-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@40.117.36.111:/home/azureuser/simple-web-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@40.117.36.111:/home/azureuser/simple-console-app
 
 sudo find / -iname 'simple-webapp.dll'
 
@@ -128,15 +132,17 @@ sudo find / -iname 'simple-console-app.dll'
 
 /usr/dotnet/dotnet /home/azureuser/simple-console-app/simple-console-app.dll
 
+dotnet /home/azureuser/simple-console-app/simple-console-app.dll
+
 # Finally to start the app
-/usr/dotnet/dotnet /home/azureuser/simple-web-app/simple-webapp.dll
+dotnet /home/azureuser/simple-web-app/simple-webapp.dll
 
 # For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@137.117.41.214:/etc/httpd/conf/
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@40.117.36.111:/etc/httpd/conf/
 
 sudo systemctl restart httpd
 
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@137.117.41.214:/usr/tmp/
+scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@40.117.36.111:/usr/tmp/
 
 sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
 
@@ -182,7 +188,6 @@ netstat -lntp
 
 curl localhost:5000
 
-## Thats it.
 cd /var/www/html
 
 cd ./app1
