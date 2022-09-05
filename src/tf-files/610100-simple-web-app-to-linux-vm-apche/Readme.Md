@@ -1,6 +1,8 @@
 # Create a VM with a network security group
 
 - The objective is to deploy a dotnet app on linux vm and make it accessible on the web.
+  
+- The apache(httpd) is installed and configured on the VM
 
 - This builds [on this](https://github.com/AvtsVivek/AzureWithTerraformAdvanced/tree/main/iac/2101100-vnet-vm-nsg)
 
