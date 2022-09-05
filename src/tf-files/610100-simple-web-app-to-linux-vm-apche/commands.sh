@@ -6,7 +6,6 @@ cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 cd ../../..
 
 dotnet run --project ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
-
 dotnet build ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
 
 # First ensure the simple web app is published. 

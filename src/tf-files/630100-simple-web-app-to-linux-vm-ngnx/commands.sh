@@ -5,6 +5,7 @@ cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 cd ../../..
 
 dotnet run --project ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+dotnet build ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
