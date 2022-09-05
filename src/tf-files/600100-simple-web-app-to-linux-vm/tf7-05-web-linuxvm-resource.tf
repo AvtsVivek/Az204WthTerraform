@@ -10,15 +10,21 @@
 # sudo chmod 777 /etc/nginx/default.d
 # sudo chmod 777 /etc/nginx/conf.d
 
+# sudo curl -L "https://dot.net/v1/dotnet-install.sh" -o /tmp/dotnet-install.sh
+
+# sudo chmod 777 /tmp/dotnet-install.sh
+
+# sudo /tmp/dotnet-install.sh -c 6.0
+
 locals {
   webvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
 
-sudo curl -L "https://dot.net/v1/dotnet-install.sh" -o /tmp/dotnet-install.sh
+echo "Installing dotnet by executing the command - sudo dnf install aspnetcore-runtime-6.0"
 
-sudo chmod 777 /tmp/dotnet-install.sh
+sudo dnf install aspnetcore-runtime-6.0 -y
 
-sudo /tmp/dotnet-install.sh -c 6.0
+echo "Installation complete. Execution of the command 'sudo dnf install aspnetcore-runtime-6.0' is done"
 
 CUSTOM_DATA
 }

@@ -3,26 +3,30 @@
 cd ./src/tf-files/600100-simple-web-app-to-linux-vm/
 
 
-cd ../..
+cd ../../..
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
 
-dotnet publish ./../../dotnet-apps/simple-web-app/simple-web-app/simple-web-app.csproj
-dotnet publish ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.csproj
+dotnet publish ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+dotnet publish ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
 
 #  -c Release
-dotnet publish -c Release ./../../dotnet-apps/simple-web-app/simple-web-app/simple-web-app.csproj
-dotnet publish -c Release ..\..\dotnet-apps\simple-web-app\simple-web-app\simple-web-app.csproj
+dotnet publish -c Release ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
 
 # Once published, just verify and see.
-dotnet ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish/simple-web-app.dll
+dotnet ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
 
 # Now brwose to localhost:5000
 
+# Run the following in bash prompt. In pwershell it will not work.
+mkdir ssh-keys
 cd ssh-keys
 
 # Run the following in bash prompt. In pwershell it will not work.
+# When asked for passphrase, just enter for empty password, dont give any password.
+
 ssh-keygen \
     -m PEM \
     -t rsa \
@@ -49,7 +53,7 @@ terraform validate
 
 terraform plan -out main.tfplan
 
-terraform show main.tfplan
+# terraform show main.tfplan
 
 terraform apply main.tfplan 
 
@@ -60,39 +64,57 @@ terraform apply main.tfplan
 # Connect to the VM. Ensure the vm is running.
 # Note the IP address.
 # Run the following with the ip address.
-# Run the following in bash prompt.
+# Run the following in bash prompt, NOT PowerShell
 # If you get the following permission denined, 
 # azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
 # then you are not in the correct directory.
 
 cd ..
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.197.158
+ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.143.154
+
+cd /var/log 
+
+cat cloud-init-output.log
 
 sudo -i
 
+# Wait for at least 5 minutes. Then run the following commands.
+
 sudo find / -type d -iname '.dotnet'
+
+sudo find / -type d -iname 'dotnet'
 
 sudo find / -iname 'dotnet-install.sh'
 
 ps -ef | grep dotnet
 
+sudo dotnet --list-runtimes
+
+dotnet --list-sdks
+
+dotnet --version
+
 exit
 
 # For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@52.168.183.244:/home/azureuser
+# The following demonistrates file transfer, single or entire folder. 
+scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@20.121.15.79:/home/azureuser
 
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/home/azureuser/
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/default.d/
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.232.122.156:/etc/nginx/conf.d/
+scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.121.15.79:/home/azureuser/
+scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.121.15.79:/etc/nginx/default.d/
+scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.121.15.79:/etc/nginx/conf.d/
 
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/simple-web-app/simple-web-app/bin/Release/net6.0/publish azureuser@20.232.197.158:/home/azureuser
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@13.68.143.154:/home/azureuser
 
+ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.143.154
 # Finally to start the app
-sudo /root/.dotnet/dotnet publish/simple-web-app.dll
+sudo /root/.dotnet/dotnet ./publish/simple-webapp.dll
+
+sudo dotnet ./publish/simple-webapp.dll
 
 # Now that you are in the VM, you can run the following commands.
 hostname
@@ -183,6 +205,6 @@ terraform show terraform.tfstate
 
 terraform plan -destroy -out main.destroy.tfplan
 
-terraform show main.destroy.tfplan
+# terraform show main.destroy.tfplan
 
 terraform apply main.destroy.tfplan

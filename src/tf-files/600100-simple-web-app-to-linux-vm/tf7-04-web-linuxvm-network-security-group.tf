@@ -15,7 +15,7 @@ locals {
     "110" : "443",
     "120" : "22",
     "130" : "5000", # This is for the web app.
-    "140" : "5001" # This is for the web app.
+    "140" : "5001"  # This is for the web app.
   }
 }
 ## NSG Inbound Rule for WebTier Subnets
