@@ -279,6 +279,7 @@ curl localhost:5000
 
 curl localhost
 
+# Now browse the ip.
 # Currently only / is working. /api is not working. 
 # proxy_pass can be anything. http://localhost:5000 or http://localhost:5100
 # If you use http://localhost:5100, then open the browse and check with http://20.119.71.75/weatherforecast(20.119.71.75 is the public ip of the linux vm)
