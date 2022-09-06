@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/tf-files/810010-linux-docker-nginx/
+cd ./src/tf-files/601010-linux-docker-nginx/
 
 cd ../../..
 
