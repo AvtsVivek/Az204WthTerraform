@@ -4,64 +4,6 @@ cd ./src/tf-files/810010-linux-docker-nginx/
 
 cd ../../..
 
-dotnet run --project ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
-dotnet build ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
-
-# First ensure the simple web app is published. 
-# Run either of the following two comands
-# Debug
-dotnet publish ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
-dotnet publish ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
-
-#  -c Release
-dotnet publish -c Release ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
-dotnet publish -c Release ..\..\dotnet-apps\0020-simple-webapp\simple-webapp.csproj
-
-# Once published, just verify and see.
-dotnet ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish/simple-webapp.dll
-
-# Now brwose to localhost:5000
-
-# Now for the console app.
-
-dotnet run --project ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
-
-# First ensure the simple web app is published. 
-# Run either of the following two comands
-# Debug
-dotnet publish ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
-dotnet publish ..\..\dotnet-apps\0010-simple-console-app\simple-console-app.csproj
-
-#  -c Release
-dotnet publish -c Release ./../../dotnet-apps/0010-simple-console-app/simple-console-app.csproj
-dotnet publish -c Release ..\..\dotnet-apps\0010-simple-console-app\simple-console-app.csproj
-
-# Once published, just verify and see.
-dotnet ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish/simple-console-app.dll
-
-# Now for Web api project.
-
-dotnet run --project ./../../dotnet-apps/0030-simple-web-api/simple-web-api.csproj --urls "http://localhost:5100;https://localhost:5101"
-
-# Now browse to 
-http://localhost:5100/WeatherForecast
-
-# First ensure the simple web api is published.
-# Run either of the following two comands
-# Debug
-dotnet publish ./../../dotnet-apps/0030-simple-web-api/simple-web-api.csproj
-dotnet publish .\..\..\dotnet-apps\0030-simple-web-api\simple-web-api.csproj
-
-#  -c Release
-dotnet publish -c Release ./../../dotnet-apps/0030-simple-web-api/simple-web-api.csproj
-dotnet publish -c Release .\..\..\dotnet-apps\0030-simple-web-api\simple-web-api.csproj
-
-# Once published, just verify and see.
-dotnet ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100;https://localhost:5101"
-# dotnet ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish/simple-web-api.dll --urls "http://localhost:5100"
-
-# Now brwose to localhost:6000/weatherforcaste
-
 cd ssh-keys
 
 # Run the following in bash prompt. In pwershell it will not work.
@@ -122,120 +64,10 @@ sudo -i
 
 # Wait for at least 5 minutes. Then run the following commands.
 
-sudo find / -type d -iname 'dotnet'
-
-sudo find / -type d -iname '.dotnet'
-
-sudo find / -iname 'dotnet-install.sh'
-
-ps -ef | grep dotnet
-
-sudo dotnet --list-runtimes
-
-dotnet --list-sdks
-
-dotnet --version
-
-ps -ef | grep dotnet
-
 exit
 
-# proxy:error pid Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:5000 (127.0.0.1) failed
-# http://sysadminsjourney.com/content/2010/02/01/apache-modproxy-error-13permission-denied-error-rhel/
-
-# The following two are not necessary as of now.
-# scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39:/etc/httpd/conf.d/ ./confbackup.d
-# scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39:/etc/httpd/conf/ ./confbackup
-
-# For an entire directory
-# scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
-# copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@52.179.10.133:/home/azureuser/simple-web-app
-
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@52.179.10.133:/home/azureuser/simple-console-app
-
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish azureuser@52.179.10.133:/home/azureuser/simple-web-api
-
-sudo find / -iname 'simple-webapp.dll'
-
-sudo find / -iname 'simple-console-app.dll'
-
-sudo find / -iname 'simple-web-api.dll'
-
-dotnet /home/azureuser/simple-console-app/simple-console-app.dll
-
-# Start the app and check
-dotnet /home/azureuser/simple-web-app/simple-webapp.dll
-
-# Api
-dotnet /home/azureuser/simple-web-api/simple-web-api.dll --urls "http://localhost:5100"
-
-# First take a backup of the conf file.
-# cd /etc/nginx/nginx.conf
-
-mkdir nginxconfbackup
-
-scp -i ssh-keys/terraform-azure.pem azureuser@52.179.10.133:/etc/nginx/nginx.conf nginxconfbackup/
-
-# Now copy the nginx.conf file.
-
-scp -i ssh-keys/terraform-azure.pem ./nginxconf/nginx-default.conf azureuser@52.179.10.133:/etc/nginx/nginx.conf 
-
-scp -i ssh-keys/terraform-azure.pem ./nginxconf/dotnetapp.conf azureuser@52.179.10.133:/etc/nginx/sites-enabled/
-
-sudo systemctl stop nginx
-
-sudo systemctl start nginx
-
-sudo systemctl status nginx
-
-sudo systemctl status nginx.service
-
-sudo journalctl -xe
-
-sudo systemctl restart nginx
-
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@52.179.10.133:/usr/tmp/
-
-sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
-
-sudo systemctl daemon-reload
-
-# First the console app
-sudo systemctl enable console-app.service
-
-sudo systemctl restart console-app.service
-
-sudo systemctl status console-app.service
-
-# Now the dotnet app.
-sudo systemctl enable kestrel-dotNetapp.service
-
-sudo systemctl restart kestrel-dotNetapp.service
-
-sudo systemctl status kestrel-dotNetapp.service
-
-# Now the dotnet web api.
-sudo systemctl enable kestrel-api.service
-
-sudo systemctl restart kestrel-api.service
-
-sudo systemctl status kestrel-api.service
-
-ps -ef | grep dotnet
-
-# look for port 5000 and 5100
-netstat -lntp
-
-curl localhost:5000
-
-curl localhost:5100/weatherforecast
-
-sudo systemctl restart nginx
-
-sudo systemctl status nginx
-
 # Now that you are in the VM, you can run the following commands.
+
 hostname
 
 # Switch to the root user.
@@ -296,8 +128,9 @@ cd ./app1
 
 ls -lrta
 
-Now browse the vm. 
-
+# Now browse the vm. 
+# You should see the nginx welcome page.
+# Welcome to nginx!
 
 terraform state list
 
@@ -308,6 +141,7 @@ code . -r
 
 # For the following command to work, you need to pass on the resource, or data source.
 # This resource or data source is got from terraform state list command
+
 terraform state show 
 
 terraform show terraform.tfstate
