@@ -1,10 +1,10 @@
 # Create a VM with a network security group
 
-- Nginx Reverse proxy is done for /(root). But its not working for /api. Not sure whats the issue.
-
-- ToDo: Need to check why /api configuration for nginx is not working.
-
 - This builds [on this](https://github.com/AvtsVivek/AzureWithTerraformAdvanced/tree/main/iac/2101100-vnet-vm-nsg)
+
+- Deploys a linux VM, then provisions a docker, then starts a docker nginx container. 
+  
+- Then you can access that page from internet, public IP.
 
 - Bastion subnet, app subnet and db subnet are removed.
 
