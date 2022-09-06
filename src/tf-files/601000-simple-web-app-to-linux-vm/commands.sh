@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/tf-files/600100-simple-web-app-to-linux-vm/
+cd ./src/tf-files/601000-simple-web-app-to-linux-vm/
 
 
 cd ../../..
