@@ -2,6 +2,10 @@
 
 - This builds [on this](https://github.com/AvtsVivek/AzureWithTerraformAdvanced/tree/main/iac/2101100-vnet-vm-nsg)
 
+- This deploys a VM, then provisions dotnet, and the deploys a simple web app, and you can run that application.
+
+- After running that app, then you can curl that app. But you will not be able to access that app from outside.
+
 - Bastion subnet, app subnet and db subnet are removed.
 
 - Web Network Security Group can be considered as the first level.
