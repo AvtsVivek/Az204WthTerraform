@@ -16,9 +16,6 @@
 
 - Then place that /src/in dotnet-apps folder
 
-
-
-
 ![The layout](./Images/Layout.jpg)
 
 - The following is the diagram downloaded from the Azure Portal.
