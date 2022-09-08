@@ -54,7 +54,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.25.73.78
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.228.157.183
 
 cd /var/log
 
@@ -81,26 +81,6 @@ cd /var/log
 tail -100f cloud-init-output.log
 # Review what all happened as the vm was booting.
 
-ls -lrta
-
-# Press Ctrl+C to comeout.
-
-# check if the web server is running.
-ps -ef | grep dotnet
-
-ps -ef | grep nginx
-
-yum list installed nginx
-
-cd /etc/nginx
-
-ls -lrta
-
-# look for port 5000
-netstat -lntp
-
-curl localhost:5000
-
 ## Thats it.
 
 # Press Ctrl+C to comeout.
@@ -108,27 +88,8 @@ curl localhost:5000
 # check if the web server is running.
 
 # look for port 5000
-netstat -lntp
 
-curl localhost:5000
-
-curl localhost
-
-# Now browse the ip.
-# Currently only / is working. /api is not working. 
-# proxy_pass can be anything. http://localhost:5000 or http://localhost:5100
-# If you use http://localhost:5100, then open the browse and check with http://20.119.71.75/weatherforecast(20.119.71.75 is the public ip of the linux vm)
-#
-
-## Thats it.
-
-cd /var/www/html
-
-cd ./app1
-
-ls -lrta
-
-# Now browse the vm. 
+# Now browse the vm. Get the ip and then browse it in a browser.
 # You should see the nginx welcome page.
 # Welcome to nginx!
 
