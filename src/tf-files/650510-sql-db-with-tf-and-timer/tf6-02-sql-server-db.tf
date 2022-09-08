@@ -19,7 +19,7 @@ resource "azurerm_mssql_server" "mssql_server" {
 
 resource "time_sleep" "wait_for_some_time" {
   depends_on      = [azurerm_mssql_server.mssql_server]
-  create_duration = "30s"
+  create_duration = "60s"
 }
 
 # This resource will create (at least) 30 seconds after azurerm_mssql_server
