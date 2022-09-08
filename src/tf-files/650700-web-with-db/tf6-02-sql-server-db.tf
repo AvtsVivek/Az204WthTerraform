@@ -16,6 +16,13 @@ resource "azurerm_mssql_server" "mssql_server" {
   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 }
 
+resource "time_sleep" "wait_for_some_time" {
+  depends_on      = [azurerm_mssql_server.mssql_server]
+  create_duration = "60s"
+}
+
+# This resource will create (at least) 30 seconds after azurerm_mssql_server
+
 resource "azurerm_mssql_database" "mssql_database" {
   name           = "${local.resource_name_prefix}-${var.mssql_database_name}"
   server_id      = azurerm_mssql_server.mssql_server.id
@@ -25,8 +32,8 @@ resource "azurerm_mssql_database" "mssql_database" {
   read_scale     = false
   sku_name       = "S0"
   zone_redundant = false
-
-  tags = local.common_tags
+  depends_on     = [time_sleep.wait_for_some_time]
+  tags           = local.common_tags
 }
 
 
