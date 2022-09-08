@@ -28,7 +28,7 @@ azurerm_virtual_machine_extension.iis-windows-vm-extension: Creating...
 ╵
 ```
 
-- OK, so increasing the duration to 360 sec worked.
+- OK, so increasing the duration to 360 sec worked. Raised [the issue here](https://github.com/hashicorp/terraform/issues/31755#issuecomment-1240670598).
 
 - Add Azure Account To Vs 2022 
 ![Web Deploy On Win Server](./images/AddedAzureAccountToVs2022.jpg)
