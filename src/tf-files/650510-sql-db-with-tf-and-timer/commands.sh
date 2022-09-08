@@ -29,6 +29,8 @@ terraform state list
 
 dotnet run --project ./../../dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlapp/ConnectToSqlapp.csproj
 
+dotnet run --project ./../../dotnet-apps/0050-ConnectToSqlAppWithConString/ConnectToSqlAppWithConString/ConnectToSqlAppWithConString.csproj
+
 terraform state show 
 
 terraform show terraform.tfstate
