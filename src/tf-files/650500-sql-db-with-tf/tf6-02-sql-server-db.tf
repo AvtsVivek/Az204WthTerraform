@@ -26,6 +26,6 @@ resource "azurerm_mssql_database" "mssql_database" {
   read_scale     = false
   sku_name       = "S0"
   zone_redundant = false
-
-  tags = local.common_tags
+  depends_on     = [azurerm_mssql_server.mssql_server]
+  tags           = local.common_tags
 }
