@@ -1,0 +1,1 @@
+- This creates a windows vm and nothing else(Not sure, dont remmeber)
