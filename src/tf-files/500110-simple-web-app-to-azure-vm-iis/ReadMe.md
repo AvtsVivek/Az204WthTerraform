@@ -4,6 +4,32 @@
 
 - Everything is working except that the app is not running on IIS. There is some configuration issue with IIS. See the last screen shots. Leaving at this for now.
 
+- First ensure that the deployment is done. Run the terraform workflow and check on the portal. 
+
+I am getting the following error. Not sure why. I added this time sleep resource as well.
+
+```
+resource "time_sleep" "wait_for_some_time" {
+  depends_on      = [azurerm_windows_virtual_machine.web_windowsvm]
+  create_duration = "60s"
+}
+```
+But still I am getting the error.
+
+```
+azurerm_virtual_machine_extension.iis-windows-vm-extension: Creating...
+╷
+│ Error: compute.VirtualMachineExtensionsClient#CreateOrUpdate: Failure sending request: StatusCode=404 -- Original Error: Code="ParentResourceNotFound" Message="Can not perform requested operation on nested resource. Parent resource 'hr-dev-winvm' not found."
+│
+│   with azurerm_virtual_machine_extension.iis-windows-vm-extension,
+│   on tf7-05-web-windows-vm-resource.tf line 30, in resource "azurerm_virtual_machine_extension" "iis-windows-vm-extension":
+│   30: resource "azurerm_virtual_machine_extension" "iis-windows-vm-extension" {
+│
+╵
+```
+
+- OK, so increasing the duration to 360 sec worked.
+
 - Add Azure Account To Vs 2022 
 ![Web Deploy On Win Server](./images/AddedAzureAccountToVs2022.jpg)
 
