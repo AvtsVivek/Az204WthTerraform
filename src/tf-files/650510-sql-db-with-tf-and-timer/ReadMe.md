@@ -19,6 +19,8 @@ resource "time_sleep" "wait_for_some_time" {
 }
 ```
 
+- time_sleep resource is also not working. Raised [this issue here](https://github.com/hashicorp/terraform-provider-azurerm/issues/18311). 
+
 - Run the followng after the terraform files are deployed.
 
 https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlApp/Services/ProductService.cs
