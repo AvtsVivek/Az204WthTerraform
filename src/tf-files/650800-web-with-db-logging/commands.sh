@@ -11,7 +11,7 @@ terraform validate
 
 terraform plan -out main.tfplan
 
-terraform show main.tfplan
+# terraform show main.tfplan
 
 terraform apply main.tfplan 
 
@@ -34,13 +34,21 @@ dotnet run --project ./../../dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlapp/Co
 
 dotnet run --project ./../../dotnet-apps/0050-ConnectToSqlAppWithConString/ConnectToSqlAppWithConString/ConnectToSqlAppWithConString.csproj
 
+# you can deploy the folloing also, just to check the logs.
+
+dotnet run --project ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
+
+# To produce logs, you have to browse the app, like privacy, home etc. 
+# But note that the browser can do caching and so an actual request may not go the server, 
+# and so you may not see the logs actually. So ensure you use a new browser, or remove the cacheing.
+
 terraform state show 
 
 terraform show terraform.tfstate
 
 terraform plan -destroy -out main.destroy.tfplan
 
-terraform show main.destroy.tfplan
+# terraform show main.destroy.tfplan
 
 terraform apply main.destroy.tfplan
 
