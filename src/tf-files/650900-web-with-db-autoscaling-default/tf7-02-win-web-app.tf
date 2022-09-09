@@ -19,7 +19,7 @@ resource "azurerm_windows_web_app" "windows_web_app" {
   connection_string {
     name  = "SQLConnection"
     type  = "SQLAzure"
-    value = "Server=tcp:hr-dev-ms-sql-server.database.windows.net,1433;Initial Catalog=hr-dev-ms-sql-db;Persist Security Info=False;User ID=adm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+    value = "Server=tcp:hr-dev-vive-ms-sql-server.database.windows.net,1433;Initial Catalog=hr-dev-vive-ms-sql-db;Persist Security Info=False;User ID=adm1n157r470r;Password=4-v3ry-53cr37-p455w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
   }
   site_config {}
 
