@@ -16,7 +16,7 @@ variable "windows_sku_name" {
   description = "windows web app SKU name "
   type        = string
   # default     = "P1v2"
-  default     = "S1"
+  default = "S1"
 }
 
 variable "windows_os_type" {
