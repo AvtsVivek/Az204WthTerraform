@@ -6,11 +6,14 @@ Sql Server and Sql Database
 
 - Builds on from the provious exericse and adds logging to the previouos exercise. 
 
+- Note the manual scaling. We will be doing auto scaling in the subsequent exercise.
+![Manual Scaling](./images/ManualScaling.jpg)
+
 - First add the required extensiions
-![Vs code Extension](./Images/VsCodeExtensions.jpg)
+![Vs code Extension](./images/VsCodeExtensions.jpg)
 
 - Now deploy
-![Vs code Extension](./Images/DeployWithVsCodeExtensions.jpg)
+![Vs code Extension](./images/DeployWithVsCodeExtensions.jpg)
 
 - With tf config files configured for logs(tf7-02-win-web-app, see blow), ensure the logs are configured in the final config.
   - See images AppServiceLogs.jpg, LogStream1, 2, and 3.jpg files
