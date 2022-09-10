@@ -19,4 +19,5 @@
 - If you want to swap do the following.
 ![Custom Domain](./images/DeploymentSlots5.jpg)
 
-- 
+- Both web site versions side by side.
+![Custom Domain](./images/DeploymentSlots6.jpg)

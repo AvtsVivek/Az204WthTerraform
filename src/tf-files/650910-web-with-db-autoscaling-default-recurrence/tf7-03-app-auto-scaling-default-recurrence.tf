@@ -141,7 +141,7 @@ resource "azurerm_monitor_autoscale_setting" "service_plan_auto_scale" {
     }
     ###########  END: Percentage CPU Metric Rules   ###########    
 
-# The follwoing is not a supported metric.
+    # The follwoing is not a supported metric.
     # ###########  START: Available Memory Bytes Metric Rules  ###########    
     # ## Scale-Out 
     # rule {

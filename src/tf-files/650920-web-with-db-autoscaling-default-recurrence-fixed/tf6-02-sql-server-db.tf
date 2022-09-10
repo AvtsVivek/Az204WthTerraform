@@ -16,6 +16,15 @@ resource "azurerm_mssql_server" "mssql_server" {
   administrator_login_password = "4-v3ry-53cr37-p455w0rd"
 }
 
+
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_firewall_rule#argument-reference
+resource "azurerm_mssql_firewall_rule" "sql_server_firewall_rules_for_azure_access" {
+  name             = "AzureAccessFirewallRule"
+  server_id        = azurerm_mssql_server.mssql_server.id
+  start_ip_address = "0.0.0.0"
+  end_ip_address   = "0.0.0.0"
+}
+
 resource "azurerm_mssql_database" "mssql_database" {
   name           = "${local.resource_name_prefix}-${var.mssql_database_name}"
   server_id      = azurerm_mssql_server.mssql_server.id
@@ -25,15 +34,6 @@ resource "azurerm_mssql_database" "mssql_database" {
   read_scale     = false
   sku_name       = "S0"
   zone_redundant = false
-
-  tags = local.common_tags
-}
-
-
-# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_firewall_rule#argument-reference
-resource "azurerm_mssql_firewall_rule" "sql_server_firewall_rules_for_azure_access" {
-  name             = "AzureAccessFirewallRule"
-  server_id        = azurerm_mssql_server.mssql_server.id
-  start_ip_address = "0.0.0.0"
-  end_ip_address   = "0.0.0.0"
+  depends_on     = [azurerm_mssql_firewall_rule.sql_server_firewall_rules_for_azure_access]
+  tags           = local.common_tags
 }
