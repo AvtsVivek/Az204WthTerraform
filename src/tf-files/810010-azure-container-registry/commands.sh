@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/810150-azure-container-registry/
+cd ./src/tf-files/810010-azure-container-registry/
 
 terraform fmt
 
@@ -184,7 +184,7 @@ docker container ls -a
 
 #######################################################################################
 
-cd ./../../tf-files/810150-azure-container-registry
+cd ./../../tf-files/810010-azure-container-registry
 
 terraform state show 
 
