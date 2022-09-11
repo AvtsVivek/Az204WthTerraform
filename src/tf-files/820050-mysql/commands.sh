@@ -16,10 +16,6 @@ terraform plan -var-file="secrets.tfvars" -out main.tfplan
 
 terraform apply main.tfplan 
 
-
-docker-compose up -d
-
-
 terraform state show 
 
 terraform show terraform.tfstate

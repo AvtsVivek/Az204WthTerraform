@@ -1,24 +1,24 @@
-# Create a VM with a network security group
+## MySql database
 
-- This builds [on this](https://github.com/AvtsVivek/AzureWithTerraformAdvanced/tree/main/iac/2101100-vnet-vm-nsg)
+- This deploys a mysql server and a database on it.
 
-- Deploys a linux VM, then provisions a docker, then starts a docker nginx container. 
-  
-- Then you can access that page from internet, public IP.
+- Then you can load some data on to it. Take a look at the images.
 
-- Bastion subnet, app subnet and db subnet are removed.
+- MySql 1
+![My Sql 1](./images/MySql1.jpg)
 
-- Web Network Security Group can be considered as the first level.
+- MySql 2
+![My Sql 2](./images/MySql2.jpg)
 
-- VM Network Security Group(Optional) can be considered as the second level.
+- MySql 2
+![My Sql 2](./images/MySql3.jpg)
 
-- Get the dotnet-install.sh script from here. https://docs.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#scripted-install
+- MySql 2
+![My Sql 2](./images/MySql4.jpg)
 
-- Then place that /src/in dotnet-apps folder
+- MySql 2
+![My Sql 2](./images/MySql5.jpg)
 
-![The layout](./Images/Layout.jpg)
-
-- The following is the diagram downloaded from the Azure Portal.
-
-![The Diagram](./Images/topology.svg)
+- MySql 2
+![My Sql 2](./images/MySql6.jpg)
 
