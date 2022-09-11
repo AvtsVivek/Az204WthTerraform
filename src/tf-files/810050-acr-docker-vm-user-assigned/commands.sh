@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/tf-files/810050-acr-docker-vm/
+cd ./src/tf-files/810050-acr-docker-vm-user-assigned/
 
 cd ../../..
 
@@ -76,31 +76,31 @@ docker container ls -a
 
 docker container rm viveksimplewebapp
 
-docker tag simplewebapp:v1 acrxgcmwt.azurecr.io/simplewebapp:v1
+docker tag simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
 
-az acr login --name acrxgcmwt
+az acr login --name acruukazh
 
 # docker push <login-server>/hello-world:v1
 
-docker push acrxgcmwt.azurecr.io/simplewebapp:v1
+docker push acruukazh.azurecr.io/simplewebapp:v1
 
 # Now remove the local image
 
-docker rmi simplewebapp:v1 acrxgcmwt.azurecr.io/simplewebapp:v1
+docker rmi simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
 
 # OR
 
-docker image rm simplewebapp:v1 acrxgcmwt.azurecr.io/simplewebapp:v1
+docker image rm simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
 
 docker image ls
 
-docker pull acrxgcmwt.azurecr.io/simplewebapp:v1
+docker pull acruukazh.azurecr.io/simplewebapp:v1
 
 docker image ls
 
-docker run --name viveksimpledotnetapp -p 81:80 -d acrxgcmwt.azurecr.io/simplewebapp:v1
+docker run --name viveksimpledotnetapp -p 81:80 -d acruukazh.azurecr.io/simplewebapp:v1
 
-docker run --name viveksimpledotnetapp -p 80:80 -d acrxgcmwt.azurecr.io/simplewebapp:v1
+docker run --name viveksimpledotnetapp -p 80:80 -d acruukazh.azurecr.io/simplewebapp:v1
 
 # Now browse to localhost:81
 
@@ -119,19 +119,19 @@ docker container ls -a
 
 ########################################################################
 
-cd ./../../tf-files/810050-acr-docker-vm/
+cd ./../../tf-files/810050-acr-docker-vm-user-assigned/
 
 # or the following as needed
 
-cd ./src/tf-files/810050-acr-docker-vm/
+cd ./src/tf-files/810050-acr-docker-vm-user-assigned/
 
 cd ..
 
 # cd into the directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.150.36
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.45.219
 
-sudo docker pull acrxgcmwt.azurecr.io/simplewebapp:v1
+sudo docker pull acruukazh.azurecr.io/simplewebapp:v1
 
 cd /var/log
 
@@ -158,23 +158,27 @@ cd /var/log
 tail -100f cloud-init-output.log
 # Review what all happened as the vm was booting.
 
-## Thats it.
+sudo docker pull acruukazh.azurecr.io/simplewebapp:v1
 
-# Press Ctrl+C to comeout.
+sudo az login --identity --username /subscriptions/10868091-0196-44e3-a0b8-8dee05259147/resourcegroups/hr-dev-rg-vivrag-uukazh/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hr-dev-appgw-umid
 
-# check if the web server is running.
+az acr login --name acruukazh # Will give errro
 
-# look for port 5000
+sudo docker container ls -a
 
-# Now browse the vm. Get the ip and then browse it in a browser.
-# You should see the nginx welcome page.
-# Welcome to nginx!
+sudo docker container rm appnginx1 
 
-sudo docker pull acrxgcmwt.azurecr.io/simplewebapp:v1
+sudo docker run --name viveksimpledotnetapp -p 82:80 -d acruukazh.azurecr.io/simplewebapp:v1
 
-sudo docker container ls
+# Now note the ip address of the VM created and then browse to the following 
 
-sudo docker run --name viveksimpledotnetapp -p 82:80 -d acrxgcmwt.azurecr.io/simplewebapp:v1
+# http://20.232.45.219:82/
+
+# http://20.232.45.219:80/
+
+# Thats it.
+
+exit
 
 terraform state list
 
