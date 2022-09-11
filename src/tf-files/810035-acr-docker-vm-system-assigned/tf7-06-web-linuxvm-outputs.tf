@@ -41,6 +41,22 @@ output "web_linuxvm_virtual_machine_id" {
   value       = azurerm_linux_virtual_machine.web_linuxvm.id
 }
 
+output "web_linuxvm_virtual_machine_identity" {
+  description = "Web Linux Virtual Machine System Assigned Identity"
+  # value       = azurerm_linux_virtual_machine.web_linuxvm.identity.principal_id
+  value = azurerm_linux_virtual_machine.web_linuxvm.identity[0]
+}
+
+output "web_linuxvm_virtual_machine_identity_principal_id" {
+  description = "Web Linux Virtual Machine System Assigned Identity Principal id"
+  # value       = azurerm_linux_virtual_machine.web_linuxvm.identity.principal_id
+  value = azurerm_linux_virtual_machine.web_linuxvm.identity[0].principal_id
+}
+
+output "web_linuxvm_virtual_machine_identity_tenant_id" {
+  description = "Web Linux Virtual Machine System Assigned Identity tenant id"
+  value       = azurerm_linux_virtual_machine.web_linuxvm.identity[0].tenant_id
+}
 
 
 

@@ -105,7 +105,10 @@ resource "azurerm_linux_virtual_machine" "web_linuxvm" {
   custom_data = base64encode(local.webvm_custom_data)
 
   identity {
-    type         = "UserAssigned" #"SystemAssigned"
-    identity_ids = [azurerm_user_assigned_identity.appag_umid.id]
+    # type         = "UserAssigned"
+    # If you use UserAssigned, then identity_ids should not be null
+    # identity_ids = [azurerm_user_assigned_identity.appag_umid.id]
+
+    type = "SystemAssigned"
   }
 }

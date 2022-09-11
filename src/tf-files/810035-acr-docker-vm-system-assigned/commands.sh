@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/tf-files/810050-acr-docker-vm-user-assigned/
+cd ./src/tf-files/810035-acr-docker-vm-system-assigned/
 
 cd ../../..
 
@@ -76,31 +76,31 @@ docker container ls -a
 
 docker container rm viveksimplewebapp
 
-docker tag simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
+docker tag simplewebapp:v1 acrzkhhyx.azurecr.io/simplewebapp:v1
 
-az acr login --name acruukazh
+az acr login --name acrzkhhyx
 
 # docker push <login-server>/hello-world:v1
 
-docker push acruukazh.azurecr.io/simplewebapp:v1
+docker push acrzkhhyx.azurecr.io/simplewebapp:v1
 
 # Now remove the local image
 
-docker rmi simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
+docker rmi simplewebapp:v1 acrzkhhyx.azurecr.io/simplewebapp:v1
 
 # OR
 
-docker image rm simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
+docker image rm simplewebapp:v1 acrzkhhyx.azurecr.io/simplewebapp:v1
 
 docker image ls
 
-docker pull acruukazh.azurecr.io/simplewebapp:v1
+docker pull acrzkhhyx.azurecr.io/simplewebapp:v1
 
 docker image ls
 
-docker run --name viveksimpledotnetapp -p 81:80 -d acruukazh.azurecr.io/simplewebapp:v1
+docker run --name viveksimpledotnetapp -p 81:80 -d acrzkhhyx.azurecr.io/simplewebapp:v1
 
-docker run --name viveksimpledotnetapp -p 80:80 -d acruukazh.azurecr.io/simplewebapp:v1
+docker run --name viveksimpledotnetapp -p 80:80 -d acrzkhhyx.azurecr.io/simplewebapp:v1
 
 # Now browse to localhost:81
 
@@ -119,19 +119,19 @@ docker container ls -a
 
 ########################################################################
 
-cd ./../../tf-files/810050-acr-docker-vm-user-assigned/
+cd ./../../tf-files/810035-acr-docker-vm-system-assigned/
 
 # or the following as needed
 
-cd ./src/tf-files/810050-acr-docker-vm-user-assigned/
+cd ./src/tf-files/810035-acr-docker-vm-system-assigned/
 
 cd ..
 
 # cd into the directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.45.219
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.39.36.143
 
-sudo docker pull acruukazh.azurecr.io/simplewebapp:v1
+sudo docker pull acrzkhhyx.azurecr.io/simplewebapp:v1
 
 cd /var/log
 
@@ -158,17 +158,26 @@ cd /var/log
 tail -100f cloud-init-output.log
 # Review what all happened as the vm was booting.
 
-sudo docker pull acruukazh.azurecr.io/simplewebapp:v1
+sudo docker pull acrzkhhyx.azurecr.io/simplewebapp:v1
 
-sudo az login --identity --username /subscriptions/10868091-0196-44e3-a0b8-8dee05259147/resourcegroups/hr-dev-rg-vivrag-uukazh/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hr-dev-appgw-umid
+# Since we are using system assigned managed identity, in contrast to user assigned MI the following is not what we use.
+# We dont have a user assigned identity id here.
+# sudo az login --identity --username /subscriptions/10868091-0196-44e3-a0b8-8dee05259147/resourcegroups/hr-dev-rg-vivrag-uukazh/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hr-dev-appgw-umid
 
-az acr login --name acruukazh # Will give errro
+# The system assigned identity is intergrated into the vm itself 
+az login --identity # Sudo is necessary here. Without it, acr login will not be successifull. So it should be 
+
+sudo az login --identity
+
+az acr login --name acrzkhhyx # Will give errro. Sudo is necessary here as well.
+# DOCKER_COMMAND_ERROR
+# Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+
+sudo az acr login --name acrzkhhyx
 
 sudo docker container ls -a
 
-sudo docker container rm appnginx1 
-
-sudo docker run --name viveksimpledotnetapp -p 82:80 -d acruukazh.azurecr.io/simplewebapp:v1
+sudo docker run --name viveksimpledotnetapp -p 82:80 -d acrzkhhyx.azurecr.io/simplewebapp:v1
 
 # Now note the ip address of the VM created and then browse to the following 
 
