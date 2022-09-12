@@ -6,21 +6,15 @@ resource "azurerm_container_group" "acg" {
   dns_name_label      = "aci-dns-label-${random_string.myrandom.id}"
   os_type             = "Linux"
 
-  # container {
-  #   name   = "viveknginxv4"
-  #   image  = "avts/nginxvivek:v4"
-  #   cpu    = "0.5"
-  #   memory = "1.5"
-
-  #   ports {
-  #     port     = 443
-  #     protocol = "TCP"
-  #   }
-  # }
+  image_registry_credential {
+    server   = "vivekswkcontainergroupacr.azurecr.io"
+    username = "vivekswkcontainergroupacr"
+    password = "j5GIskr7qYvytUaJuAoVoTCgukL5+/1r"
+  }
 
   container {
-    name   = "viveknginxv1"
-    image  = "avts/nginxvivek:v1"
+    name   = "simplewebappwithmysql"
+    image  = "vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1"
     cpu    = "0.5"
     memory = "1.5"
 
@@ -28,8 +22,33 @@ resource "azurerm_container_group" "acg" {
       port     = 80
       protocol = "TCP"
     }
-
   }
+
+  container {
+    name   = "mysqlwithdata"
+    image  = "vivekswkcontainergroupacr.azurecr.io/mysqlwithdata:v1"
+    cpu    = "0.5"
+    memory = "1.5"
+
+    environment_variables = {"MYSQL_ROOT_PASSWORD"="H@Sh1CoR3!"}
+
+    ports {
+      port     = 3306
+      protocol = "TCP"
+    }
+  }
+
+  # container {
+  #   name   = "viveknginxv1"
+  #   image  = "avts/nginxvivek:v1"
+  #   cpu    = "0.5"
+  #   memory = "1.5"
+
+  #   ports {
+  #     port     = 80
+  #     protocol = "TCP"
+  #   }
+  # }
 
   tags = {
     environment = "testing"

@@ -4,4 +4,5 @@
 
 - The [base example for container groups](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/601050-container-group)
 
+- https://www.youtube.com/watch?v=zg2Oi4AI0mg
 - 

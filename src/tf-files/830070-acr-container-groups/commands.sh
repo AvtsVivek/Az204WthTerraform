@@ -35,16 +35,32 @@ cd ..
 # Its the context location, where .dockerignore file is present.
 cd ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/
 
-docker build -t simplewebappwithmysql:v1 . -f ConnectToMySqlAppWithConString/Dockerfile
+docker build -t vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1 . -f ConnectToMySqlAppWithConString/Dockerfile
 
-# docker tag avts/nginxvivek:v1 acrvglbmi.azurecr.io/nginxvivek:v1
+docker image ls
 
-# docker push <login-server>/hello-world:v1
+cd ./../../../src/tf-files/830070-acr-container-groups/
 
-docker push acrvglbmi.azurecr.io/nginxvivek:v1
+az acr login --name vivekswkcontainergroupacr
+
+docker push vivekswkcontainergroupacr.azurecr.io/mysqlwithdata:v1
+
+docker push vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1
+
+
+terraform fmt
+
+terraform init
+
+terraform validate
+
+terraform plan -out main.tfplan
+
+# terraform show main.tfplan
+
+terraform apply main.tfplan 
 
 cd ..
-
 
 terraform state show 
 
@@ -55,7 +71,6 @@ terraform plan -destroy -out main.destroy.tfplan
 # terraform show main.destroy.tfplan
 
 terraform apply main.destroy.tfplan
-
 
 Remove-Item -Recurse -Force .terraform/modules
 
