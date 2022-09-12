@@ -10,20 +10,20 @@
 
 
 - MySql 1
-![My Sql 1](./imagess/MySql1.jpg)
+![My Sql 1](./images/MySql1.jpg)
 
 - MySql 2
-![My Sql 2](./imagess/MySql2.jpg)
+![My Sql 2](./images/MySql2.jpg)
 
 - MySql 2
-![My Sql 2](./imagess/MySql3.jpg)
+![My Sql 2](./images/MySql3.jpg)
 
 - MySql 2
-![My Sql 2](./imagess/MySql4.jpg)
+![My Sql 2](./images/MySql4.jpg)
 
 - MySql 2
-![My Sql 2](./imagess/MySql5.jpg)
+![My Sql 2](./images/MySql5.jpg)
 
 - MySql 2
-![My Sql 2](./imagess/MySql6.jpg)
+![My Sql 2](./images/MySql6.jpg)
 
