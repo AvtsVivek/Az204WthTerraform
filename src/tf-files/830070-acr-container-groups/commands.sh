@@ -28,10 +28,14 @@ docker image ls
 
 cd ..
 
-# cd into the directory.
-cd ./../../dotnet-apps/0020-simple-webapp
+# Now time to build the web app image. This web app needs a mysql database.
 
-docker build -t simplewebapp:v1 .
+# cd into the directory.
+# Note we are going into that directry which is not where the Dockerfile is present. 
+# Its the context location, where .dockerignore file is present.
+cd ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/
+
+docker build -t simplewebappwithmysql:v1 . -f ConnectToMySqlAppWithConString/Dockerfile
 
 # docker tag avts/nginxvivek:v1 acrvglbmi.azurecr.io/nginxvivek:v1
 
