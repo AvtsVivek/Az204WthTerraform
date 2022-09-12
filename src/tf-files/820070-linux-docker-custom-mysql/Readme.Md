@@ -8,6 +8,8 @@
 
 - Then you can access that page from internet, public IP.
 
+- This is a good example for file provisioner and remote-exec provisioner demonistration
+
 - In the resource **azurerm_linux_virtual_machine**(or even windows vm for that matter) there is an argument called **custom_data**.
 This helps in executing scripts after the deployment of the vm. Either we can use in line scripts or a file which has scrpts.
 The execution of this script is taken care by terraform.
