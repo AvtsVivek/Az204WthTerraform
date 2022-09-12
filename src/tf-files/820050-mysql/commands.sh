@@ -28,11 +28,13 @@ terraform apply main.tfplan
 
 dotnet run --project ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString.csproj
 
+# Thats it.
+
 terraform state show 
 
 terraform show terraform.tfstate
 
-terraform plan -destroy -out main.destroy.tfplan -var-file="secrets.tfvars"
+terraform plan -destroy -out main.destroy.tfplan 
 
 # terraform show main.destroy.tfplan
 

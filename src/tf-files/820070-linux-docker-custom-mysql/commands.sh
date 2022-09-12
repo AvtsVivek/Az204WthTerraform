@@ -53,34 +53,38 @@ terraform apply main.tfplan
 cd ..
 
 # cd into the directory.
-cd ./src/tf-files/820060-linux-docker-mysql/
+cd ./src/tf-files/820070-linux-docker-custom-mysql/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.169.167.33
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.163.187.121
 
 cd /var/log
 
 cat cloud-init-output.log
 
-sudo -i
+cd /tmp
+
+tail -200f executionlogs.txt
 
 # Wait for at least 5 minutes. Then run the following commands.
 
-exit
+sudo docker container ls -a
 
-# Now that you are in the VM, you can run the following commands.
+sudo docker image ls
+# Ensure image is create - mysqlwithdata:v1
 
-hostname
+# Now try to connect from MySql Workbench.
 
-# Switch to the root user.
-sudo su -
+# See the image MySqlOnContainer.jpg
 
-cd /var/log
+# Once connected, see that the data is also loaded. The server should conain a database and the database should contain table data.
 
-# Now look for cloud-init-output.log file.
+# Finally, you try the following to run the app that connects to the mysql db runnon in a container on the vm
 
-# use the tail command to see the last 100 lines.
-tail -100f cloud-init-output.log
-# Review what all happened as the vm was booting.
+# But first the connection string should be adjusted. It would look like this.
+
+# "MySqlConnection": "Server=20.163.187.121; Port=3306; Database=MySqlAppDb; Uid=root; Pwd=H@Sh1CoR3!; SslMode=Preferred;"
+
+dotnet run --project ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString.csproj
 
 # Now get the ip of the vm.
 

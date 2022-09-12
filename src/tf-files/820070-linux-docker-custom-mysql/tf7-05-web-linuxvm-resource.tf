@@ -8,61 +8,19 @@
 
 locals {
   webvm_custom_data = <<CUSTOM_DATA
-#!/bin/sh
+#!/bin/bash
 
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
+echo $PWD
 
-echo "Adding repo to config manager"
+# You can put any bash commands here to execute after the deployment.
+# The execution of this script is taken care by terraform.
+# But the downside of this is, this happens immediately after the deployment. 
+# So if you need to pass on any files to the vm before running any of the scripts,
+# and you want to use those files in running the scripts, then this is not ideal. 
+# This scipt executes before any terraform file provisioner is executed.
+# So its better to use remote-exec provisioner in such cases. 
 
-sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo
-
-echo "Adding repo to config manager - DONE"
-
-echo "Starting to install docker-ce "
-
-sudo dnf install docker-ce -y
-
-echo "Starting to install docker-ce - DONE "
-
-echo "Starting to install docker-ce-cli "
-
-sudo dnf install docker-ce-cli -y
-
-echo "Starting to install docker-ce-cli - DONE "
-
-echo "Starting to install containerd.io"
-
-sudo dnf install containerd.io -y
-
-echo "Starting to install containerd.io - DONE "
-
-echo "Starting to install docker-compose-plugin"
-
-sudo dnf install docker-compose-plugin -y
-
-echo "Starting to install docker-compose-plugin - DONE "
-
-sudo systemctl start docker
-
-sudo systemctl start firewalld
-sudo systemctl enable firewalld
-
-sudo iptables -t filter -F
-iptables -t filter -X
-systemctl restart docker
-
-echo "Starting docker nginx conainer "
-
-sudo docker run --name appnginx -p 80:80 -d nginx
-
-echo "Starting docker nginx conainer - DONE"
-
-echo "Starting docker mysql conainer "
-
-sudo docker run --name mysql-instance -p 3306:3306 --restart on-failure -d -e MYSQL_ROOT_PASSWORD=H@Sh1CoR3! mysql
-
-echo "Starting docker mysql conainer - DONE"
+echo "Some change so the vm resource will be tained.  "
 
 CUSTOM_DATA
 }
@@ -110,7 +68,19 @@ resource "azurerm_linux_virtual_machine" "web_linuxvm" {
 
   # File Provisioner-1: Copies the file-copy.html file to /tmp/file-copy.html
   provisioner "file" {
-    source      = "apps/file-copy.html"
-    destination = "/tmp/file-copy.html"
+    source      = "./custom-docker-image-files/"
+    destination = "/tmp/"
+  }
+
+
+  provisioner "remote-exec" {
+    inline = [
+      "touch /tmp/executionlogs.txt",
+      "chmod +x /tmp/provisionscript.sh",
+      "chmod +w /tmp/executionlogs.txt",
+      "echo $PWD >> /tmp/executionlogs.txt",
+      "dir >> /tmp/executionlogs.txt",
+      "/tmp/provisionscript.sh >> /tmp/executionlogs.txt"
+    ]
   }
 }
