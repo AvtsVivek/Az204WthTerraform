@@ -17,16 +17,27 @@ terraform plan -out main.tfplan
 terraform apply main.tfplan 
 
 # Once successfully applied, Review the resources.
-# Download the topology diagram. Go to the created vnet and then diagram.
-# Also look at subnets and corresponding security groups.
+# Note the acr name. It should be vivekswkcontainergroupacr
+# First create a mysql docker image with data. 
 
-# Connect to the VM. Ensure the vm is running.
-# Note the IP address.
-# Run the following with the ip address.
-# Run the following in bash prompt.
-# If you get the following permission denined, 
-# azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
-# then you are not in the correct directory.
+cd create-docker-image
+
+docker build -t vivekswkcontainergroupacr.azurecr.io/mysqlwithdata:v1 .
+
+docker image ls
+
+cd ..
+
+# cd into the directory.
+cd ./../../dotnet-apps/0020-simple-webapp
+
+docker build -t simplewebapp:v1 .
+
+# docker tag avts/nginxvivek:v1 acrvglbmi.azurecr.io/nginxvivek:v1
+
+# docker push <login-server>/hello-world:v1
+
+docker push acrvglbmi.azurecr.io/nginxvivek:v1
 
 cd ..
 
@@ -40,3 +51,18 @@ terraform plan -destroy -out main.destroy.tfplan
 # terraform show main.destroy.tfplan
 
 terraform apply main.destroy.tfplan
+
+
+Remove-Item -Recurse -Force .terraform/modules
+
+Remove-Item -Recurse -Force .terraform
+
+Remove-Item terraform.tfstate
+
+Remove-Item terraform.tfstate.backup
+
+Remove-Item main.tfplan
+
+Remove-Item main.destroy.tfplan
+
+Remove-Item .terraform.lock.hcl
