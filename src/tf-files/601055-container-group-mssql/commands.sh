@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/tf-files/601050-container-group-nginx/
+cd ./src/tf-files/601055-container-group-mssql/
 
 cd ../../..
 
