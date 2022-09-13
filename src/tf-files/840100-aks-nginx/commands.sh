@@ -1,8 +1,9 @@
 
-cd ../..
+cd ../../..
 
 # cd into the directory.
-cd ./iac/010020-tf-aks
+# C:\Vivek\Trials\Tf\Az204\src\tf-files\840100-aks-nginx\commands.sh
+cd ./src/tf-files/840100-aks-nginx
 
 terraform fmt
 
