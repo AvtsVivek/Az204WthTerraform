@@ -9,7 +9,7 @@ resource "azurerm_container_group" "acg" {
   image_registry_credential {
     server   = "vivekswkcontainergroupacr.azurecr.io"
     username = "vivekswkcontainergroupacr"
-    password = "p8PIUUzwsTj+wJxdAK18J53nMt8Q7IbH"
+    password = "PEboTM0WdCDznMMRMM/uVhi4Qgr2TrPd"
   }
 
   container {
