@@ -27,8 +27,6 @@ terraform show terraform.tfstate
 # Default admin
 az aks get-credentials --resource-group aks-tf-trial1-rg-dev --name aks-tf-trial1-rg-dev-aks-cluster --admin
 
-az aks get-credentials --resource-group aks-tf-trial1-rg-dev --name aks-tf-trial1-rg-dev-aks-cluster
-
 az aks get-credentials --resource-group aks-tf-trial1-rg-dev --name aks-tf-trial1-rg-dev-aks-cluster --overwrite-existing --admin
 
 kubectl cluster-info
@@ -96,9 +94,9 @@ kubectl get pods
 
 # From the output of the above command, the pod id and put in the following commands.
 
-kubectl logs -f myapp1-deployment-78bc6985f7-fzjxx
+kubectl logs -f myapp1-deployment-6c6cb7cc65-b2phw
 
-kubectl describe pod myapp1-deployment-78bc6985f7-fzjxx
+kubectl describe pod myapp1-deployment-6c6cb7cc65-b2phw
 
 kubectl get deployment 
 
