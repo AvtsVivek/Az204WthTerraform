@@ -1,5 +1,5 @@
 resource "azurerm_container_group" "acg" {
-  name                = "example-continst"
+  name                = "nginx-continst-acg"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   ip_address_type     = "Public"
@@ -19,10 +19,10 @@ resource "azurerm_container_group" "acg" {
   # }
 
   container {
-    name   = "viveknginxv1"
-    image  = "avts/nginxvivek:v1"
-    cpu    = "0.5"
-    memory = "1.5"
+    name   = "nginx-container"
+    image  = "nginx"
+    cpu    = "1"
+    memory = "3.5"
 
     ports {
       port     = 80
