@@ -47,7 +47,6 @@ docker push vivekswkcontainergroupacr.azurecr.io/mysqlwithdata:v1
 
 docker push vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1
 
-
 terraform fmt
 
 terraform init

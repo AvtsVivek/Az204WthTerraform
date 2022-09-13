@@ -1,5 +1,5 @@
 resource "azurerm_container_group" "acg" {
-  name                = "example-continst"
+  name                = "nginx-continst-acg"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   ip_address_type     = "Public"
@@ -9,14 +9,14 @@ resource "azurerm_container_group" "acg" {
   image_registry_credential {
     server   = "vivekswkcontainergroupacr.azurecr.io"
     username = "vivekswkcontainergroupacr"
-    password = "j5GIskr7qYvytUaJuAoVoTCgukL5+/1r"
+    password = "p8PIUUzwsTj+wJxdAK18J53nMt8Q7IbH"
   }
 
   container {
     name   = "simplewebappwithmysql"
     image  = "vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1"
-    cpu    = "0.5"
-    memory = "1.5"
+    cpu    = "1"
+    memory = "3.5"
 
     ports {
       port     = 80
@@ -27,10 +27,10 @@ resource "azurerm_container_group" "acg" {
   container {
     name   = "mysqlwithdata"
     image  = "vivekswkcontainergroupacr.azurecr.io/mysqlwithdata:v1"
-    cpu    = "0.5"
-    memory = "1.5"
+    cpu    = "1"
+    memory = "3.5"
 
-    environment_variables = {"MYSQL_ROOT_PASSWORD"="H@Sh1CoR3!"}
+    environment_variables = { "MYSQL_ROOT_PASSWORD" = "H@Sh1CoR3!" }
 
     ports {
       port     = 3306
@@ -39,10 +39,25 @@ resource "azurerm_container_group" "acg" {
   }
 
   # container {
+  #   name   = "my-sql-server"
+  #   image  = "mysql"
+  #   cpu    = "1"   # Note this should be 1 and not .5
+  #   memory = "3.5" # Note this should be 3.5 and not 1.5
+
+  #   ports {
+  #     port     = 3306
+  #     protocol = "TCP"
+  #   }
+
+  #   environment_variables = { "MYSQL_ROOT_PASSWORD" = "H@Sh1CoR3!" }
+
+  # }  
+
+  # container {
   #   name   = "viveknginxv1"
   #   image  = "avts/nginxvivek:v1"
-  #   cpu    = "0.5"
-  #   memory = "1.5"
+  #   cpu    = "1"
+  #   memory = "3.5"
 
   #   ports {
   #     port     = 80
