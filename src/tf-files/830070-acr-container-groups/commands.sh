@@ -16,7 +16,7 @@ terraform plan -out main.tfplan
 
 terraform apply main.tfplan 
 
-# You will get the following error.
+# You will get the following error. Container Group creation will fail.
 # This is because the images are not yet uploaded.
 
 # soft.ContainerRegistry/registries/vivekswkcontainergroupacr]
@@ -90,7 +90,6 @@ terraform apply main.tfplan
 
 # Now you can browse the ip address or FQDN
 
-cd ..
 
 terraform state show 
 
