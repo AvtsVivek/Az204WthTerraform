@@ -1,6 +1,6 @@
 
 # cd into the directory.
-cd ./src/tf-files/601055-container-group-mssql/
+cd ./src/tf-files/601065-container-group-mysql/
 
 cd ../../..
 
