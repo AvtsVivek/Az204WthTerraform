@@ -26,6 +26,10 @@ terraform apply main.tfplan
 
 # https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/appsettings.json
 
+# Ensure the connection string should be as follows. Get the ip address of the mysql container
+
+# "MySqlConnection": "Server=20.163.187.121; Port=3306; Database=MySqlAppDb; Uid=root; Pwd=H@Sh1CoR3!; SslMode=Preferred;"
+
 dotnet run --project ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString.csproj
 
 # Thats it.
