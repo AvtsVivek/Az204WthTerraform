@@ -1,8 +1,8 @@
 
+cd ../../..
+
 # cd into the directory.
 cd ./src/tf-files/830070-acr-container-groups/
-
-cd ../../..
 
 terraform fmt
 
@@ -33,7 +33,8 @@ terraform apply main.tfplan
 # ╵
 # So we have to upload the images.
 # Now, review the resources.
-# Note the acr name. It should be vivekswkcontainergroupacr
+# Note the acr name. It should be vivekswkcontainergroupacr.
+# There will be no container instances resource because it failed.
 # Now to upload the image, 
 # First create a mysql docker image with data. 
 
@@ -51,6 +52,10 @@ cd ..
 # Note we are going into that directry which is not where the Dockerfile is present. 
 # Its the context location, where .dockerignore file is present.
 cd ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/
+
+# Ensure the connection string in the app is as follows.
+# "MySqlConnection": "Server=localhost; Port=3306; Database=MySqlAppDb; Uid=root; Pwd=H@Sh1CoR3!; SslMode=Preferred;"
+# https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/appsettings.json
 
 docker build -t vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1 . -f ConnectToMySqlAppWithConString/Dockerfile
 
@@ -90,6 +95,7 @@ terraform apply main.tfplan
 
 # Now you can browse the ip address or FQDN
 
+# See the image 2ContainerInstances2.jpg
 
 terraform state show 
 
