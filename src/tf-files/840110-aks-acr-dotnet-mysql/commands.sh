@@ -67,6 +67,8 @@ az aks get-credentials --resource-group aks-tf-trial1-rg-dev --name aks-tf-trial
 
 az aks get-credentials --resource-group aks-tf-trial1-rg-dev --name aks-tf-trial1-rg-dev-aks-cluster --overwrite-existing --admin
 
+az aks get-credentials --resource-group aks-tf-trial1-rg-dev --name aks-tf-trial1-rg-dev-aks-cluster --overwrite-existing
+
 kubectl cluster-info
 
 # If you want to logout or unset, use the following.
@@ -88,7 +90,7 @@ az aks nodepool list
 
 az aks nodepool list --resource-group aks-tf-trial1-rg-dev --cluster-name aks-tf-trial1-rg-dev-aks-cluster -o table
 
-kubectl get pod -o=custom-columns=NODE-NAME:.spec.nodeName,POD-NAME:.metadata.name -n kube-system
+kubectl get pod -o custom-columns=NODE-NAME:.spec.nodeName,POD-NAME:.metadata.name -n kube-system
 
 # The following should show msi
 az aks show --resource-group aks-tf-trial1-rg-dev --name aks-tf-trial1-rg-dev-aks-cluster --query servicePrincipalProfile
@@ -130,6 +132,10 @@ kubectl apply -f .\kube-manifests\01-Webserver-Apps\
 kubectl delete -f .\kube-manifests\01-Webserver-Apps\
 
 kubectl get pods
+
+kubectl get pods -o wide
+
+kubectl get svc -o wide
 
 # From the output of the above command, the pod id and put in the following commands.
 

@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+  clusterIP: None
+---
+# This external service is kept only for debugging. 
+# in case you want to verify the database is running correctly or not.
+# This service exposes an endpoint, which will enable a client such as MySqlWorkbench to connect to the database.
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: mysqlexternal
+# spec:
+#   selector:
+#     app: mysql
+#   ports:
+#     - protocol: TCP
+#       port: 3306
+#       targetPort: 3306
+#   type: LoadBalancer
+
+---
