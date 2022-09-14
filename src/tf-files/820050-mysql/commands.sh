@@ -24,7 +24,7 @@ terraform apply main.tfplan
 
 # Take a look at the following file.
 
-# https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlApp/Services/ProductService.cs
+# https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/appsettings.json
 
 dotnet run --project ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString.csproj
 

@@ -44,6 +44,10 @@ cd ..
 # Its the context location, where .dockerignore file is present.
 cd ./../../dotnet-apps/0150-ConnectToMySqlAppWithConString/
 
+# Ensure the connection string in the app is as follows.
+# "MySqlConnection": "Server=mysql; Port=3306; Database=MySqlAppDb; Uid=root; Pwd=H@Sh1CoR3!; SslMode=Preferred;"
+# https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0150-ConnectToMySqlAppWithConString/ConnectToMySqlAppWithConString/appsettings.json
+
 docker build -t vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1 . -f ConnectToMySqlAppWithConString/Dockerfile
 
 docker image ls
@@ -59,7 +63,6 @@ docker push vivekswkcontainergroupacr.azurecr.io/simplewebappwithmysql:v1
 # Now go to the portal, review the repositories of the acr. Two repos must be present.
 
 ############################################################################################
-
 
 # Get the resource group name and AKS_CLUSTER_NAME 
 # Default admin
