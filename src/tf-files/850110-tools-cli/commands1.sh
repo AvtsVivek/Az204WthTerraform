@@ -30,3 +30,6 @@ az webapp log config --name $AppName --resource-group $ResourceGroupName --docke
 
 az webapp log tail --name $AppName --resource-group $ResourceGroupName
 
+# Finally delete the rg
+
+az group delete --name $ResourceGroupName --yes
