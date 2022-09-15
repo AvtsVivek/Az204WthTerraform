@@ -34,6 +34,12 @@ resource "azurerm_storage_account" "storage_account" {
 #   source                 = "error.html"
 # }
 
+# resource "azurerm_storage_container" "asc_cont" {
+#   name                  = "$web"
+#   storage_account_name  = azurerm_storage_account.storage_account.name
+#   # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container#container_access_type
+#   container_access_type = "container" # Possible values are blob, container or private. Defaults to private.
+# }
 
 resource "azurerm_storage_blob" "static_files_html" {
 
