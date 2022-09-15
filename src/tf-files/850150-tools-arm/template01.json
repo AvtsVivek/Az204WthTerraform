@@ -1,0 +1,14 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+        {           
+            "name": "templatestore12345",
+            "type": "Microsoft.Storage/storageAccounts",
+            "location": "North Europe",
+            "apiVersion": "2021-06-01",
+            "sku" :{"name": "Standard_LRS"},
+            "kind": "StorageV2"
+        }
+    ]
+}
