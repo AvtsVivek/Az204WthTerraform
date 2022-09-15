@@ -8,12 +8,13 @@ $AppServicePlanName="companyplan"
 
 $AppName="dockerapp665544"
 
+# 1. Create RG
 
 az group create --name $ResourceGroupName --location $ResourceGroupLocation
 
 az group list
 
-# 1. First we can create an App service plan
+# 2. Second we can create an App service plan
 
 az appservice plan create --name $AppServicePlanName --resource-group $ResourceGroupName --is-linux
 
