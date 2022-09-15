@@ -4,4 +4,4 @@
   
 - Click the Run button. See 2RunPowerShell1.jpg
 
-- 
+- You can run scripts one after the other.

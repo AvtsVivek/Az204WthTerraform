@@ -33,8 +33,8 @@ $Properties =@{
     # I did not go deep into why this is happening. Leaving now.
 
     # So use 
-    # repoUrl="https://github.com/alashro/webapp";
-    repoUrl="https://github.com/AvtsVivek/SimpleNet6WebApp";
+    repoUrl="https://github.com/alashro/webapp";
+    # repoUrl="https://github.com/AvtsVivek/SimpleNet6WebApp";
     branch="master";
     isManualIntegration="true";
 }
