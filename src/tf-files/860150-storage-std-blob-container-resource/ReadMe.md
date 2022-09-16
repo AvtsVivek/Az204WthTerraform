@@ -44,4 +44,8 @@
 
 - ![Shared Access Signature](./images/7SAS1.jpg)
 
-- ![Shared Access Signature](./images/7SAS1.jpg)
+- ![Shared Access Signature](./images/7SAS2.jpg)
+
+- Now about Shared Access Policies.
+
+- 
