@@ -23,3 +23,22 @@ resource "azurerm_storage_container" "asc_cont" {
 }
 ```
 
+- Finally, note that you cannot directly access the uploaded blob files directly using their urls.
+  - ![Static WebSite url ](./images/2StaticWebSite4.jpg)
+  - As you can see, the urls do exist. But when you access them, you get 404 not found.
+
+- ![Static WebSite url access not found](./images/2StaticWebSite5.jpg)
+  
+- The reason is the access level.
+
+- You can change the access level to all of the containers or individual containers as follows from the portal.
+
+- ![Static WebSite url access not found](./images/3ContainerAccess1.jpg)
+
+- ![Static WebSite url access not found](./images/3ContainerAccess2.jpg)
+
+- ![Static WebSite url access not found](./images/3ContainerAccess3.jpg)
+
+- ![Static WebSite url access not found](./images/3ContainerAccess4.jpg)
+
+- 
