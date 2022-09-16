@@ -1,5 +1,5 @@
 # Storage Accounts
 
-- Here we go.
+- Just creates a storage container and nothing else additional on it.
 
 - 
