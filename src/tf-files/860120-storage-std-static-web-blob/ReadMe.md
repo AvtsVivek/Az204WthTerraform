@@ -41,4 +41,6 @@ resource "azurerm_storage_container" "asc_cont" {
 
 - ![Static WebSite url access not found](./images/3ContainerAccess4.jpg)
 
-- 
+- ![Static WebSite url access not found](./images/3ContainerAccess5.jpg)
+  
+- ![Static WebSite url access not found](./images/3ContainerAccess6.jpg)
