@@ -3,7 +3,7 @@ cd ../../..
 # cd into the directory.
 # C:\Vivek\Trials\Tf\Az204\src\tf-files\840100-aks-nginx\commands.sh
 
-cd ./src/tf-files/860160-storage-std-blob-container-without-website
+cd ./src/tf-files/860121-storage-std-blob-problem
 
 terraform fmt
 
