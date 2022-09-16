@@ -3,6 +3,8 @@
 - This builds on the previous blob storage demo, but this changes the access level of a container using the container resource.
   - azurerm_storage_container
 
+- See below for differnt types of access. Access Keys, and Shared Access Signatures
+
 - ![Container](./images/3ContainersAccess1.jpg)
 
 - ![Container](./images/3ContainersAccess2.jpg)
@@ -32,3 +34,11 @@
 - ![Azure Storage Explorer](./images/5MsAzureStorageExplorerAccessWithKeys4.jpg)
 
 - ![Azure Storage Explorer](./images/5MsAzureStorageExplorerAccessWithKeys5.jpg)
+
+- There is also Shared Access Signature.
+  - If you want a user to access a resource for say one week, then you can generate shared access signature.
+  
+- ![Shared Access Signature](./images/6SharedAccessSignature1.jpg)
+
+- ![Shared Access Signature](./images/6SharedAccessSignature2.jpg)
+
