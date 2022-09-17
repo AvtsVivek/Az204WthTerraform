@@ -2,7 +2,7 @@
 
 - Whent access_tier is set to "Archive" for azurerm_storage_blob.static_files_html, I am getting this error. Not sure why
 
-- So what we need to do is first set access_tier = "Cool", then apply. Once successifully deployed, then change access_tier = "Archive". Then again plan and then apply again. This way we can make the blob Archive in two steps.
+- So what we need to do is first set access_tier = "Cool"(or Hot), then plan, apply. Once successifully deployed, then change access_tier = "Archive". Then again plan and then apply again. This way we can make the blob Archive in two steps.
 
 ```
 azurerm_role_assignment.storage_acc_role: Creation complete after 32s [id=/subscriptions/10868091-0196-44e3-a0b8-8dee05259147/resourceGroups/vivek-my-rg/providers/Microsoft.Storage/storageAccounts/staticwebsitensjqfb/providers/Microsoft.Authorization/roleAssignments/c9227d73-7188-e825-2589-76f8a7b5b496]
