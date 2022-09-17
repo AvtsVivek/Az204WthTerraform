@@ -15,3 +15,9 @@ azurerm_role_assignment.storage_acc_role: Creation complete after 32s [id=/subsc
 │   on tf6-storage-account.tf line 23, in resource "azurerm_storage_blob" "static_files_html":
 │   23: resource "azurerm_storage_blob" "static_files_html" {│
 ```
+
+- Some notes
+  - Hot(default), cold and then there is Archive. Archive can be applied only to blob level and not to Storag Account level.
+  - Cold(30) and Archive(180). 
+  - When you want to pull back any file from Archive, there is what is called as Dehydration. This can take several hours of time.
+  - So when any file put into Archive, that file cannot be accessed imediately. 
