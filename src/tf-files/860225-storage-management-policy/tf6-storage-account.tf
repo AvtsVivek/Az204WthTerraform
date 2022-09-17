@@ -9,7 +9,11 @@ resource "azurerm_storage_account" "storage_account" {
   account_tier             = var.storage_account_tier             # Standard Or Premium
   account_replication_type = var.storage_account_replication_type # valid options are LRS, GRS, RAGRS, ZRS, GZRS and RAGZRS
   account_kind             = var.storage_account_kind
-  
+
+  blobblob_properties {
+    
+  }   
+
   access_tier = "Cool"
 
 }
@@ -29,11 +33,16 @@ resource "azurerm_storage_blob" "static_files_html" {
   type                   = "Block"
   content_type           = "text/html"
   source                 = each.value
-
+  
   access_tier = "Hot"
 
   depends_on = [
     azurerm_resource_group.resource_group,
     azurerm_storage_account.storage_account
   ]
+
+  blobblob_properties{
+    versioning_enabled = true
+  }
+
 }

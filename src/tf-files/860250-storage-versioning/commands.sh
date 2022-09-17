@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/860225-storage_management_policy
+cd ./src/tf-files/860250-storage-versioning
 
 terraform fmt
 
