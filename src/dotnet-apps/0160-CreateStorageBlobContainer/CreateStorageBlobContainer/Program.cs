@@ -1,6 +1,7 @@
 ﻿using Azure.Storage.Blobs;
+using Azure.Storage.Blobs.Models;
 
-var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitenishaq;AccountKey=l2XMSaoxhxAGgwIMdh1L03S5B34WDa+Dvw0JBIRGqGuQpL+f0STbb/5VI/w46jQfsbUFwrWIjeQ8+AStGnb6SA==;EndpointSuffix=core.windows.net";
+var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitenishaq;AccountKey=R3xES6YaCwlsbiUyYiOycxTVFj8l4Z9RlsjP7FtV1xIoI4+0vjqKw4Bed4psVranGDOLHFK3V75w+ASt4YrXPg==;EndpointSuffix=core.windows.net";
 
 var containerName = "content1";
 
@@ -30,4 +31,20 @@ var blobClient = blobServiceClientForContainerContent1.GetBlobClient(blobName);
 await blobClient.UploadAsync(filePath, true);
 
 Console.WriteLine("Uploaded the blob");
+
+var blobContainerClient = new BlobContainerClient(connectionString, containerName);
+
+await foreach (BlobItem blobItem in blobContainerClient.GetBlobsAsync())
+{
+    Console.WriteLine("The Blob Name is {0}", blobItem.Name);
+    Console.WriteLine("The Blob Size is {0}", blobItem.Properties.ContentLength);
+}
+
+// You can download as follows. 
+// Use the same client(blobClient) or create a new one
+blobClient = new BlobClient(connectionString, containerName, blobName);
+
+filePath = "data1.sql";
+
+var response = await blobClient.DownloadToAsync(filePath);
 
