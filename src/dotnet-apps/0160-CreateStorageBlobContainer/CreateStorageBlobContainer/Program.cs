@@ -1,17 +1,21 @@
 ﻿using Azure.Storage.Blobs;
 
-string connectionString = "DefaultEndpointsProtocol=https;AccountName=newstore4665656;AccountKey=PU5gM5j1PbuRPmiVIMmxCSikAOKfLJc+uEoa7qJ4kSzAy6U0fbSdl7fpnsx610W+9/0JlXEtwKDJ3fJl2guAPw==;EndpointSuffix=core.windows.net";
-string containerName = "data1";
+var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitenishaq;AccountKey=a2qP3tD5Rtin4EtSRRvwxAZafE38I9F8WyDvodoCqkdEtVMCy6zMozFlqG4nGj2OjzVKuHe342qe+AStpAh1zg==;EndpointSuffix=core.windows.net";
 
-BlobServiceClient blobServiceClient = new BlobServiceClient(connectionString);
+var containerName = "content1";
+
+var blobServiceClient = new BlobServiceClient(connectionString);
 
 Console.WriteLine("Creating the container");
 
 await blobServiceClient.CreateBlobContainerAsync(containerName);
 
-/*
-If you want to specify properties for the container
-
-await blobServiceClient.CreateBlobContainerAsync(containerName,Azure.Storage.Blobs.Models.PublicAccessType.Blob);
-*/
 Console.WriteLine("Container creation complete");
+
+var containerName2 = "content2";
+
+Console.WriteLine("Creating the container");
+
+await blobServiceClient.CreateBlobContainerAsync(containerName2, Azure.Storage.Blobs.Models.PublicAccessType.Blob);
+
+Console.WriteLine("Container 2 creation complete");
