@@ -16,9 +16,12 @@ terraform apply main.tfplan
 
 terraform state list
 
-
 # Now the time to run the dotnet app. 
 dotnet build ./../../dotnet-apps/0160-CreateStorageBlobContainer/CreateStorageBlobContainer/CreateStorageBlobContainer.csproj
+
+# For the following execute command to run successifully, the file 'data.sql' must be present in the following folder
+# ./src/tf-files/860325-storage-access-through-dotnet
+
 dotnet run --project ./../../dotnet-apps/0160-CreateStorageBlobContainer/CreateStorageBlobContainer/CreateStorageBlobContainer.csproj
 
 # For the following command to work, you need to pass on the resource, or data source.
