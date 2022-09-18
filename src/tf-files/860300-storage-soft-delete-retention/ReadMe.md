@@ -37,4 +37,8 @@ blob_properties {
 
 ![Soft Delete](./images/1SoftDelete7.jpg)
 
+![Soft Delete](./images/1SoftDelete8.jpg)
+
+
+
 
