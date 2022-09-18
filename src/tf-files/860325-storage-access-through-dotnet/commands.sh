@@ -21,7 +21,6 @@ terraform state list
 dotnet build ./../../dotnet-apps/0160-CreateStorageBlobContainer/CreateStorageBlobContainer/CreateStorageBlobContainer.csproj
 dotnet run --project ./../../dotnet-apps/0160-CreateStorageBlobContainer/CreateStorageBlobContainer/CreateStorageBlobContainer.csproj
 
-
 # For the following command to work, you need to pass on the resource, or data source.
 # This resource or data source is got from terraform state list command
 terraform state show 
