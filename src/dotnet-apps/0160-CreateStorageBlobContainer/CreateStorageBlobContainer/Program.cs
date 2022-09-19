@@ -94,5 +94,5 @@ async Task AcquireLease(string blobName)
     var response = await blobLeaseClient.AcquireAsync(leaseTime);
 
     Console.WriteLine("Lease id is {0}", response.Value.LeaseId);
-    Console.WriteLine($"Lease acquired for {leaseTime.TotalSeconds}. Verify on the portal");
+    Console.WriteLine($"Lease acquired for {leaseTime.TotalSeconds} secs. Verify on the portal");
 }
