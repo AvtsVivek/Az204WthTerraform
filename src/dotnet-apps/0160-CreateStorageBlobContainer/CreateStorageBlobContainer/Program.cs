@@ -1,5 +1,6 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
+using Azure.Storage.Blobs.Specialized;
 
 var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitexakcwn;AccountKey=2Acdma5wm/P4SV2v4kgixTRM62fadM8Axfg+8fCiOBMEE173Ws7dUyii8bY3DtdARoYFddYbitrA+AStXEVdDw==;EndpointSuffix=core.windows.net";
 
@@ -56,6 +57,8 @@ Console.WriteLine($"Download of {filePath} Ends.");
 
 await GetMetaData(blobName);
 
+await AcquireLease(blobName);
+
 
 async Task SetBlobMetaData(string blobName)
 {
@@ -82,3 +85,14 @@ async Task GetMetaData(string blobName)
     }
 }
 
+async Task AcquireLease(string blobName)
+{
+    var blobClient = new BlobClient(connectionString, containerName, blobName);
+
+    var blobLeaseClient = blobClient.GetBlobLeaseClient();
+    var leaseTime = new TimeSpan(0, 0, 1, 00);
+    var response = await blobLeaseClient.AcquireAsync(leaseTime);
+
+    Console.WriteLine("Lease id is {0}", response.Value.LeaseId);
+    Console.WriteLine($"Lease acquired for {leaseTime.TotalSeconds}. Verify on the portal");
+}

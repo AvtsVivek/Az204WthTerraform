@@ -41,3 +41,8 @@ dotnet run --project ./../../dotnet-apps/0160-CreateStorageBlobContainer/CreateS
 - The meta data.
 ![Meta data](./images/1AccessThroughDotnetApp8.jpg)
 
+- The meta data.
+![Meta data](./images/1AccessThroughDotnetApp8.jpg)
+
+- The lease state. Everything is disabled. 
+![The lease state](./images/1AccessThroughDotnetApp9.jpg)
