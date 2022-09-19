@@ -35,3 +35,9 @@ dotnet run --project ./../../dotnet-apps/0160-CreateStorageBlobContainer/CreateS
   - If you run the project from Visual Studio, then the data1.sql will be downloaded to the 
   - 0160-CreateStorageBlobContainer\CreateStorageBlobContainer\bin\Debug\net6.0
   
+- The meta data.
+![Meta data](./images/1AccessThroughDotnetApp7.jpg)
+
+- The meta data.
+![Meta data](./images/1AccessThroughDotnetApp8.jpg)
+

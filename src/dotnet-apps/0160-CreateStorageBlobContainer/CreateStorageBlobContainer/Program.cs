@@ -1,7 +1,7 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 
-var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitenishaq;AccountKey=R3xES6YaCwlsbiUyYiOycxTVFj8l4Z9RlsjP7FtV1xIoI4+0vjqKw4Bed4psVranGDOLHFK3V75w+ASt4YrXPg==;EndpointSuffix=core.windows.net";
+var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitexakcwn;AccountKey=2Acdma5wm/P4SV2v4kgixTRM62fadM8Axfg+8fCiOBMEE173Ws7dUyii8bY3DtdARoYFddYbitrA+AStXEVdDw==;EndpointSuffix=core.windows.net";
 
 var containerName = "content1";
 
@@ -40,11 +40,45 @@ await foreach (BlobItem blobItem in blobContainerClient.GetBlobsAsync())
     Console.WriteLine("The Blob Size is {0}", blobItem.Properties.ContentLength);
 }
 
+await SetBlobMetaData(blobName);
+
 // You can download as follows. 
 // Use the same client(blobClient) or create a new one
 blobClient = new BlobClient(connectionString, containerName, blobName);
 
 filePath = "data1.sql";
 
+Console.WriteLine($"Download of {filePath} begins.");
+
 var response = await blobClient.DownloadToAsync(filePath);
+
+Console.WriteLine($"Download of {filePath} Ends.");
+
+await GetMetaData(blobName);
+
+
+async Task SetBlobMetaData(string blobName)
+{
+    var blobClient = new BlobClient(connectionString, containerName, blobName);
+
+    var metaData = new Dictionary<string, string>();
+    metaData.Add("Department", "Logistics");
+    metaData.Add("Application", "AppA");
+
+    await blobClient.SetMetadataAsync(metaData);
+
+    Console.WriteLine("Metadata added");
+}
+
+async Task GetMetaData(string blobName)
+{
+    var blobClient = new BlobClient(connectionString, containerName, blobName);
+    var blobProperties = await blobClient.GetPropertiesAsync();
+
+    foreach (var metaData in ((BlobProperties)blobProperties).Metadata)
+    {
+        Console.WriteLine("The key is {0}", metaData.Key);
+        Console.WriteLine("The value is {0}", metaData.Value);
+    }
+}
 

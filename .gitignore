@@ -448,3 +448,5 @@ confbackup
 confbackup.d
 
 nginxconfbackup
+
+data1.sql
