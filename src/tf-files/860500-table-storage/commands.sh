@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/860400-storage-change-feed
+cd ./src/tf-files/860500-table-storage
 
 terraform fmt
 

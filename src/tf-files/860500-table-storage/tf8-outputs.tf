@@ -21,4 +21,8 @@ output "storage_account_name" {
   value       = azurerm_storage_account.storage_account.name
 }
 
+output "storage_account_kind" {
+  description = "storage account name"
+  value       = azurerm_storage_account.storage_account.account_kind
+}
 
