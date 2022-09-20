@@ -1,5 +1,10 @@
 # Soft Deletion and Retention
 
+- References
+  - https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
+  - https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy
+  - 
+
 - Execute Plan and Apply the config.
 
 - Now verify 
