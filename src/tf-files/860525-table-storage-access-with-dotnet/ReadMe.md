@@ -16,11 +16,13 @@ resource "azurerm_storage_table" "example" {
 
 ![Table Storage](./images/1TableStorage2.jpg)
 
-
-
 ![Table Storage](./images/1TableStorage3.jpg)
 
 ![Table Storage](./images/1TableStorage4.jpg)
 
 ![Table Storage](./images/1TableStorage5.jpg)
+
+![Table Storage](./images/1TableStorage6.jpg)
+
+![Table Storage](./images/1TableStorage7.jpg)
 
