@@ -10,16 +10,21 @@ resource "azurerm_storage_account" "storage_account" {
   account_replication_type = var.storage_account_replication_type # valid options are LRS, GRS, RAGRS, ZRS, GZRS and RAGZRS
   account_kind             = var.storage_account_kind
 
-  # blob_properties {
+  blob_properties {
 
-  #   delete_retention_policy {
-  #     days = 365
-  #   }
+    #   delete_retention_policy {
+    #     days = 365
+    #   }
 
-  #   container_delete_retention_policy {
-  #     days = 7
-  #   }
-  # }
+    #   container_delete_retention_policy {
+    #     days = 7
+    #   }
+
+    change_feed_enabled = true
+
+    change_feed_retention_in_days = 7
+
+  }
 
   access_tier = "Hot"
 
