@@ -10,7 +10,7 @@ resource "azurerm_cosmosdb_account" "cosmos_db_account" {
 
   enable_automatic_failover = false
 
-  enable_free_tier = false
+  enable_free_tier = true
 
   consistency_policy {
     consistency_level = "Session"
