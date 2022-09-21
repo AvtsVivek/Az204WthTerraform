@@ -34,7 +34,7 @@ resource "azurerm_cosmosdb_account" "cosmos_db" {
 
   geo_location {
 
-    location          = var.location
+    location = var.location
     #  (Required) The failover priority of the region. 
     # A failover priority of 0 indicates a write region. 
     # The maximum value for a failover priority = (total number of regions - 1). 
