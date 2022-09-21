@@ -1,16 +1,16 @@
 
 # Create Azure Storage account
 
-resource "azurerm_cosmosdb_account" "cosmos_db" {
-  name                = "${var.resource_group_name_prefix}-${random_string.myrandom.id}-cosmos-db"
+resource "azurerm_cosmosdb_account" "cosmos_db_account" {
+  name                = "${var.resource_group_name_prefix}-${random_string.myrandom.id}-cosmos-db-account"
   location            = azurerm_resource_group.resource_group.location
   resource_group_name = azurerm_resource_group.resource_group.name
   offer_type          = "Standard"
-  # kind                = "GlobalDocumentDB"
+  kind                = "GlobalDocumentDB" # Default.
 
   enable_automatic_failover = false
 
-  enable_free_tier = true
+  enable_free_tier = false
 
   consistency_policy {
     consistency_level = "Session"
@@ -45,4 +45,41 @@ resource "azurerm_cosmosdb_account" "cosmos_db" {
     # zone_redundant (Optional) Should zone redundancy be enabled for this region? Defaults to false.
     zone_redundant = false
   }
+}
+
+resource "azurerm_cosmosdb_sql_database" "cosmos_db" {
+  name                = "vivek-cosmos-sql-db"
+  resource_group_name = azurerm_cosmosdb_account.cosmos_db_account.resource_group_name
+  account_name        = azurerm_cosmosdb_account.cosmos_db_account.name
+  throughput          = 400
+}
+
+resource "azurerm_cosmosdb_sql_container" "cosmos_container" {
+  name                  = "vivek-cosmos-sql-db-container"
+  resource_group_name   = azurerm_cosmosdb_account.cosmos_db_account.resource_group_name
+  account_name          = azurerm_cosmosdb_account.cosmos_db_account.name
+  database_name         = azurerm_cosmosdb_sql_database.cosmos_db.name
+  partition_key_path    = "/category"
+  partition_key_version = 1
+  # throughput            = 400
+
+  # indexing_policy {
+  #   indexing_mode = "consistent"
+
+  #   included_path {
+  #     path = "/*"
+  #   }
+
+  #   included_path {
+  #     path = "/included/?"
+  #   }
+
+  #   excluded_path {
+  #     path = "/excluded/?"
+  #   }
+  # }
+
+  # unique_key {
+  #   paths = ["/definition/idlong", "/definition/idshort"]
+  # }
 }
