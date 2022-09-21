@@ -16,6 +16,37 @@ terraform apply main.tfplan
 
 terraform state list
 
+# Add items to the container. See the images.
+
+# Once the items are added, we can query.
+
+# The following queries can be executed.
+SELECT g.category FROM Groceries g 
+WHERE g.category = "Fruits"
+
+SELECT g.groceryId, g.ItemName, g.category, g.quantity, g.id 
+FROM Groceries g 
+WHERE g.category = "Fruits"
+
+SELECT SUM(g.quantity)  
+FROM Groceries g 
+WHERE g.category = "Fruits"
+
+SELECT SUM(g.quantity) AS TotalQuantity 
+FROM Groceries g 
+
+SELECT g.category, SUM(g.quantity) AS TotalQuantity 
+FROM Groceries g 
+GROUP BY g.category
+
+# Now to try something else, delete the records
+
+SELECT g.groceryId, g.ItemName, g.category, g.quantity, g.id, g.source.sourceId, g.source.address
+FROM Groceries g 
+WHERE g.category = "Fruits"
+
+# You can now update the 
+
 terraform state show 
 
 terraform show terraform.tfstate
