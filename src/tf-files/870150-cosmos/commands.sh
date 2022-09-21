@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/870125-cosmos
+cd ./src/tf-files/870150-cosmos
 
 terraform fmt
 
