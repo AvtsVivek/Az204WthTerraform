@@ -14,6 +14,18 @@ resource "azurerm_cosmosdb_account" "cosmos_db" {
     consistency_level = "Session"
   }
 
+  backup {
+    
+    type = "Periodic" # Default is periodic
+
+    storage_redundancy = "Geo"
+
+  }
+
+  capacity {
+    total_throughput_limit = -1
+  }
+
   # capabilities {
   #   name = "EnableAggregationPipeline"
   # }
