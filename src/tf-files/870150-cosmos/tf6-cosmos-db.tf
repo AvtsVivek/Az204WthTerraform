@@ -61,25 +61,4 @@ resource "azurerm_cosmosdb_sql_container" "cosmos_container" {
   database_name         = azurerm_cosmosdb_sql_database.cosmos_db.name
   partition_key_path    = "/category"
   partition_key_version = 1
-  # throughput            = 400
-
-  # indexing_policy {
-  #   indexing_mode = "consistent"
-
-  #   included_path {
-  #     path = "/*"
-  #   }
-
-  #   included_path {
-  #     path = "/included/?"
-  #   }
-
-  #   excluded_path {
-  #     path = "/excluded/?"
-  #   }
-  # }
-
-  # unique_key {
-  #   paths = ["/definition/idlong", "/definition/idshort"]
-  # }
 }
