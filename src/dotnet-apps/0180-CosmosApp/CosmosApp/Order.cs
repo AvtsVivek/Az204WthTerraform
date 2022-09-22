@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-namespace CosmosDB
+namespace CosmosApp
 {
     public class Order
     {
@@ -16,4 +17,7 @@ namespace CosmosDB
 
         public int quantity { get; set; }
     }
+
+
+
 }

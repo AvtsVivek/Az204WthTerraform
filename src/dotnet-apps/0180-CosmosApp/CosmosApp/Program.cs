@@ -1,5 +1,5 @@
 ﻿using Microsoft.Azure.Cosmos;
-using CosmosDB;
+using CosmosApp;
 
 // Notes:
 // 1. Get the Azure Cosmos DB account uri.
@@ -29,6 +29,53 @@ await ReplaceItems();
 await ReadAllItems();
 
 await DeleteItems();
+
+containerName = "Customers";
+
+partitionKey = "/customerCity";
+
+await CreateContainer(databaseName, containerName, partitionKey);
+
+await AddItemToCustomerContainer("C1", "CustomerA", "New York",
+    new List<Order>() {
+    new Order
+    {
+        orderId = "O1",
+        category = "Laptop",
+        quantity = 100
+    },
+     new Order
+     {
+         orderId = "O2",
+         category = "Mobile",
+         quantity = 10
+     } });
+
+await AddItemToCustomerContainer("C2", "CustomerB", "Chicago",
+    new List<Order>() {
+    new Order
+    {
+        orderId = "O3",
+        category = "Laptop",
+        quantity = 20
+    }});
+
+
+await AddItemToCustomerContainer("C3", "CustomerC", "Miami",
+    new List<Order>() {
+    new Order
+    {
+        orderId = "O4",
+        category = "Desktop",
+        quantity = 30
+    },
+     new Order
+     {
+         orderId = "O5",
+         category = "Mobile",
+         quantity = 40
+     } });
+
 
 async Task DeleteItems()
 {
@@ -171,4 +218,25 @@ async Task CreateContainer(string databaseName, string containerName, string par
 
     Console.WriteLine("Container created");
 
+}
+
+async Task AddItemToCustomerContainer(string customerId, string customerName, string customerCity, List<Order> orders)
+{
+    var cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+
+    var database = cosmosClient.GetDatabase(databaseName);
+    var container = database.GetContainer(containerName);
+
+    var customer = new Customer()
+    {
+        customerId = customerId,
+        customerName = customerName,
+        customerCity = customerCity,
+        orders = orders
+    };
+
+    var response=await container.CreateItemAsync<Customer>(customer, new PartitionKey(customer.customerCity));
+
+    Console.WriteLine("Added item with Customer Id {0}", customerId);
+    Console.WriteLine("Request Units consumed {0}", response.RequestCharge);
 }
