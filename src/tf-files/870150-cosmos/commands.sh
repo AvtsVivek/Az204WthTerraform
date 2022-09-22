@@ -16,7 +16,7 @@ terraform apply main.tfplan
 
 terraform state list
 
-# Add items to the container. See the images.
+# Add items to the container. See the images. Use Grocery.json.
 
 # Once the items are added, we can query.
 
@@ -39,7 +39,7 @@ SELECT g.category, SUM(g.quantity) AS TotalQuantity
 FROM Groceries g 
 GROUP BY g.category
 
-# Now to try something else, delete the records
+# Now to try something else, delete the records. Then add data using Grocery2.json.
 
 SELECT g.groceryId, g.ItemName, g.category, g.quantity, g.id, g.source.sourceId, g.source.address
 FROM Groceries g 

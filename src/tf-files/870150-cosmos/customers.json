@@ -1,0 +1,47 @@
+[
+    {
+        "customerId":"C1",
+        "customerName":"CustomerA",
+        "customerCity":"New York",
+        "orders":[
+            {
+                "orderId":"O1",
+                "category":"Laptop",
+                "quantity":100
+            },
+            {
+                "orderId":"O2",
+                "category":"Mobile",
+                "quantity":10
+            }
+        ]   
+    },
+    {
+        "customerId":"C2",
+        "customerName":"CustomerB",
+        "customerCity":"Chicago",
+        "orders":[
+            {
+                "orderId":"O3",
+                "category":"Laptop",
+                "quantity":20
+            }    ]   
+    },
+    {
+        "customerId":"C3",
+        "customerName":"CustomerC",
+        "customerCity":"Miami",
+        "orders":[
+            {
+                "orderId":"O4",
+                "category":"Desktop",
+                "quantity":30
+            },
+            {
+                "orderId":"O5",
+                "category":"Mobile",
+                "quantity":40
+            }
+        ]   
+    }
+]

@@ -1,27 +1,29 @@
-{
-    "groceryId":"O1",
-    "ItemName": "Shimla Apples",
-    "category":"Fruits",
-    "quantity":100
-},
-{
-    "groceryId":"O2",
-    "category":"Vegitables",
-    "quantity":200
-},
-{
-    "groceryId":"O3",
-    "category":"Oils",
-    "quantity":75
-},
-{
-    "groceryId":"O4",
-    "category":"Pulses",
-    "quantity":25
-},
-{
-    "groceryId":"O5",
-    "ItemName": "Nagpur Oranges",
-    "category":"Fruits",
-    "quantity":10
-}
+[
+    {
+        "groceryId":"O1",
+        "ItemName": "Shimla Apples",
+        "category":"Fruits",
+        "quantity":100
+    },
+    {
+        "groceryId":"O2",
+        "category":"Vegitables",
+        "quantity":200
+    },
+    {
+        "groceryId":"O3",
+        "category":"Oils",
+        "quantity":75
+    },
+    {
+        "groceryId":"O4",
+        "category":"Pulses",
+        "quantity":25
+    },
+    {
+        "groceryId":"O5",
+        "ItemName": "Nagpur Oranges",
+        "category":"Fruits",
+        "quantity":10
+    }
+]

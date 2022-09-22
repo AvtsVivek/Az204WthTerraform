@@ -1,47 +1,49 @@
-{
-    "groceryId":"O1",
-    "ItemName": "Shimla Apples",
-    "category":"Fruits",
-    "quantity":100,
-    "source": {
-        "sourceId": "S1",
-        "address": "Shimla, Himachal Pradesh"
+[
+    {
+        "groceryId":"O1",
+        "ItemName": "Shimla Apples",
+        "category":"Fruits",
+        "quantity":100,
+        "source": {
+            "sourceId": "S1",
+            "address": "Shimla, Himachal Pradesh"
+        }
+    },
+    {
+        "groceryId":"O2",
+        "category":"Vegitables",
+        "quantity":200,
+        "source": {
+            "sourceId": "S2",
+            "address": "Pune, Maharastra"
+        }
+    },
+    {
+        "groceryId":"O3",
+        "category":"Oils",
+        "quantity":75,
+        "source": {
+            "sourceId": "S3",
+            "address": "Hyderabad, Telengana"
+        }
+    },
+    {
+        "groceryId":"O4",
+        "category":"Pulses",
+        "quantity":25,
+        "source": {
+            "sourceId": "S4",
+            "address": "Jamnagar, Gujrat"
+        }
+    },
+    {
+        "groceryId":"O5",
+        "ItemName": "Nagpur Oranges",
+        "category":"Fruits",
+        "quantity":10,
+        "source": {
+            "sourceId": "S5",
+            "address": "Nagpur, Maharastra"
+        }
     }
-},
-{
-    "groceryId":"O2",
-    "category":"Vegitables",
-    "quantity":200,
-    "source": {
-        "sourceId": "S2",
-        "address": "Pune, Maharastra"
-    }
-},
-{
-    "groceryId":"O3",
-    "category":"Oils",
-    "quantity":75,
-    "source": {
-        "sourceId": "S3",
-        "address": "Hyderabad, Telengana"
-    }
-},
-{
-    "groceryId":"O4",
-    "category":"Pulses",
-    "quantity":25,
-    "source": {
-        "sourceId": "S4",
-        "address": "Jamnagar, Gujrat"
-    }
-},
-{
-    "groceryId":"O5",
-    "ItemName": "Nagpur Oranges",
-    "category":"Fruits",
-    "quantity":10,
-    "source": {
-        "sourceId": "S5",
-        "address": "Nagpur, Maharastra"
-    }
-}
+]
