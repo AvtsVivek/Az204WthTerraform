@@ -1,18 +1,75 @@
 ﻿using Microsoft.Azure.Cosmos;
+using CosmosDB;
 
+// Notes:
+// 1. Get the Azure Cosmos DB account uri.
+// Go to the portal and then to Azure Cosmos DB account. In the overview, you should see the uri.
+// 2. Now go to Keys tab. The pick the primary key. And then put it in cosmosDBKey.
 
 var cosmosDBEndpointUri = "https://vivek-hykcek-cosmos-db-account.documents.azure.com:443/";
 
-var cosmosDBKey = "Tc5Rs3r3kme5JD5hcaBgwDiRLz1oDxwwESO9q2NjHHQEreoQKQOr00qOBWQgn187WXbeZB3DfrQQzOtzDBGUlg==";
+var cosmosDBKey = "bZFafilXBuoTRKEjRpo3Ai2uXIou3vFqjrSPZXy9b3ZjU8xlogEJOQNmE6wFmULbILHPEBp2LBeOYg7KTAjozA==";
 
 var databaseName = "appdb";
 
 var containerName = "Orders";
 
-var partitionKey = "/categoryhere";
+var partitionKey = "/category";
 
 await CreateDatabase(databaseName);
 await CreateContainer(databaseName, containerName, partitionKey);
+
+await AddItem("O1", "Laptop", 100);
+await AddItem("O2", "Mobiles", 200);
+await AddItem("O3", "Desktop", 75);
+await AddItem("O4", "Laptop", 25);
+
+await ReadAllItems();
+
+async Task ReadAllItems()
+{
+    var cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+    var database = cosmosClient.GetDatabase(databaseName);
+    var container = database.GetContainer(containerName);
+
+    var sqlQuery = "SELECT o.orderId,o.category,o.quantity FROM Orders o";
+
+    var queryDefinition = new QueryDefinition(sqlQuery);
+    using FeedIterator<Order> feedIterator = container.GetItemQueryIterator<Order>(queryDefinition);
+
+    while(feedIterator.HasMoreResults)
+    {
+        FeedResponse<Order> respose = await feedIterator.ReadNextAsync();
+        foreach(Order order in respose)
+        {
+            Console.WriteLine("Order Id {0}", order.orderId);
+            Console.WriteLine("Category {0}", order.category);
+            Console.WriteLine("Quantity {0}", order.quantity);
+        }
+    }
+}
+
+async Task AddItem(string orderId,string category,int quantity)
+{
+    CosmosClient cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+
+    var database = cosmosClient.GetDatabase(databaseName);
+    var container = database.GetContainer(containerName);
+
+    Order order = new Order()
+    {
+        id= Guid.NewGuid().ToString(),
+        orderId = orderId,
+        category = category,
+        quantity = quantity
+    };
+
+    var response=await container.CreateItemAsync<Order>(order, new PartitionKey(order.category));
+
+    Console.WriteLine("Added item with Order Id {0}", orderId);
+    Console.WriteLine("Request Units consumed {0}", response.RequestCharge);
+
+}
 
 async Task CreateDatabase(string databaseName)
 {

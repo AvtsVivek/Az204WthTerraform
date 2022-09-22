@@ -16,13 +16,12 @@ terraform apply main.tfplan
 
 terraform state list
 
-# Add items to the container. See the images. Use Grocery.json.
+# Now the time to run the dotnet app. 
+# dotnet build ./../../dotnet-apps/0160-CreateStorageBlobContainer/CreateStorageBlobContainer/CreateStorageBlobContainer.csproj
+dotnet build ./../../dotnet-apps/0180-CosmosApp/CosmosApp/CosmosApp.csproj
 
-# Once the items are added, we can query.
-
-# The following queries can be executed.
-
-# You can now update the 
+# Run the prject to create the database and container. 
+dotnet run --project ./../../dotnet-apps/0180-CosmosApp/CosmosApp/CosmosApp.csproj
 
 terraform state show 
 
