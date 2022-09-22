@@ -28,21 +28,62 @@ await ReplaceItems();
 
 await ReadAllItems();
 
+await DeleteItems();
+
+async Task DeleteItems()
+{
+    var cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+
+    var database = cosmosClient.GetDatabase(databaseName);
+    var container = database.GetContainer(containerName);
+
+    var orderId = "O2";
+    var sqlQuery = $"SELECT o.id,o.category FROM Orders o WHERE o.orderId='{orderId}'";
+
+    var id="";
+    var category = "";
+
+    var queryDefinition = new QueryDefinition(sqlQuery);
+    using FeedIterator<Order> feedIterator = container.GetItemQueryIterator<Order>(queryDefinition);
+
+    while(feedIterator.HasMoreResults)
+    {
+        FeedResponse<Order> respose = await feedIterator.ReadNextAsync();
+        foreach(Order order in respose)
+        {
+            id = order.id;
+            category = order.category;
+        }
+    }
+
+    while(feedIterator.HasMoreResults)
+    {
+        FeedResponse<Order> respose = await feedIterator.ReadNextAsync();
+        foreach(Order order in respose)
+        {
+            id = order.id;
+            category = order.category;
+        }
+    }
+    
+    // Lets just delete the item
+    await container.DeleteItemAsync<Order>(id, new PartitionKey(category));
+    Console.WriteLine("Item is deleted");
+}
+
 async Task ReplaceItems()
 {
-    CosmosClient cosmosClient;
-    cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+    var cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
 
-    Database database = cosmosClient.GetDatabase(databaseName);
-    Container container = database.GetContainer(containerName);
+    var database = cosmosClient.GetDatabase(databaseName);
+    var container = database.GetContainer(containerName);
 
-    string orderId = "O1";
-    string sqlQuery = $"SELECT o.id,o.category FROM Orders o WHERE o.orderId='{orderId}'";
+    var orderId = "O1";
+    var sqlQuery = $"SELECT o.id,o.category FROM Orders o WHERE o.orderId='{orderId}'";
+    var id="";
+    var category = "";
 
-    string id="";
-    string category = "";
-
-    QueryDefinition queryDefinition = new QueryDefinition(sqlQuery);
+    var queryDefinition = new QueryDefinition(sqlQuery);
     using FeedIterator<Order> feedIterator = container.GetItemQueryIterator<Order>(queryDefinition);
 
     while(feedIterator.HasMoreResults)
@@ -57,7 +98,7 @@ async Task ReplaceItems()
 
     
     // Get the specific item first
-    ItemResponse<Order> orderResponse = await container.ReadItemAsync<Order>(id, new PartitionKey(category));
+    var orderResponse = await container.ReadItemAsync<Order>(id, new PartitionKey(category));
 
     var item = orderResponse.Resource;
     item.quantity = 300;
@@ -92,7 +133,7 @@ async Task ReadAllItems()
 
 async Task AddItem(string orderId,string category,int quantity)
 {
-    CosmosClient cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+    var cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
 
     var database = cosmosClient.GetDatabase(databaseName);
     var container = database.GetContainer(containerName);
@@ -114,8 +155,7 @@ async Task AddItem(string orderId,string category,int quantity)
 
 async Task CreateDatabase(string databaseName)
 {
-    CosmosClient cosmosClient;
-    cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+    var cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
 
     await cosmosClient.CreateDatabaseIfNotExistsAsync(databaseName);
     Console.WriteLine("Database created");
@@ -123,10 +163,9 @@ async Task CreateDatabase(string databaseName)
 
 async Task CreateContainer(string databaseName, string containerName, string partitionKey)
 {
-    CosmosClient cosmosClient;
-    cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+    var cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
 
-    Database database = cosmosClient.GetDatabase(databaseName);
+    var database = cosmosClient.GetDatabase(databaseName);
 
     await database.CreateContainerAsync(containerName, partitionKey);
 
