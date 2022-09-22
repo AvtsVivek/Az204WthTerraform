@@ -24,7 +24,48 @@ await AddItem("O2", "Mobiles", 200);
 await AddItem("O3", "Desktop", 75);
 await AddItem("O4", "Laptop", 25);
 
+await ReplaceItems();
+
 await ReadAllItems();
+
+async Task ReplaceItems()
+{
+    CosmosClient cosmosClient;
+    cosmosClient = new CosmosClient(cosmosDBEndpointUri, cosmosDBKey);
+
+    Database database = cosmosClient.GetDatabase(databaseName);
+    Container container = database.GetContainer(containerName);
+
+    string orderId = "O1";
+    string sqlQuery = $"SELECT o.id,o.category FROM Orders o WHERE o.orderId='{orderId}'";
+
+    string id="";
+    string category = "";
+
+    QueryDefinition queryDefinition = new QueryDefinition(sqlQuery);
+    using FeedIterator<Order> feedIterator = container.GetItemQueryIterator<Order>(queryDefinition);
+
+    while(feedIterator.HasMoreResults)
+    {
+        FeedResponse<Order> respose = await feedIterator.ReadNextAsync();
+        foreach(Order order in respose)
+        {
+            id = order.id;
+            category = order.category;
+        }
+    }
+
+    
+    // Get the specific item first
+    ItemResponse<Order> orderResponse = await container.ReadItemAsync<Order>(id, new PartitionKey(category));
+
+    var item = orderResponse.Resource;
+    item.quantity = 300;
+
+    // Now let's replace the item
+    await container.ReplaceItemAsync<Order>(item, item.id, new PartitionKey(item.category));
+    Console.WriteLine("Item is updated");
+}
 
 async Task ReadAllItems()
 {
