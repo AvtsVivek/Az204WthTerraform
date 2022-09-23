@@ -45,4 +45,8 @@ resource "azurerm_cosmosdb_account" "cosmos_db_account" {
     # zone_redundant (Optional) Should zone redundancy be enabled for this region? Defaults to false.
     zone_redundant = false
   }
+
+  capabilities {
+    name = "EnableTable"
+  }
 }

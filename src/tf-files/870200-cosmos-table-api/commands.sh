@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/870160-cosmos-dotnet-access
+cd ./src/tf-files/870200-cosmos-table-api
 
 terraform fmt
 
