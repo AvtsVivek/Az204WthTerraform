@@ -1,8 +1,9 @@
 ﻿using Azure;
 using Azure.Data.Tables;
 
-string connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsiteqmvtgi;AccountKey=PVqBjgwnvGRaVqqa93o0LYs4JGbP+vCfyGjBWVeNr58UnfsSKS9L7/jPXYOVc39jLUMVngTTmheb+AStAtXz6A==;EndpointSuffix=core.windows.net";
-string tableName = "mysampletable";
+// Update the correct connection string. Also update the correct table name here. Else this would not work.
+var connectionString = "DefaultEndpointsProtocol=https;AccountName=vivek-pmwcio-cosmos-db-account;AccountKey=2GaLtM63DA1qDOF1UT8ak68R2vIkFNxZeCL24u6oRyCP1n4an68JUi9LWAf1BBWR5dPot1qX9jw26fIlwFapUg==;TableEndpoint=https://vivek-pmwcio-cosmos-db-account.table.cosmos.azure.com:443/";
+var tableName = "vivek-cosmos-table-db";
 
 AddEntity("O1", "Apples", 100, "Indian Rs", 1, "Kg");
 AddEntity("O2", "Rice", 2000, "Indian Rs", 50, "Kg");

@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/870200-cosmos-table-api
+cd ./src/tf-files/870225-cosmos-table-api-dotnet-access
 
 terraform fmt
 
@@ -21,16 +21,13 @@ terraform state list
 # Update the Connection string.
 # https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/dotnet-apps/0170-TableStorage/TableStorage/Program.cs
 
-# var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsiteqmvtgi;AccountKey=PVqBjgwnvGRaVqqa93o0LYs4JGbP+vCfyGjBWVeNr58UnfsSKS9L7/jPXYOVc39jLUMVngTTmheb+AStAtXz6A==;EndpointSuffix=core.windows.net";
-# var tableName = "mysampletable";
+# var connectionString = "DefaultEndpointsProtocol=https;AccountName=vivek-pmwcio-cosmos-db-account;AccountKey=2GaLtM63DA1qDOF1UT8ak68R2vIkFNxZeCL24u6oRyCP1n4an68JUi9LWAf1BBWR5dPot1qX9jw26fIlwFapUg==;TableEndpoint=https://vivek-pmwcio-cosmos-db-account.table.cosmos.azure.com:443/";
+# var tableName = "vivek-cosmos-table-db";
 
-
-
-# Now the time to run the dotnet app. 
+# Now the time to run the dotnet app. See 1TableDeployment4.jpg 
 dotnet build ./../../dotnet-apps/0170-TableStorage/TableStorage/TableStorage.csproj
 
-# For the following execute command to run successifully, the file 'data.sql' must be present in the following folder
-# ./src/tf-files/860325-storage-access-through-dotnet
+# Now data should be in the table. See 1TableDeployment3.jpg
 
 dotnet run --project ./../../dotnet-apps/0170-TableStorage/TableStorage/TableStorage.csproj
 
@@ -57,4 +54,3 @@ Remove-Item main.tfplan
 Remove-Item main.destroy.tfplan
 
 Remove-Item .terraform.lock.hcl
-
