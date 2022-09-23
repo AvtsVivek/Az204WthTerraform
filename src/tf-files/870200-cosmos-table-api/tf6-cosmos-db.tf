@@ -46,7 +46,16 @@ resource "azurerm_cosmosdb_account" "cosmos_db_account" {
     zone_redundant = false
   }
 
+  # The following "EnableTable" capability is what will enable table api as againes sql or other apis.
   capabilities {
     name = "EnableTable"
   }
 }
+
+resource "azurerm_cosmosdb_table" "cosmos_db_table" {
+  name                = "vivek-cosmos-table-db"
+  resource_group_name = azurerm_cosmosdb_account.cosmos_db_account.resource_group_name
+  account_name        = azurerm_cosmosdb_account.cosmos_db_account.name
+  throughput          = 400
+}
+

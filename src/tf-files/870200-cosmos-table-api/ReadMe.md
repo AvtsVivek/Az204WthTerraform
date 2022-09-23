@@ -12,3 +12,7 @@ capabilities {
 }
 ```
 
+- If you want to create a new table manually using UI, then follow 2CreateTable1.jpg and 2CreateTable2.jpg
+
+- Then add some entities to the table. See the images 2CreateTable3.jpg 4 and 5.
+
