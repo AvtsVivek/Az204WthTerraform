@@ -16,9 +16,47 @@ var container = cosmosClient.GetContainer(databaseName, containerName);
 
 await CallStoredProcedure();
 
+await AddNewItems();
+
+async Task AddNewItems()
+{
+    dynamic[] orderItems = new dynamic[]
+    {
+        new {
+            id = Guid.NewGuid().ToString(),
+            orderId = "01",
+            category  = "Laptop",
+            quantity  = 100
+        },
+        new {
+            id = Guid.NewGuid().ToString(),
+            orderId = "02",
+            category  = "Laptop",
+            quantity  = 200
+        },
+        new {
+            id = Guid.NewGuid().ToString(),
+            orderId = "03",
+            category  = "Laptop",
+            quantity  = 75
+        },
+    };
+
+    var result = await container.Scripts.ExecuteStoredProcedureAsync<string>("CreateItems", new PartitionKey("Laptop"), new[] { orderItems });
+
+    Console.WriteLine(result);
+
+
+}
+
+
+
+
 async Task CallStoredProcedure()
 {
     var result = await container.Scripts.ExecuteStoredProcedureAsync<string>("HelloWorld", new PartitionKey(""), null);
 
     Console.WriteLine(result);
 }
+
+
