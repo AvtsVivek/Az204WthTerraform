@@ -18,6 +18,24 @@ await CallStoredProcedure();
 
 await AddNewItems();
 
+await CreateItem();
+
+async Task CreateItem()
+{
+    dynamic orderItem =
+        new
+        {
+            id = Guid.NewGuid().ToString(),
+            orderId = "O5",
+            category = "Laptop"
+        };
+
+    await container.CreateItemAsync(orderItem, null, new ItemRequestOptions { PreTriggers = new List<string> { "validateItem" } });
+
+    Console.WriteLine("Item has been inserted");
+
+}
+
 async Task AddNewItems()
 {
     dynamic[] orderItems = new dynamic[]
