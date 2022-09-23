@@ -35,8 +35,13 @@ dotnet build ./../../dotnet-apps/0170-TableStorage/TableStorage/TableStorage.csp
 
 dotnet run --project ./../../dotnet-apps/0170-TableStorage/TableStorage/TableStorage.csproj
 
-# For the following command to work, you need to pass on the resource, or data source.
-# This resource or data source is got from terraform state list command
+# Note this same app is used in the following example as well.
+# https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/870225-cosmos-table-api-dotnet-access
+# Take a look at this file
+# https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/870225-cosmos-table-api-dotnet-access/commands.sh
+# The connection string needs to be updated, and the table name.
+
+
 terraform state show 
 
 terraform show terraform.tfstate

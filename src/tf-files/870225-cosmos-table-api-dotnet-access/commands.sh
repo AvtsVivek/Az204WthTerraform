@@ -31,6 +31,12 @@ dotnet build ./../../dotnet-apps/0170-TableStorage/TableStorage/TableStorage.csp
 
 dotnet run --project ./../../dotnet-apps/0170-TableStorage/TableStorage/TableStorage.csproj
 
+# Note this same app is used in the following example as well.
+# https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/860525-table-storage-access-with-dotnet
+# Take a look at this file
+# https://github.com/AvtsVivek/Az204WthTerraform/blob/main/src/tf-files/860525-table-storage-access-with-dotnet/commands.sh
+# The connection string needs to be updated, and the table name.
+
 terraform state show 
 
 terraform show terraform.tfstate
