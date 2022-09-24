@@ -19,7 +19,8 @@ resource "azurerm_windows_function_app" "win_function_app" {
     "WEBSITE_RUN_FROM_PACKAGE"       = "",
     "FUNCTIONS_WORKER_RUNTIME"       = "dotnet"
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.application_insights.instrumentation_key,
-    FUNCTIONS_EXTENSION_VERSION      = "~4"
+    # https://stackoverflow.com/a/73834722/1977871
+    FUNCTIONS_EXTENSION_VERSION = "~3"
   }
 
   site_config {
