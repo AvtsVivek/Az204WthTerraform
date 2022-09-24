@@ -9,7 +9,7 @@
     "WEBSITE_RUN_FROM_PACKAGE"       = "",
     "FUNCTIONS_WORKER_RUNTIME"       = "dotnet"
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.application_insights.instrumentation_key,
-    FUNCTIONS_EXTENSION_VERSION    = "~4"
+    FUNCTIONS_EXTENSION_VERSION    = "~3"
   }
 
   site_config {
@@ -20,8 +20,9 @@
 
 ```
   
-- The we will create a dotnet based Azure Function in the /src/dotnet-apps folder 0080-AzureFuncVs2022 
+- The we will create a dotnet based Azure Function in the /src/dotnet-apps folder 0090-AzureFuncVs2022 
   
-- The app in 0080-AzureFuncVs2022 is created using VS 2022
+- The app in 0090-AzureFuncVs2022 is created using VS 2022
 
-- This app is deployed to azure function using vs code. 
+- This app is deployed to azure function using vs code. See the images. 
+
