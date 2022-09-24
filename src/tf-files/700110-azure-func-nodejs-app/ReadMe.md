@@ -46,7 +46,7 @@ https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code
 
 ![Azure function](./images/10CreateJsAzureFunction17.jpg)
 
-![Azure function](./images/CreateJsAzureFunction18.jpg)
+![Azure function](./images/10CreateJsAzureFunction18.jpg)
 
 ![Azure function](./images/10CreateJsAzureFunction19.jpg)
 
