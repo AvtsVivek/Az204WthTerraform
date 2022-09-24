@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/700110-azure-func-tut1/
+cd ./src/tf-files/700110-azure-func-nodejs-app/
 
 terraform fmt
 
