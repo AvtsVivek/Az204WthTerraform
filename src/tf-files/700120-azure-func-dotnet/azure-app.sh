@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/700110-azure-func-tut1/
+cd ./src/tf-files/700120-azure-func-dotnet/
 
 # Ensure necessary visual studio code extensions are installed. See InstallExtensionToVisualStudioCode.jpg in the images folder.
 
