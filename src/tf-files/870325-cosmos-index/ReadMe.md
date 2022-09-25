@@ -14,7 +14,7 @@
 
 - Add items as follows.
 
-- User Grocery.json file
+- Use Grocery.json file
 
 ![Add items](./images/1AddItems1.jpg)
 
