@@ -1,0 +1,40 @@
+[
+    {
+        "groceryId":"O1",
+        "ItemName": "Shimla Apples",
+        "category":"Fruits",
+        "quantity":100
+    }
+    ,
+
+    {
+        "groceryId":"O2",
+        "ItemName": "Mirchi",
+        "category":"Vegitables",
+        "quantity":200
+    }
+    ,
+
+    {
+        "groceryId":"O3",
+        "ItemName": "GroundNut Oil",
+        "category":"Oils",
+        "quantity":75
+    }
+    ,
+
+    {
+        "groceryId":"O4",
+        "ItemName": "Tur Dal",
+        "category":"Pulses",
+        "quantity":25
+    }
+    ,
+    
+    {
+        "groceryId":"O5",
+        "ItemName": "Nagpur Oranges",
+        "category":"Fruits",
+        "quantity":10
+    }
+]
