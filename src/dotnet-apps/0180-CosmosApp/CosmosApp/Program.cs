@@ -6,9 +6,9 @@ using CosmosApp;
 // Go to the portal and then to Azure Cosmos DB account. In the overview, you should see the uri.
 // 2. Now go to Keys tab. The pick the primary key. And then put it in cosmosDBKey.
 
-var cosmosDBEndpointUri = "https://vivek-mbjgoc-cosmos-db-account.documents.azure.com:443/";
+var cosmosDBEndpointUri = "https://vivek-wrhxeg-cosmos-db-account.documents.azure.com:443/";
 
-var cosmosDBKey = "Tn9RqcNdTyaIIjRNkcoS81mkDhsmCQZHsk7yXjYqHG2vbsu2UnKvZToun8oHDfYzjU5vKvSoPRQgbLy31ZvbKQ==";
+var cosmosDBKey = "fajvbdkQ4CB7MoMqN14m0xPXofHxhZKhLfWzsmG9YVa0EgbYgHqAce1QrgbyvjwVoe83FSoAzhYG9W3dk0YMWw==";
 
 var databaseName = "appdb";
 
