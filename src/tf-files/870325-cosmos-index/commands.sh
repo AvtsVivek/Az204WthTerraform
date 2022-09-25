@@ -16,15 +16,6 @@ terraform apply main.tfplan
 
 terraform state list
 
-# Now the time to run the dotnet app. 
-# Get the keys and update in the dotnet project's(/dotnet-apps/0180-CosmosApp/CosmosApp/CosmosApp.csproj) Program.cs file. 
-# See the images 1AfterDeployingDbAccount1.jpg and 1AfterDeployingDbAccount2.jpg
-# 
-dotnet build ./../../dotnet-apps/0180-CosmosApp/CosmosApp/CosmosApp.csproj
-
-# Run the prject to create the database and container. 
-dotnet run --project ./../../dotnet-apps/0180-CosmosApp/CosmosApp/CosmosApp.csproj
-
 # You can now update the 
 
 terraform state show 
