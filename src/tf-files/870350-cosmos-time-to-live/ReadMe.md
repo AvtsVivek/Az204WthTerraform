@@ -1,6 +1,6 @@
-# Composite Index
+# Time to live
 
-- Demos Composite Index in Cosmos db
+- Demos Time to live or ttl
 
 - We can add a database and container, but not item. 
 
