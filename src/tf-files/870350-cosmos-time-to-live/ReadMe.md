@@ -13,7 +13,12 @@
 - So we need to add items using other means, such as through portal, or using some apis and calling those apis.
 
 - But before that, take a look at settings of the container, that got created due to config.
+- Two containers are created, one with ttl and one without ttl. 
 ![Settings of the container](./images/10TimeToLiveSetting1.jpg)
+
+![Settings of the container](./images/10TimeToLiveSetting2.jpg)
+
+![Settings of the container](./images/10TimeToLiveSetting3.jpg)
 
 - Add items as follows.
 
@@ -21,9 +26,14 @@
 
 ![Add items](./images/1AddItems1.jpg)
 
+- Wait for 10 sec and then observe. The item will be removed.
+
 ![Add items](./images/1AddItems2.jpg)
+
+- Wait for 10 sec and then observe. The item will be removed.
 
 ![Add items](./images/1AddItems3.jpg)
 
-- Once added, wait for more than 10 seconds. 
+- This time, the item will **NOT** be removed. For this container, the ttl is not enabled.
+ 
 

@@ -11,7 +11,8 @@
         "groceryId":"O2",
         "ItemName": "Mirchi",
         "category":"Vegitables",
-        "quantity":200
+        "quantity":200,
+        "ttl": 10
     }
     ,
 
