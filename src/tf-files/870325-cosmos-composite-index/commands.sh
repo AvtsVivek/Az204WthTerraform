@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/870325-cosmos-index
+cd ./src/tf-files/870325-cosmos-composite-index
 
 terraform fmt
 
