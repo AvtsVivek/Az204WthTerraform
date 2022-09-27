@@ -14,5 +14,11 @@ resource "azuread_application" "webdb" {
     owners       =[data.azuread_client_config.current.object_id]
 
 - Now see the images 
-- 
+
+![App Registrations](./images/20AppRegistration1.jpg)
+
+![App Registrations](./images/20AppRegistration2.jpg)
+
+![App Registrations](./images/20AppRegistration3.jpg)
+
 
