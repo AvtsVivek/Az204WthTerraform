@@ -1,6 +1,7 @@
 cd ../../..
 
-cd ./src/tf-files/400250-app-registration
+# C:\Vivek\Trials\Tf\Az204\src\tf-files\400275-app-registration-service-principal\commands.sh
+cd ./src/tf-files/400275-app-registration-service-principal
 
 terraform fmt
 
