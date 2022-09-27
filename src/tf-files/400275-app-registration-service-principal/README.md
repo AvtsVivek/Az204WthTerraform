@@ -8,3 +8,5 @@
   - [App Objects and Service Principals](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
   - [App Registration Quick Start](https://learn.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app)
   - [So Question Reference](https://stackoverflow.com/questions/71067014/error-while-trying-to-do-app-registration-using-terraform-azure-ad-provider-2-0)
+  - [Code Samples](https://learn.microsoft.com/en-us/azure/active-directory/develop/sample-v2-code)
+  - 
