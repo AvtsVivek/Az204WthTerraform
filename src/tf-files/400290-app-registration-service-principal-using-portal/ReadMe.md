@@ -9,7 +9,7 @@
 
   - Find your role under Overview->My feed. If you have the User role, you must make sure that non-administrators can register applications.
 
-  - ![Add Publish Profile](./images/AddPublishProfile.jpg)
+
   
   - [Check Azure subscription permissions](https://learn.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#check-azure-subscription-permissions). 
   
