@@ -1,3 +1,6 @@
 # Terraform-App-Rrgistration-Azure-AD
 
-# This is same as the previous example, but without modules.
+- See the image 20AppRegistration1.jpg
+
+- ![Container](./images/20AppRegistration1.jpg)
+
