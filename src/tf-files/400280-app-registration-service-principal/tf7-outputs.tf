@@ -16,5 +16,29 @@ output "tenant_id" {
   value = data.azuread_client_config.current.tenant_id
 }
 
+# app_sp
 
+output "service_principal_type" {
+  description = "Service Principal type"
+  value       = azuread_service_principal.app_sp.type
+}
 
+output "service_principal_app_roles" {
+  description = "Service Principal App Roles"
+  value       = azuread_service_principal.app_sp.app_roles
+}
+
+output "service_principal_display_name" {
+  description = "Service Principal display name"
+  value       = azuread_service_principal.app_sp.display_name
+}
+
+output "service_principal_object_id" {
+  description = "Service Principal display name"
+  value       = azuread_service_principal.app_sp.object_id
+}
+
+output "service_principal_id" {
+  description = "Service Principal display name"
+  value       = azuread_service_principal.app_sp.id
+}
