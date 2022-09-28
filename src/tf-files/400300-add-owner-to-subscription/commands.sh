@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400100-add-owner-to-subscription
+cd ./src/tf-files/400300-add-owner-to-subscription
 
 terraform fmt
 
