@@ -39,3 +39,46 @@
 
 - ![Container](./images/4MsAzureStorageExplorer5.jpg)
 
+- ![Container](./images/4MsAzureStorageExplorer5.jpg)
+
+- Now signin with newly created user.
+
+- ![Container](./images/50LoginFromPortal1.jpg)
+
+- ![Container](./images/50LoginFromPortal2.jpg)
+
+- ![Container](./images/50LoginFromPortal3.jpg)
+
+- ![Container](./images/50LoginFromPortal4.jpg)
+
+- ![Container](./images/50LoginFromPortal5.jpg)
+
+- ![Container](./images/50LoginFromPortal6.jpg)
+
+- Now look for Storage Account.
+
+- ![Container](./images/50LoginFromPortal7.jpg)
+
+- ![Container](./images/50LoginFromPortal8.jpg)
+
+- ![Container](./images/50LoginFromPortal9.jpg)
+
+- ![Container](./images/50LoginFromPortal10.jpg)
+
+- ![Container](./images/50LoginFromPortal11.jpg)
+
+- Also look for the properties of the newly created user.
+
+- ![Container](./images/60ActiveDirectory1.jpg)
+
+- ![Container](./images/60ActiveDirectory2.jpg)
+  
+- ![Container](./images/60ActiveDirectory3.jpg)
+
+- ![Container](./images/60ActiveDirectory4.jpg)
+
+- ![Container](./images/60ActiveDirectory5.jpg)
+
+- ![Container](./images/60ActiveDirectory6.jpg)
+
+-  
