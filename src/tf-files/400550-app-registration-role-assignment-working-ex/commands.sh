@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400300-app-registration-role-assignment
+cd ./src/tf-files/400550-app-registration-role-assignment-working-ex
 
 terraform fmt
 

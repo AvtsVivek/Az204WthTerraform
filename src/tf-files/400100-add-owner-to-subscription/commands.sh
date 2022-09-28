@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400310-app-registration-role-assignment-ms-graph
+cd ./src/tf-files/400100-add-owner-to-subscription
 
 terraform fmt
 
