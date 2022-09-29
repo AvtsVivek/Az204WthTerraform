@@ -1,2 +1,9 @@
-# Trying the [example in this one](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/app_role_assignment).
+# Add permissions
+
+- When we create an app registration manually using portal, API permissions are added as shown in the image(20ApiPermissions10.jpg)
+
+- So the same is attempted when using Terraform config files.
+
+- 
+
 
