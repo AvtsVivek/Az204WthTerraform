@@ -8,8 +8,8 @@
 - The we are assigning a Role of **Owner** to this created Application object/service principal. 
   - The scope for this case being the entire subsctiption.
 
-- ![Created User](./images/10CreatedUser10.jpg)
+- ![Created User](./images/20SubscriptionAccessControl10.jpg)
 
-- ![Owner to Subscription](./images/20AddCreatedUserAsOwnerToSubscription10.jpg)
+- ![Owner to Subscription](./images/20SubscriptionAccessControl20.jpg)
 
 

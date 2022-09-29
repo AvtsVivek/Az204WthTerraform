@@ -1,8 +1,8 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Azure.Storage.Blobs.Specialized;
-
-var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitexakcwn;AccountKey=2Acdma5wm/P4SV2v4kgixTRM62fadM8Axfg+8fCiOBMEE173Ws7dUyii8bY3DtdARoYFddYbitrA+AStXEVdDw==;EndpointSuffix=core.windows.net";
+                   
+var connectionString = "DefaultEndpointsProtocol=https;AccountName=staticwebsitemkxmzz;AccountKey=08SZxPIbMfoOPl1bd8loTt/dOJo51cvPqa5CIL1QtbRewDIMqxoq9f7SDRMeWXiB/zXFlECufA0e+AStzaMB+g==;EndpointSuffix=core.windows.net";
 
 var containerName = "content1";
 

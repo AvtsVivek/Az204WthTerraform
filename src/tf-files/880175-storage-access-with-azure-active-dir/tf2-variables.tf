@@ -1,3 +1,14 @@
+variable "namespace" {
+  description = "The project namespace to use for unique resource naming"
+  type        = string
+}
+
+variable "appname" {
+  description = "App Registration Name"
+  default     = "webdb"
+  type        = string
+}
+
 # Input variable definitions
 
 variable "location" {
@@ -37,4 +48,3 @@ variable "static_files_list" {
   default     = ["error.html", "index.html"]
   description = "Static file list."
 }
-
