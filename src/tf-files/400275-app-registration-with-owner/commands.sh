@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400250-app-registration
+cd ./src/tf-files/400275-app-registration-with-owner
 
 terraform fmt
 
