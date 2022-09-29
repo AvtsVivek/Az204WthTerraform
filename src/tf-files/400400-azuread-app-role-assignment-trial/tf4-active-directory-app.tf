@@ -9,14 +9,14 @@ resource "azuread_application" "example" {
   required_resource_access {
     resource_app_id = data.azuread_application_published_app_ids.well_known.result.MicrosoftGraph
 
-    resource_access {
-      id   = azuread_service_principal.msgraph.app_role_ids["User.Read.All"]
-      type = "Role"
-    }
+    # resource_access {
+    #   id   = azuread_service_principal.msgraph.app_role_ids["User.Read.All"]
+    #   type = "Role"
+    # }
 
     resource_access {
-      id   = azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
-      type = "Role" # Scope->Delegated and Role -> Application
+      id   = azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.Read"]
+      type = "Scope" # Scope->Delegated and Role -> Application
     }
   }
 }
