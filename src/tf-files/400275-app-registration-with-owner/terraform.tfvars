@@ -1,3 +1,3 @@
 namespace = "Dev"
 location  = "East US"
-appname   = "app-regist-demo"
+appname   = "enterprize-app-service-principal-terraform"

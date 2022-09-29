@@ -21,4 +21,8 @@ resource "azuread_application" "webdb" {
 
 ![App Registrations](./images/20AppRegistration3.jpg)
 
+- Note here that there is no enterprise application created. That is to say there is no Service Principal created.
+    - Look at the image 20AppRegistration20.jpg
+
+- ![Enterprise apps](./images/20AppRegistration20.jpg)
 

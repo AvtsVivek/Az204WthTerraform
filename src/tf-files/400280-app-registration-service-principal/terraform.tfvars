@@ -1,3 +1,3 @@
-# namespace = "Dev"
-# location  = "East US"
-# appname   = "app-regist-demo"
+namespace = "Dev"
+location  = "East US"
+appname   = "enterprize-app-service-principal-terraform"
