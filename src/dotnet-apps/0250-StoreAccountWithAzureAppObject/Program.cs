@@ -3,9 +3,9 @@ using Azure.Storage.Blobs;
 
 
 var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";
-var clientId = "b51a4f4d-d3f9-4421-b87b-ee9777571572";
-var clientSecret = "Kik8Q~~kueC-5aN952eHNaMPAb6cdB7-Cs7u0bIz";
-var blobURI = "https://staticwebsitemkxmzz.blob.core.windows.net/content/error.html";
+var clientId = "15ccfa0d-dd61-4c3a-993e-6f5636bb4d9d";
+var clientSecret = "Wid8Q~4iN2N0vaeMAYjKAoLJBNbN01qNWEMrXaic";
+var blobURI = "https://staticwebsitetrndov.blob.core.windows.net/content/error.html";
 var filePath = "error1.html";
 
 var clientCredential = new ClientSecretCredential(tenantId, clientId, clientSecret);
