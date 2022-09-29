@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400330-create-app-and-add-to-subscription-as-owner
+cd ./src/tf-files/400360-create-app-and-add-to-subscription-as-owner
 
 terraform fmt
 
