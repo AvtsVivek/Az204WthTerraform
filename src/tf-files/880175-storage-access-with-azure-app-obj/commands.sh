@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/880175-storage-access-with-azure-active-dir
+cd ./src/tf-files/880175-storage-access-with-azure-app-obj
 
 terraform fmt
 
