@@ -32,5 +32,14 @@ grant_type=client_credentials
 &client_secret=JUx8Q~xiMv2hb9OVKz8xtc.cCHvqBvcqpH4sKb4K
 ```
 
+- So the request has gone to Ms, then ms redirected to our tenant, then to AD, then to the application object, the object has given you an access token. 
+
+- Now send a get request.
+
+```
+GET https://graph.microsoft.com/v1.0/users HTTP/1.1
+Authorization: Bearer Paste_the_full_long_token_that_your_revieved_in_the_previous_post_request_step
+```
+
 
 
