@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400300-azuread-app-reg-permissions
+cd ./src/tf-files/400310-azuread-app-reg-permissions
 
 terraform fmt
 
