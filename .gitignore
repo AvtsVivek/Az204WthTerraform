@@ -451,3 +451,5 @@ nginxconfbackup
 
 data1.sql
 error1.html
+
+__azurite_db_table__.json
