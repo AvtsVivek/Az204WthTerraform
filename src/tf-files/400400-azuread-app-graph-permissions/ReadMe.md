@@ -3,6 +3,7 @@
 - Ensure the config files are successifully applied.
   
 - Review the created app registrations. 
+
 ![Review](./images/20AfterTerraformConfigFilesDeployment1.jpg)
 
 ![Review](./images/20AfterTerraformConfigFilesDeployment2.jpg)
