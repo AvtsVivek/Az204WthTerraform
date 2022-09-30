@@ -28,6 +28,12 @@ output "service_principal_type_msgraph" {
 #   value       = azuread_service_principal.msgraph.app_roles
 # }
 
+# Instead, we can get the count here.
+output "service_principal_app_roles_count_msgraph" {
+  description = "Service Principal App Roles count for msgraph"
+  value       = length(azuread_service_principal.msgraph.app_roles)
+}
+
 output "service_principal_display_name_msgraph" {
   description = "Service Principal display name for msgraph"
   value       = azuread_service_principal.msgraph.display_name
