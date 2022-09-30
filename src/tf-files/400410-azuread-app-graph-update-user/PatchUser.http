@@ -4,7 +4,8 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6Im9zTzZlT0h6U0l4RDFUMDRpaUVPbE
 Content-Type: application/json
 
 {
-    "givenName": "Ad User 2"
+    "givenName": "Ad User 2",
+    "firstName": "FirstName User 2"
 }
 
 
