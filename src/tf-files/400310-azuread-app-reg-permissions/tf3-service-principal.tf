@@ -10,6 +10,6 @@ resource "azuread_service_principal" "msgraph" {
   use_existing   = true
 }
 
-resource "azuread_service_principal" "example" {
-  application_id = azuread_application.example.application_id
+resource "azuread_service_principal" "sp_app" {
+  application_id = azuread_application.app.application_id
 }
