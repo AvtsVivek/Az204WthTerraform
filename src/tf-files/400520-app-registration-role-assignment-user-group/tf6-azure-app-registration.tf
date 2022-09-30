@@ -17,6 +17,10 @@ resource "azuread_application" "internal" {
 
 resource "azuread_service_principal" "internal" {
   application_id = azuread_application.internal.application_id
+  feature_tags {
+    enterprise = true
+    hide       = true
+  }  
 }
 
 resource "azuread_group" "example" {

@@ -12,4 +12,10 @@ resource "azuread_service_principal" "msgraph" {
 
 resource "azuread_service_principal" "sp_app" {
   application_id = azuread_application.app.application_id
+
+  feature_tags {
+    enterprise = true
+    hide       = true
+  }  
+  
 }

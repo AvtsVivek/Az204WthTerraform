@@ -30,6 +30,10 @@ resource "azuread_application" "example" {
 
 resource "azuread_service_principal" "example" {
   application_id = azuread_application.example.application_id
+  feature_tags {
+    enterprise = true
+    hide       = true
+  }  
 }
 
 resource "azuread_app_role_assignment" "example" {

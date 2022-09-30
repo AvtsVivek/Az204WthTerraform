@@ -31,5 +31,11 @@ resource "azuread_application" "app" {
 resource "azuread_service_principal" "app_sp" {
   application_id = azuread_application.app.application_id
   owners         = [data.azuread_client_config.current.object_id]
+
+  feature_tags {
+    enterprise = true
+    hide       = true
+  }
+
 }
 

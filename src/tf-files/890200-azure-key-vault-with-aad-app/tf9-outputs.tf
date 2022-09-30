@@ -17,21 +17,21 @@ output "resource_group_location" {
 
 output "azuread_application_app_object_id" {
   description = "Application object object id"
-  value = azuread_application.app.object_id
+  value       = azuread_application.app.object_id
 }
 
 output "azuread_application_app_application_id" {
   description = "Application object application id"
-  value = azuread_application.app.application_id
+  value       = azuread_application.app.application_id
 }
 
 output "azuread_application_app_id" {
   description = "Application object  id"
-  value = azuread_application.app.id
+  value       = azuread_application.app.id
 }
 
 output "azuread_application_app_display_name" {
   description = "Application object display name"
-  value = azuread_application.app.display_name
+  value       = azuread_application.app.display_name
 }
 
