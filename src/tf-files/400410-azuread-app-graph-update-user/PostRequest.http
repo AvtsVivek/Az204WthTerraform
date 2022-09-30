@@ -1,0 +1,20 @@
+###
+
+POST https://login.microsoftonline.com/35b02984-c026-40c5-8cb3-2267c184d48a/oauth2/v2.0/token HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic trusted:secret
+
+grant_type=client_credentials
+&scope=https://graph.microsoft.com/.default
+&client_id=2f188b01-82ae-4e18-af5d-b554cd11ee33
+&client_secret=Cvb8Q~FrD~h-6plT5sqeOjsJUd5kAjM7kvSHddyi
+
+###
+# This DOES NOT WORK
+# See this SO answer https://stackoverflow.com/a/73904892/1977871
+POST https://login.microsoftonline.com/35b02984-c026-40c5-8cb3-2267c184d48a/oauth2/v2.0/token HTTP/1.1
+content-type: application/json
+
+{
+    "grant_type": "client_credentials"
+}
