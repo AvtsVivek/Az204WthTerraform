@@ -42,5 +42,5 @@ GET https://graph.microsoft.com/v1.0/users HTTP/1.1
 Authorization: Bearer Paste_the_full_long_token_that_your_revieved_in_the_previous_post_request_step
 ```
 
-
+See all of the images.
 
