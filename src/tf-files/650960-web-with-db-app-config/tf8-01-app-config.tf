@@ -5,6 +5,7 @@ data "azurerm_client_config" "test" {}
 
 resource "azurerm_role_assignment" "test" {
   scope                = azurerm_resource_group.rg.id
+  # https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles  
   role_definition_name = "App Configuration Data Owner"
   principal_id         = data.azurerm_client_config.test.object_id
 }

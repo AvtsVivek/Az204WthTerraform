@@ -7,6 +7,7 @@ resource "azuread_user" "ad_user" {
 
 resource "azurerm_role_assignment" "storage_acc_role" {
   scope                = azurerm_storage_account.storage_account.id
+  # https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles    
   role_definition_name = "Storage Account Contributor"
   # principal_id         = azurerm_user_assigned_identity.appag_umid.principal_id
   principal_id = azuread_user.ad_user.object_id
