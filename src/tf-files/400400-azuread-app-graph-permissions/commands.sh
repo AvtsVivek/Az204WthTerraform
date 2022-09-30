@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400400-azuread-app-role-assignment-trial
+cd ./src/tf-files/400400-azuread-app-graph-permissions
 
 terraform fmt
 
