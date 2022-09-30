@@ -15,8 +15,8 @@ resource "azuread_application" "example" {
     }
 
     resource_access {
-      id   = azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.ReadWrite"]
-      type = "Scope" # Scope->Delegated and Role -> Application
+      id   = azuread_service_principal.msgraph.oauth2_permission_scope_ids["User.Read"] # Changed from User.ReadWrite to just User.Read
+      type = "Scope" # Scope->Delegated permission and Role -> Application permission
     }
   }
 }
