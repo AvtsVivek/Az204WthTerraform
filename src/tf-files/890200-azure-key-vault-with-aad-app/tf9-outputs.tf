@@ -77,3 +77,8 @@ output "azuread_service_principal_msgraph_type" {
   value       = azuread_service_principal.msgraph.type
 }
 
+output "app_name_password_value" {
+  description = "App Password value"
+  value       = azuread_application_password.simple_app_pass.value
+  sensitive   = true
+}

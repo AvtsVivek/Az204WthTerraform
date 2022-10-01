@@ -12,9 +12,9 @@ resource "azurerm_key_vault" "key_vault" {
   sku_name = "standard"
 
   access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
+    tenant_id      = data.azurerm_client_config.current.tenant_id
     application_id = azuread_application.app.application_id
-    object_id = azuread_service_principal.app_sp.object_id # Or just id instead of object_id, both are same.
+    object_id      = azuread_service_principal.app_sp.object_id # Or just id instead of object_id, both are same.
     # "azuread_application.app"
 
     certificate_permissions = [

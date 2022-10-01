@@ -14,6 +14,9 @@ terraform plan -out main.tfplan
 
 terraform apply main.tfplan
 
+# Output the password
+terraform output app_name_password_value
+
 terraform state list
 
 # You can now update the 

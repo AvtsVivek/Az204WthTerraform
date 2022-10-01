@@ -14,6 +14,8 @@ terraform plan -out main.tfplan
 
 terraform apply main.tfplan
 
+terraform output service_principal_password_value
+
 terraform state list
 
 # You can now update the 
@@ -27,6 +29,7 @@ terraform plan -destroy -out main.destroy.tfplan
 # terraform show main.destroy.tfplan
 
 terraform apply main.destroy.tfplan
+
 
 Remove-Item -Recurse -Force .terraform/modules
 

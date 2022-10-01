@@ -3,7 +3,7 @@ resource "azuread_application" "simple_app" {
   display_name = var.appname
 }
 
-resource "azuread_application_password" "simple_app" {
+resource "azuread_application_password" "simple_app_pass" {
   application_object_id = azuread_application.simple_app.object_id
   display_name          = "AppPasswordGeneratedFromTerraform"
 

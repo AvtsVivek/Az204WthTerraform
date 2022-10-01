@@ -42,3 +42,9 @@ output "service_principal_id" {
   description = "Service Principal display name"
   value       = azuread_service_principal.app_sp.id
 }
+
+output "service_principal_password_value" {
+  description = "Service Principal Password value"
+  value       = azuread_service_principal_password.app_sp_pass.value
+  sensitive   = true
+}
