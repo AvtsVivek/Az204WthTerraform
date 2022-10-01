@@ -13,6 +13,7 @@ resource "azurerm_key_vault" "key_vault" {
 
   access_policy {
     tenant_id      = data.azurerm_client_config.current.tenant_id
+    # https://stackoverflow.com/a/73918886/1977871
     # application_id = azuread_application.app.application_id
     object_id      = azuread_service_principal.app_sp.object_id # Or just id instead of object_id, both are same.
 
