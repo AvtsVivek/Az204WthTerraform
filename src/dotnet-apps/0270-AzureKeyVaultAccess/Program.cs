@@ -3,7 +3,7 @@ using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
 using System.Text;
 
-var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";
+var tenantId = "46b02288-c094-50c5-3cb3-1168c454d83g";
 var clientId = "d85236a6-410f-4ca6-a380-31205aaa6197";
 var clientSecret = "kRI8Q~QftrmhcSr~Q0_vXxQ4LlZ56~qsqiK6SaAp";
 
