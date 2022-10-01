@@ -1,6 +1,6 @@
 # Updates user
 
-- This follows from the [last example](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/400400-azuread-app-graph-permissions). 
+- This follows from the [last example](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/401200-azuread-app-graph-permissions). 
 
 - There, the user list is retrieved using the graph API. In this example, we will be going a bit ahead and updating the an existing user.
 
