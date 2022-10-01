@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/400280-app-registration-service-principal
+cd ./src/tf-files/401100-app-registration-service-principal
 
 terraform fmt
 
