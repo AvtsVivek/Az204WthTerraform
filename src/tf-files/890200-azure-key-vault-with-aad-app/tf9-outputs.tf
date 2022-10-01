@@ -35,3 +35,45 @@ output "azuread_application_app_display_name" {
   value       = azuread_application.app.display_name
 }
 
+output "azuread_service_principal_app_sp_id" {
+  description = "App Service Principal id"
+  value       = azuread_service_principal.app_sp.id
+}
+
+output "azuread_service_principal_app_sp_object_id" {
+  description = "App Service Principal object id"
+  value       = azuread_service_principal.app_sp.object_id
+}
+
+output "azuread_service_principal_app_sp_display_name" {
+  description = "App Service Principal display name"
+  value       = azuread_service_principal.app_sp.display_name
+}
+
+output "azuread_service_principal_app_sp_type" {
+  description = "App Service Principal type"
+  value       = azuread_service_principal.app_sp.type
+}
+
+##########################################################
+
+output "azuread_service_principal_msgraph_id" {
+  description = "Msgraph Service Principal id"
+  value       = azuread_service_principal.msgraph.id
+}
+
+output "azuread_service_principal_msgraph_object_id" {
+  description = "Msgraph Service Principal object id"
+  value       = azuread_service_principal.msgraph.object_id
+}
+
+output "azuread_service_principal_msgraph_display_name" {
+  description = "Msgraph Service Principal display name"
+  value       = azuread_service_principal.msgraph.display_name
+}
+
+output "azuread_service_principal_msgraph_type" {
+  description = "Msgraph Service Principal type"
+  value       = azuread_service_principal.msgraph.type
+}
+
