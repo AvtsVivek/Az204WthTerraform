@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
+using Azure.Security.KeyVault.Secrets;
 using System.Text;
 
 var tenantId = "46b02288-c094-50c5-3cb3-1168c454d83g";
@@ -16,6 +17,11 @@ var clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clie
 var keyClient = new KeyClient(new Uri(keyvaultUrl), clientSecretCredential);
 
 var key = keyClient.GetKey(keyName);
+
+// Note, if you have Secrets, then you use the following SecretClient class.
+
+// var secretClient = new SecretClient(new Uri(keyvaultUrl), clientSecretCredential);
+// var secret = secretClient.GetSecret(secretName);
 
 // The CryptographyClient class is part of the Azure Key vault package
 // This is used to perform cryptographic operations with Azure Key Vault keys
