@@ -6,4 +6,9 @@ resource "azuread_application" "simple_app" {
 resource "azuread_application_password" "simple_app" {
   application_object_id = azuread_application.simple_app.object_id
   display_name          = "AppPasswordGeneratedFromTerraform"
+
+  # You cannot set a value as below. It will give an following error. Try uncommenting that out check yourself.
+  # an't configure a value for "value": its value will be decided automatically based on the result of applying this configuration.
+  # So commenting it out
+  # value                 = "asdf49jk84jk"
 }
