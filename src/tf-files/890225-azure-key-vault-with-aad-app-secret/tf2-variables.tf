@@ -1,5 +1,17 @@
 # Input variable definitions
 
+variable "business_divsion" {
+  description = "Business Division in the large organization this Infrastructure belongs"
+  type        = string
+  default     = "sap"
+}
+# Environment Variable
+variable "environment" {
+  description = "Environment Variable used as a prefix"
+  type        = string
+  default     = "dev"
+}
+
 variable "location" {
   description = "The Azure Region in which all resources groups should be created."
   type        = string
