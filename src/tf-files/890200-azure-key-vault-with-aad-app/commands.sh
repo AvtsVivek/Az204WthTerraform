@@ -23,7 +23,6 @@ terraform output app_name_password_value
 # var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";
 # var clientId = "ab0adc88-52b7-4c2b-b47d-66814eb84af0";
 # var clientSecret = "0iO8Q~fsNhL97YRXpYcqLwIekgJziyOyfPRGPcA0";
-
 # var keyvaultUrl = "https://vivek-jgybpk-my-rg.vault.azure.net/";
 
 # See the images 10AfterDeploymentReview20.jpg etc, they should help.
