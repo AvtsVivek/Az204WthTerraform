@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/890200-azure-key-vault-with-aad-app
+cd ./src/tf-files/890200-azure-key-vault-with-aad-app-key
 
 terraform fmt
 
