@@ -18,7 +18,7 @@ terraform apply main.tfplan
 terraform output app_name_password_value
 
 # Need to update the following variable in the file 
-# ./../../dotnet-apps/0270-AzureKeyVaultAccess/Program.cs
+# ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/Services/ProductService.cs
 
 # var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";
 # var clientId = "ab0adc88-52b7-4c2b-b47d-66814eb84af0";
@@ -27,9 +27,9 @@ terraform output app_name_password_value
 
 # See the images 10AfterDeploymentReview20.jpg etc, they should help.
 
-dotnet build ./../../dotnet-apps/0270-AzureKeyVaultAccess/AzureKeyVaultAccess.csproj
+dotnet build ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/AzureKeyVaultSecretsSqlAppAccess.csproj
 
-dotnet run --project ./../../dotnet-apps/0270-AzureKeyVaultAccess/AzureKeyVaultAccess.csproj
+dotnet run --project ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/AzureKeyVaultSecretsSqlAppAccess.csproj
 
 terraform state list
 

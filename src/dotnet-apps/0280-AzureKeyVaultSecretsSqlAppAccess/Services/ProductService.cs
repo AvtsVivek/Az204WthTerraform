@@ -13,20 +13,15 @@ namespace sqlapp.Services
 
         private SqlConnection GetConnection()
         {
-            string tenantId = "70c0f6d9-7f3b-4425-a6b6-09b47643ec58";
-            string clientId = "b4d0b1b0-21f6-4b57-a6cc-ca982114e340";
-            string clientSecret = "1ym8Q~uaRr2d5LtGSB9K36JxhJzN-MB2iMxirbyr";
-
-            string keyvaultUrl = "https://appvault600909.vault.azure.net/";
-            string secretName = "dbconnectionstring";
-            
-            ClientSecretCredential clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clientSecret);
-            SecretClient secretClient = new SecretClient(new Uri(keyvaultUrl), clientSecretCredential);
-
+            var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";
+            var clientId = "b9bd1be3-0324-4064-9c95-bfa44033ea5f";
+            var clientSecret = "5t88Q~Avr8OogEcJhJduJLBs5uV6DXNUK0QiCate";
+            var keyvaultUrl = "https://vivek-byorsi-keyvault.vault.azure.net/";
+            var secretName = "sql-connection-string";
+            var clientSecretCredential = new ClientSecretCredential(tenantId, clientId, clientSecret);
+            var secretClient = new SecretClient(new Uri(keyvaultUrl), clientSecretCredential);
             var secret = secretClient.GetSecret(secretName);
-
-            string connectionString = secret.Value.Value;
-
+            var connectionString = secret.Value.Value;
 
             return new SqlConnection(connectionString);
         }

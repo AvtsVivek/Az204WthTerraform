@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "sqlapp": {
+    "AzureKeyVaultSecretsSqlAppAccess": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
