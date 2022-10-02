@@ -2,8 +2,8 @@
 {
     public class Product
     {
-        public int ProductID { get; set; }
-        public string ProductName { get; set; }    
-        public int Quantity { get; set; }
+        public int ProductID { get; set; } = default(int);
+        public string ProductName { get; set; } = default!;
+        public int Quantity { get; set; } = 0;
     }
 }
