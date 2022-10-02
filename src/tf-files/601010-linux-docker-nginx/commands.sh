@@ -52,9 +52,9 @@ terraform apply main.tfplan
 cd ..
 
 # cd into the directory.
-cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
+cd ./src/tf-files/601010-linux-docker-nginx/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.228.157.183
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.124.193.3
 
 cd /var/log
 

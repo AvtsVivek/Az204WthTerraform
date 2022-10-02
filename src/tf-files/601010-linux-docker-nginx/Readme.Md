@@ -4,7 +4,9 @@
 
 - Deploys a linux VM, then provisions a docker, then starts a docker nginx container. 
   
-- Then you can access that page from internet, public IP.
+- Then you can access that page from internet, public IP. But WAIT FOR SOME TIME, to fully install.
+  - Login into the vm using ssh and use the following command to see how the docker is beiing installed.
+  - tail -100f cloud-init-output.log
 
 - Bastion subnet, app subnet and db subnet are removed.
 
