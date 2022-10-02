@@ -454,4 +454,7 @@ error1.html
 
 __azurite_db_table__.json
 
+# Note that .terraform.lock.hcl is added to gitignore file for this repo. 
+# But in production scenarios, .terraform.lock.hcl should NOT be git ignored. 
+# It should be always checked in.
 .terraform.lock.hcl
