@@ -6,7 +6,7 @@
 
 - After running that app, then you can curl that app. But you will not be able to access that app from outside.
 
-- If you want that to be exposed outside, then you can refer to other examples such as 610100-simple-web-app-to-linux-vm-apche
+- If you want that to be exposed outside, then you can refer to other examples such as [610100-simple-web-app-to-linux-vm-apche](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/610100-simple-web-app-to-linux-vm-apche) or [630100-simple-web-app-to-linux-vm-ngnx](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/630100-simple-web-app-to-linux-vm-ngnx)
 
 - Bastion subnet, app subnet and db subnet are removed.
 
