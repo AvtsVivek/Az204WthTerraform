@@ -6,6 +6,27 @@
 
 - Also we need to create [User Assigned Indetitie as explained here](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication-managed-identity?tabs=azure-cli). Note we are creating user assigned identites, and not service assigned identities for this example.
 
+- Now take a look at the following images.
+
+![Managed Identity](./images/10MI20.jpg)
+
+![Managed Identity](./images/10MI21.jpg)
+
+![Managed Identity](./images/10MI22.jpg)
+
+![Managed Identity](./images/10MI23.jpg)
+
+![Managed Identity](./images/10MI24.jpg)
+
+![Managed Identity](./images/10MI25.jpg)
+
+![Managed Identity](./images/10MI26.jpg)
+
+![Managed Identity](./images/10MI27.jpg)
+
+
+
+
 ![The layout](./images/Layout.jpg)
 
 - The following is the diagram downloaded from the Azure Portal.

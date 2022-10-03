@@ -1,3 +1,4 @@
+cd ../../..
 
 # cd into the directory.
 cd ./src/tf-files/810050-acr-docker-vm-user-assigned/
@@ -55,9 +56,6 @@ terraform apply main.tfplan
 
 docker container ls -a
 
-# Verify in the acr on portal, there should be two images
-
-# 3. 
 
 # cd into the directory.
 cd ./../../dotnet-apps/0020-simple-webapp
@@ -76,31 +74,36 @@ docker container ls -a
 
 docker container rm viveksimplewebapp
 
-docker tag simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
+# Visit the portal, resource Group, then acr and then get the correct server name for ACR. 
+# It should look something like this acrwmbcnr.azurecr.io
 
-az acr login --name acruukazh
+docker image ls
+
+docker tag simplewebapp:v1 acrzokgwa.azurecr.io/simplewebapp:v1
+
+az acr login --name acrzokgwa
 
 # docker push <login-server>/hello-world:v1
 
-docker push acruukazh.azurecr.io/simplewebapp:v1
+docker push acrzokgwa.azurecr.io/simplewebapp:v1
 
 # Now remove the local image
 
-docker rmi simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
+docker rmi simplewebapp:v1 acrzokgwa.azurecr.io/simplewebapp:v1
 
 # OR
 
-docker image rm simplewebapp:v1 acruukazh.azurecr.io/simplewebapp:v1
+docker image rm simplewebapp:v1 acrzokgwa.azurecr.io/simplewebapp:v1
 
 docker image ls
 
-docker pull acruukazh.azurecr.io/simplewebapp:v1
+docker pull acrzokgwa.azurecr.io/simplewebapp:v1
 
 docker image ls
 
-docker run --name viveksimpledotnetapp -p 81:80 -d acruukazh.azurecr.io/simplewebapp:v1
+docker run --name viveksimpledotnetapp -p 81:80 -d acrzokgwa.azurecr.io/simplewebapp:v1
 
-docker run --name viveksimpledotnetapp -p 80:80 -d acruukazh.azurecr.io/simplewebapp:v1
+docker run --name viveksimpledotnetapp -p 80:80 -d acrzokgwa.azurecr.io/simplewebapp:v1
 
 # Now browse to localhost:81
 
@@ -129,9 +132,9 @@ cd ..
 
 # cd into the directory.
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.232.45.219
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.163.133.178
 
-sudo docker pull acruukazh.azurecr.io/simplewebapp:v1
+sudo docker pull acrzokgwa.azurecr.io/simplewebapp:v1
 
 cd /var/log
 
@@ -156,19 +159,33 @@ cd /var/log
 
 # use the tail command to see the last 100 lines.
 tail -100f cloud-init-output.log
+cat cloud-init-output.log
 # Review what all happened as the vm was booting.
 
-sudo docker pull acruukazh.azurecr.io/simplewebapp:v1
+sudo docker pull acrzokgwa.azurecr.io/simplewebapp:v1
 
-sudo az login --identity --username /subscriptions/10868091-0196-44e3-a0b8-8dee05259147/resourcegroups/hr-dev-rg-vivrag-uukazh/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hr-dev-appgw-umid
+# Now to login to azure, run the following command.
+# But before that, get the subscription id and resource group name.
+# 10868047-0120-48e3-a0b8-6yec05259143
+# Resource group name, hr-dev-rg-vivrag-zokgwa
+# Without correctly replacing them, you will get error as follows.
+# 2022-10-03 05:28:21.911766 An error occurred: DOCKER_COMMAND_ERROR
+# Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: 
+# Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/containers/json": dial unix /var/run/docker.sock: 
+# connect: permission denied
 
-az acr login --name acruukazh # Will give errro
+sudo az login --identity --username /subscriptions/10868047-0120-48e3-a0b8-6yec05259143/resourcegroups/hr-dev-rg-vivrag-zokgwa/providers/Microsoft.ManagedIdentity/userAssignedIdentities/hr-dev-appgw-umid
+
+# Note that we ahve to first login to azure by using the command az login. 
+# Then to acr using az acr login
+
+sudo az acr login --name acrzokgwa 
 
 sudo docker container ls -a
 
-sudo docker container rm appnginx1 
+sudo docker container rm appnginx
 
-sudo docker run --name viveksimpledotnetapp -p 82:80 -d acruukazh.azurecr.io/simplewebapp:v1
+sudo docker run --name viveksimpledotnetapp -p 82:80 -d acrzokgwa.azurecr.io/simplewebapp:v1
 
 # Now note the ip address of the VM created and then browse to the following 
 
