@@ -8,6 +8,15 @@
 
 - Take a look at the file and its tf configs. tf9-azurerm-user-assigned-identity.tf
 
+- Also review the following config in linux vm resource config file.
+
+```
+identity {
+  type         = "UserAssigned" #"SystemAssigned"
+  identity_ids = [azurerm_user_assigned_identity.appag_umid.id]
+}
+```
+
 - Now take a look at the following images.
 
 ![Managed Identity](./images/10MI20.jpg)
