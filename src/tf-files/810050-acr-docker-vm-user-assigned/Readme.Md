@@ -6,6 +6,8 @@
 
 - Also we need to create [User Assigned Indetitie as explained here](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication-managed-identity?tabs=azure-cli). Note we are creating user assigned identites, and not service assigned identities for this example.
 
+- Take a look at the file and its tf configs. tf9-azurerm-user-assigned-identity.tf
+
 - Now take a look at the following images.
 
 ![Managed Identity](./images/10MI20.jpg)
@@ -23,9 +25,6 @@
 ![Managed Identity](./images/10MI26.jpg)
 
 ![Managed Identity](./images/10MI27.jpg)
-
-
-
 
 ![The layout](./images/Layout.jpg)
 
