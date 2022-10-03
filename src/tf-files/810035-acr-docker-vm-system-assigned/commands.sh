@@ -53,6 +53,11 @@ terraform apply main.tfplan
 
 ########################################################################
 
+# Get the object id of newly created managed identity. 
+# See the images 40SystemAssignedIdentity10.jpg and 40SystemAssignedIdentity20.jpg
+# Now run the following command. id parameter is bhe object id.
+az ad sp show --id 8a1dceef-7965-4f8c-9f55-b8f593d89509
+
 docker container ls -a
 
 # Verify in the acr on portal, there should be two images
