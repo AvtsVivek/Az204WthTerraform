@@ -1,8 +1,7 @@
+cd ../../..
 
 # cd into the directory.
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
-
-cd ../../..
 
 dotnet run --project ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
 dotnet build ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
@@ -109,7 +108,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@52.179.10.133
+ssh -i ssh-keys/terraform-azure.pem azureuser@4.227.229.233
 
 cd /var/log
 
@@ -121,19 +120,24 @@ sudo -i
 
 sudo find / -type d -iname 'dotnet'
 
+# The following may not work
 sudo find / -type d -iname '.dotnet'
 
+# We are not using this file any more. 
 sudo find / -iname 'dotnet-install.sh'
 
 ps -ef | grep dotnet
 
 sudo dotnet --list-runtimes
 
+# The following two are not working.
 dotnet --list-sdks
-
 dotnet --version
 
 ps -ef | grep dotnet
+
+# The following works.
+dotnet --info
 
 exit
 
@@ -147,11 +151,17 @@ exit
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@52.179.10.133:/home/azureuser/simple-web-app
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@52.179.10.133:/home/azureuser/simple-console-app
+# Run the following command in git bash terminal.
 
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish azureuser@52.179.10.133:/home/azureuser/simple-web-api
+# First ensure you are in correct directory.
+cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
+
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@4.227.229.233:/home/azureuser/simple-web-app
+
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@4.227.229.233:/home/azureuser/simple-console-app
+
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0030-simple-web-api/bin/Release/net6.0/publish azureuser@4.227.229.233:/home/azureuser/simple-web-api
 
 sudo find / -iname 'simple-webapp.dll'
 
@@ -172,13 +182,13 @@ dotnet /home/azureuser/simple-web-api/simple-web-api.dll --urls "http://localhos
 
 mkdir nginxconfbackup
 
-scp -i ssh-keys/terraform-azure.pem azureuser@52.179.10.133:/etc/nginx/nginx.conf nginxconfbackup/
+scp -i ssh-keys/terraform-azure.pem azureuser@4.227.229.233:/etc/nginx/nginx.conf nginxconfbackup/
 
 # Now copy the nginx.conf file.
 
-scp -i ssh-keys/terraform-azure.pem ./nginxconf/nginx-default.conf azureuser@52.179.10.133:/etc/nginx/nginx.conf 
+scp -i ssh-keys/terraform-azure.pem ./nginxconf/nginx-default.conf azureuser@4.227.229.233:/etc/nginx/nginx.conf 
 
-scp -i ssh-keys/terraform-azure.pem ./nginxconf/dotnetapp.conf azureuser@52.179.10.133:/etc/nginx/sites-enabled/
+scp -i ssh-keys/terraform-azure.pem ./nginxconf/dotnetapp.conf azureuser@4.227.229.233:/etc/nginx/sites-enabled/
 
 sudo systemctl stop nginx
 
@@ -192,7 +202,7 @@ sudo journalctl -xe
 
 sudo systemctl restart nginx
 
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@52.179.10.133:/usr/tmp/
+scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@4.227.229.233:/usr/tmp/
 
 sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
 
