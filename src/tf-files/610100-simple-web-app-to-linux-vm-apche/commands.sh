@@ -1,9 +1,8 @@
+cd ../../..
 
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-
-cd ../../..
 
 dotnet run --project ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
 dotnet build ./../../dotnet-apps/0020-simple-webapp/simple-webapp.csproj
@@ -69,7 +68,7 @@ terraform validate
 
 terraform plan -out main.tfplan
 
-terraform show main.tfplan
+# terraform show main.tfplan
 
 terraform apply main.tfplan 
 
@@ -90,11 +89,21 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/610100-simple-web-app-to-linux-vm-apche/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@40.117.36.111
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.172.198.104
 
 cd /var/log
 
 sudo -i
+
+sudo su -
+
+cd /var/log
+
+# Now look for cloud-init-output.log file.
+
+# use the tail command to see the last 100 lines.
+tail -100f cloud-init-output.log
+# Review what all happened as the vm was booting.
 
 # Wait for at least 5 minutes. Then run the following commands.
 
@@ -102,15 +111,11 @@ sudo find / -type d -iname '.dotnet'
 
 sudo find / -type d -iname 'dotnet'
 
-sudo find / -iname 'dotnet-install.sh'
-
 ps -ef | grep dotnet
 
 sudo dotnet --list-runtimes
 
-dotnet --list-sdks
-
-dotnet --version
+dotnet --info
 
 exit
 
@@ -124,26 +129,24 @@ exit
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@40.117.36.111:/home/azureuser/simple-web-app
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@40.117.36.111:/home/azureuser/simple-console-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@20.172.198.104:/home/azureuser/simple-web-app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0010-simple-console-app/bin/Release/net6.0/publish azureuser@20.172.198.104:/home/azureuser/simple-console-app
 
 sudo find / -iname 'simple-webapp.dll'
 
 sudo find / -iname 'simple-console-app.dll'
-
-/usr/dotnet/dotnet /home/azureuser/simple-console-app/simple-console-app.dll
 
 dotnet /home/azureuser/simple-console-app/simple-console-app.dll
 
 # Finally to start the app
 dotnet /home/azureuser/simple-web-app/simple-webapp.dll
 
-# For a single file transfer
-scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@40.117.36.111:/etc/httpd/conf/
+# Now transfer httpd.conf file
+scp -i ssh-keys/terraform-azure.pem ./conf/httpd.conf azureuser@20.172.198.104:/etc/httpd/conf/
 
 sudo systemctl restart httpd
 
-scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@40.117.36.111:/usr/tmp/
+scp -r -i ssh-keys/terraform-azure.pem ./linux-service-files/* azureuser@20.172.198.104:/usr/tmp/
 
 sudo cp -r -f /usr/tmp/*.service /etc/systemd/system/
 
@@ -163,10 +166,6 @@ sudo systemctl restart kestrel-dotNetapp.service
 
 sudo systemctl status kestrel-dotNetapp.service
 
-# Now that you are in the VM, you can run the following commands.
-hostname
-
-# Switch to the root user.
 sudo su -
 
 cd /var/log
