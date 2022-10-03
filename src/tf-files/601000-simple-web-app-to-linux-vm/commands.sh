@@ -1,9 +1,7 @@
+cd ../../..
 
 # cd into the directory.
 cd ./src/tf-files/601000-simple-web-app-to-linux-vm/
-
-
-cd ../../..
 
 # First ensure the simple web app is published. 
 # Run either of the following two comands
@@ -71,7 +69,9 @@ terraform apply main.tfplan
 
 cd ..
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.143.154
+cd ./src/tf-files/601000-simple-web-app-to-linux-vm/
+
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.163.228.80
 
 cd /var/log 
 
@@ -91,28 +91,28 @@ ps -ef | grep dotnet
 
 sudo dotnet --list-runtimes
 
-dotnet --list-sdks
+sudo dotnet --list-sdks
 
-dotnet --version
+sudo dotnet --version
 
 exit
 
 # For a single file transfer
 # The following demonistrates file transfer, single or entire folder. 
-scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@20.121.15.79:/home/azureuser
-
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.121.15.79:/home/azureuser/
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.121.15.79:/etc/nginx/default.d/
-scp -i ssh-keys/terraform-azure.pem ./nginx-default.conf azureuser@20.121.15.79:/etc/nginx/conf.d/
+scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@20.163.228.80:/home/azureuser
 
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
 # copy the publish directory.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@13.68.143.154:/home/azureuser
+# Ensure the app is built and published. The required commands are way above
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@13.68.143.154
-# Finally to start the app
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@20.163.228.80:/home/azureuser
+
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.163.228.80
+
+# Finally to start the app. The following may not work.
 sudo /root/.dotnet/dotnet ./publish/simple-webapp.dll
+
 
 sudo dotnet ./publish/simple-webapp.dll
 
@@ -139,8 +139,6 @@ ps -ef | grep dotnet
 
 ps -ef | grep nginx
 
-yum list installed nginx
-
 # look for port 5000
 netstat -lntp
 
@@ -149,42 +147,6 @@ curl localhost:5000
 curl localhost
 
 ## Thats it.
-
-cd /var/www/html
-
-cd ./app1
-
-ls -lrta
-
-Now browse the vm. 
-
-# use ip address or dns name.
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/metadata.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/index.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/status.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/hostname.html
-
-cd /var/log/httpd/
-
-tail -100f access_log
-
-# Run any of the following commands and then see the logs.
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/metadata.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/index.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/status.html
-
-http://app1-vm-jshbwy.eastus.cloudapp.azure.com/app1/hostname.html
 
 exit
 
