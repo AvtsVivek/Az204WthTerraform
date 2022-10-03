@@ -26,6 +26,12 @@ identity {
 }
 ```
 
+![System Assigned identity to Azure Linux Vm](./images/30AccessControl10.jpg)
+
+![System Assigned identity to Azure Linux Vm](./images/30AccessControl11.jpg)
+
+![System Assigned identity to Azure Linux Vm](./images/30AccessControl12.jpg)
+
 - Access Control. Consider the following code. We are assigning a role to web linux vm identity. And the scope we are setting it to Azure Container Registry. The role is AcrPull, its a [built it role](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
 ```tf
 resource "azurerm_role_assignment" "vm_to_acr" {
@@ -35,7 +41,7 @@ resource "azurerm_role_assignment" "vm_to_acr" {
 }
 ```
 
-![Azure Container Registry Access Control](./images/30AccessControl10.jpg)
+![Azure Container Registry Access Control](./images/30AccessControl20.jpg)
 
 - References
   - https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication-managed-identity?tabs=azure-cli
