@@ -8,11 +8,11 @@
 
 - Then place that /src/in dotnet-apps folder
 
-![The layout](./Images/Layout.jpg)
+![The layout](./images/Layout.jpg)
 
 - The following is the diagram downloaded from the Azure Portal.
 
-![The Diagram](./Images/topology.svg)
+![The Diagram](./images/topology.svg)
 
 - References
   - https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication-managed-identity?tabs=azure-cli
