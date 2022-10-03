@@ -71,7 +71,7 @@ cd ..
 
 cd ./src/tf-files/601000-simple-web-app-to-linux-vm/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.163.228.80
+ssh -i ssh-keys/terraform-azure.pem azureuser@4.227.241.227
 
 cd /var/log 
 
@@ -99,7 +99,7 @@ exit
 
 # For a single file transfer
 # The following demonistrates file transfer, single or entire folder. 
-scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@20.163.228.80:/home/azureuser
+scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@4.227.241.227:/home/azureuser
 
 # For an entire directory
 # scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
@@ -108,7 +108,7 @@ scp -i ssh-keys/terraform-azure.pem ./ReadMe.md azureuser@20.163.228.80:/home/az
 
 scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0020-simple-webapp/bin/Release/net6.0/publish azureuser@20.163.228.80:/home/azureuser
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.163.228.80
+ssh -i ssh-keys/terraform-azure.pem azureuser@4.227.241.227
 
 # Finally to start the app. The following may not work.
 sudo /root/.dotnet/dotnet ./publish/simple-webapp.dll
