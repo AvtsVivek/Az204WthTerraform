@@ -6,6 +6,8 @@
 
 - After running that app, then you can curl that app. But you will not be able to access that app from outside.
 
+- If you want that to be exposed outside, then you can refer to other examples such as 610100-simple-web-app-to-linux-vm-apche
+
 - Bastion subnet, app subnet and db subnet are removed.
 
 - Web Network Security Group can be considered as the first level.
