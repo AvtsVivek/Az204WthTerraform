@@ -7,7 +7,7 @@ variable "win_function_app_name" {
 
 resource "azurerm_windows_function_app" "win_function_app" {
   # name                = "example-windows-function-app"
-  name                = "${local.resource_name_prefix}-${var.win_function_app_name}-${random_string.myrandom.id}"
+  name                = "${local.resource_name_prefix}-${random_string.myrandom.id}-${var.win_function_app_name}"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
