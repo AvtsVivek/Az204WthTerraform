@@ -6,18 +6,6 @@ resource "azurerm_container_group" "acg" {
   dns_name_label      = "aci-dns-label-${random_string.myrandom.id}"
   os_type             = "Linux"
 
-  # container {
-  #   name   = "viveknginxv4"
-  #   image  = "avts/nginxvivek:v4"
-  #   cpu    = "0.5"
-  #   memory = "1.5"
-
-  #   ports {
-  #     port     = 443
-  #     protocol = "TCP"
-  #   }
-  # }
-
   container {
     name   = "nginx-container"
     image  = "nginx"
