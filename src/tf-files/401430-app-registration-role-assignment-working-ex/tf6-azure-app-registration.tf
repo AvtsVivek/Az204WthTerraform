@@ -5,7 +5,7 @@ data "azuread_service_principal" "msgraph" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  # name     = "${local.resource_name_prefix}-${var.resource_group_name}-${random_string.myrandom.id}"
+  # name = "${local.resource_name_prefix}-${random_string.myrandom.id}-${var.resource_group_name}"
   name = "here-we-go"
   # location = var.resource_group_location
   location = "eastus"
