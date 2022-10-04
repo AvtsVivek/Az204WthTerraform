@@ -21,8 +21,8 @@ resource "azurerm_network_security_group" "web_subnet_nsg" {
 locals {
   web_inbound_ports_map = {
     # If the key starts with a number, you must use the colon syntax ":" instead of "="
-    "100" : "80",
-    "110" : "443",
+    # "100" : "80",
+    # "110" : "443",
     "120" : "22"
   }
 }

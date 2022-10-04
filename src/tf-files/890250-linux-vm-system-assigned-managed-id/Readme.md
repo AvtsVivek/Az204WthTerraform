@@ -45,6 +45,11 @@ dotnet publish -c Release ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/
 dotnet publish -c Release ..\..\dotnet-apps\0300-SystemAssignedVmToStorageAcc\SystemAssignedVmToStorageAcc.csproj
 ```
 
+
+- Similarly you need to do for the second app as well.
+
+
+
 ![Resources Created on Azure](./images/20AfterDeploymentReview20.jpg)
 
 ![Resources Created on Azure](./images/20AfterDeploymentReview30.jpg)

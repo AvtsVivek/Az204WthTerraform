@@ -23,17 +23,21 @@ variable "storage_account_kind" {
   description = "Storage Account Kind"
   type        = string
 }
-variable "static_website_index_document" {
-  description = "static website index document"
-  type        = string
-}
-variable "static_website_error_404_document" {
-  description = "static website error 404 document"
-  type        = string
-}
+# variable "static_website_index_document" {
+#   description = "static website index document"
+#   type        = string
+# }
+# variable "static_website_error_404_document" {
+#   description = "static website error 404 document"
+#   type        = string
+# }
+
+# variable "static_files_list" {
+#   default     = ["error.html", "index.html"]
+#   description = "Static file list."
+# }
 
 variable "static_files_list" {
-  default     = ["error.html", "index.html"]
+  default     = ["index.html"]
   description = "Static file list."
 }
-

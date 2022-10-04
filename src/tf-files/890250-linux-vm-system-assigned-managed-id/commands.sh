@@ -3,7 +3,9 @@ cd ../../..
 # cd into the directory.
 cd ./src/tf-files/890250-linux-vm-system-assigned-managed-id/
 
-# Preparing the dotnet app.
+# Preparing the dotnet apps.
+
+# First app
 dotnet build ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
 
 # First ensure the simple web app is published. 
@@ -15,6 +17,21 @@ dotnet publish ..\..\dotnet-apps\0300-SystemAssignedVmToStorageAcc\SystemAssigne
 #  -c Release
 dotnet publish -c Release ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
 dotnet publish -c Release ..\..\dotnet-apps\0300-SystemAssignedVmToStorageAcc\SystemAssignedVmToStorageAcc.csproj
+
+# Second app \0325-SystemAssignedGetAccessToken\Program.cs
+dotnet build ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/SystemAssignedGetAccessToken.csproj
+
+# First ensure the simple web app is published. 
+# Run either of the following two comands
+# Debug
+dotnet publish ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/SystemAssignedGetAccessToken.csproj
+dotnet publish ..\..\dotnet-apps\0325-SystemAssignedGetAccessToken\SystemAssignedGetAccessToken.csproj
+
+#  -c Release
+dotnet publish -c Release ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/SystemAssignedGetAccessToken.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0325-SystemAssignedGetAccessToken\SystemAssignedGetAccessToken.csproj
+
+# If there are no errors, then the apps are ready.
 
 cd ssh-keys
 
@@ -60,6 +77,7 @@ terraform apply main.tfplan
 
 # Now build, ensure no errors and publish. 
 
+# First App
 dotnet build ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
 
 # First ensure the simple web app is published. 
@@ -71,6 +89,20 @@ dotnet publish ..\..\dotnet-apps\0300-SystemAssignedVmToStorageAcc\SystemAssigne
 #  -c Release
 dotnet publish -c Release ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
 dotnet publish -c Release ..\..\dotnet-apps\0300-SystemAssignedVmToStorageAcc\SystemAssignedVmToStorageAcc.csproj
+
+
+# Second app \0325-SystemAssignedGetAccessToken\Program.cs
+dotnet build ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/SystemAssignedGetAccessToken.csproj
+
+# First ensure the simple web app is published. 
+# Run either of the following two comands
+# Debug
+dotnet publish ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/SystemAssignedGetAccessToken.csproj
+dotnet publish ..\..\dotnet-apps\0325-SystemAssignedGetAccessToken\SystemAssignedGetAccessToken.csproj
+
+#  -c Release
+dotnet publish -c Release ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/SystemAssignedGetAccessToken.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0325-SystemAssignedGetAccessToken\SystemAssignedGetAccessToken.csproj
 
 # Download the topology diagram. Go to the created vnet and then diagram.
 # Also look at subnets and corresponding security groups.
@@ -89,7 +121,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/890250-linux-vm-system-assigned-managed-id/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.168.236.44
+ssh -i ssh-keys/terraform-azure.pem azureuser@52.188.57.212
 
 cd /var/log
 
@@ -136,13 +168,21 @@ ps -ef | grep dotnet
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
 # Upload the published folder on to the server.
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/bin/Release/net6.0/publish azureuser@20.168.236.44:/home/azureuser/SystemAssignedVmToStorageAcc
+# First App
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/bin/Release/net6.0/publish azureuser@52.188.57.212:/home/azureuser/SystemAssignedVmToStorageAcc
+
+# Second App
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/bin/Release/net6.0/publish azureuser@52.188.57.212:/home/azureuser/SystemAssignedGetAccessToken
 
 # Ensure that it has got uploaded successifully.
 sudo find / -iname 'SystemAssignedVmToStorageAcc.dll'
-
 # Now from within the vm(using ssh), run the app
 dotnet /home/azureuser/SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.dll
+
+
+sudo find / -iname 'SystemAssignedGetAccessToken.dll'
+
+dotnet /home/azureuser/SystemAssignedGetAccessToken/SystemAssignedGetAccessToken.dll
 
 # You should see "The blob is downloaded"
 
@@ -153,9 +193,6 @@ ls -lrta
 
 
 ## Thats it.
-
-# Now browse the ip.
-#
 
 ## Thats it.
 

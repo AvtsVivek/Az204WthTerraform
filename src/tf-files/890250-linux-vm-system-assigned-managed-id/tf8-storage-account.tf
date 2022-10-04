@@ -10,10 +10,10 @@ resource "azurerm_storage_account" "storage_account" {
   account_replication_type = var.storage_account_replication_type # valid options are LRS, GRS, RAGRS, ZRS, GZRS and RAGZRS
   account_kind             = var.storage_account_kind
 
-  static_website {
-    index_document     = var.static_website_index_document
-    error_404_document = var.static_website_error_404_document
-  }
+  # static_website {
+  #   index_document     = var.static_website_index_document
+  #   error_404_document = var.static_website_error_404_document
+  # }
 }
 
 resource "azurerm_storage_container" "asc" {
