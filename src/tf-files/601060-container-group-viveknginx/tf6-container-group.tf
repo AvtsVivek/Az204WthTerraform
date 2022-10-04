@@ -9,7 +9,7 @@ resource "azurerm_container_group" "acg" {
 
   container {
     name   = "stepbystepnginxv4"
-    image  = "avts/nginxvivek:v4"
+    image  = "avts/nginxstepbystep:v4"
     cpu    = "1"
     memory = "3.5"
 
