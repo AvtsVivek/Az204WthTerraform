@@ -121,7 +121,7 @@ cd ..
 # cd into the directory.
 cd ./src/tf-files/890250-linux-vm-system-assigned-managed-id/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@52.188.57.212
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.169.254.35
 
 cd /var/log
 
@@ -167,18 +167,21 @@ ps -ef | grep dotnet
 
 cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
 
+# Just to check before uploading.
+sudo find / -iname 'SystemAssignedVmToStorageAcc.dll'
+sudo find / -iname 'SystemAssignedGetAccessToken.dll'
+
 # Upload the published folder on to the server.
 # First App
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/bin/Release/net6.0/publish azureuser@52.188.57.212:/home/azureuser/SystemAssignedVmToStorageAcc
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/bin/Release/net6.0/publish azureuser@20.169.254.35:/home/azureuser/SystemAssignedVmToStorageAcc
 
 # Second App
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/bin/Release/net6.0/publish azureuser@52.188.57.212:/home/azureuser/SystemAssignedGetAccessToken
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0325-SystemAssignedGetAccessToken/bin/Release/net6.0/publish azureuser@20.169.254.35:/home/azureuser/SystemAssignedGetAccessToken
 
 # Ensure that it has got uploaded successifully.
 sudo find / -iname 'SystemAssignedVmToStorageAcc.dll'
 # Now from within the vm(using ssh), run the app
 dotnet /home/azureuser/SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.dll
-
 
 sudo find / -iname 'SystemAssignedGetAccessToken.dll'
 
