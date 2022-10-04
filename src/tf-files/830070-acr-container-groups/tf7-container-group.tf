@@ -53,18 +53,6 @@ resource "azurerm_container_group" "acg" {
 
   # }  
 
-  # container {
-  #   name   = "viveknginxv1"
-  #   image  = "avts/nginxvivek:v1"
-  #   cpu    = "1"
-  #   memory = "3.5"
-
-  #   ports {
-  #     port     = 80
-  #     protocol = "TCP"
-  #   }
-  # }
-
   tags = {
     environment = "testing"
   }
