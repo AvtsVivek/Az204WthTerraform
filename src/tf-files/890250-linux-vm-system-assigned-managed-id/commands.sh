@@ -3,6 +3,7 @@ cd ../../..
 # cd into the directory.
 cd ./src/tf-files/890250-linux-vm-system-assigned-managed-id/
 
+# Preparing the dotnet app.
 dotnet build ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
 
 # First ensure the simple web app is published. 
@@ -49,6 +50,28 @@ terraform plan -out main.tfplan
 terraform apply main.tfplan 
 
 # Once successfully applied, Review the resources.
+
+# Get the blob url from the storage account. It should look somehting like this. See the images.
+
+# var blobURI = "https://staticwebsitepdismj.blob.core.windows.net/content/index.html";
+
+# Then update in the file.
+# ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/Program.cs
+
+# Now build, ensure no errors and publish. 
+
+dotnet build ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
+
+# First ensure the simple web app is published. 
+# Run either of the following two comands
+# Debug
+dotnet publish ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
+dotnet publish ..\..\dotnet-apps\0300-SystemAssignedVmToStorageAcc\SystemAssignedVmToStorageAcc.csproj
+
+#  -c Release
+dotnet publish -c Release ./../../dotnet-apps/0300-SystemAssignedVmToStorageAcc/SystemAssignedVmToStorageAcc.csproj
+dotnet publish -c Release ..\..\dotnet-apps\0300-SystemAssignedVmToStorageAcc\SystemAssignedVmToStorageAcc.csproj
+
 # Download the topology diagram. Go to the created vnet and then diagram.
 # Also look at subnets and corresponding security groups.
 
@@ -59,6 +82,7 @@ terraform apply main.tfplan
 # If you get the following permission denined, 
 # azureuser@40.114.14.64: Permission denied (publickey,gssapi-keyex,gssapi-with-mic)
 # then you are not in the correct directory.
+
 
 cd ..
 
@@ -91,24 +115,6 @@ ps -ef | grep dotnet
 # The following works.
 dotnet --info
 
-exit
-
-# proxy:error pid Permission denied: AH00957: HTTP: attempt to connect to 127.0.0.1:5000 (127.0.0.1) failed
-# http://sysadminsjourney.com/content/2010/02/01/apache-modproxy-error-13permission-denied-error-rhel/
-
-# The following two are not necessary as of now.
-# scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39:/etc/httpd/conf.d/ ./confbackup.d
-# scp -r -i ssh-keys/terraform-azure.pem azureuser@20.127.81.39:/etc/httpd/conf/ ./confbackup
-
-# For an entire directory
-# scp -r -i ssh-keys/terraform-azure.pem ./images azureuser@20.124.10.138:/home/azureuser
-# copy the publish directory.
-
-# Run the following command in git bash terminal.
-
-# dotnet-apps\0300-SystemAssignedVmToStorageAcc\bin\Release\net6.0
-
-# First ensure you are in correct directory.
 
 # Switch to the root user.
 sudo su -
