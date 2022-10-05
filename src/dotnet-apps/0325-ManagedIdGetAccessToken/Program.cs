@@ -25,7 +25,7 @@ foreach(KeyValuePair<string,string> pair in values)
 
 Console.WriteLine(values["access_token"]);
 // We can now access the blob
-var applicationUri = "https://staticwebsitevhmizx.blob.core.windows.net/content/index.html";
+var applicationUri = "https://staticwebsitezmzcut.blob.core.windows.net/content/index.html";
 var httpClientStorage = new HttpClient();
 
 httpClientStorage.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", values["access_token"]);
