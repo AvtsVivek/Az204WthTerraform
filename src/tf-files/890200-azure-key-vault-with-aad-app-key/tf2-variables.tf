@@ -20,6 +20,11 @@ variable "resource_group_name_prefix" {
   type        = string
 }
 
+variable "keyvault_name_prefix" {
+  description = "The prefix for the key vault"
+  type        = string
+}
+
 variable "key_vault_name" {
   description = "Key Vault Name"
   type        = string

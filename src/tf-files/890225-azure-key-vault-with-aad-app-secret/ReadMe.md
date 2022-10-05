@@ -33,6 +33,7 @@ access_policy {
 - Once the database is ready with necessary data, collect the application object/service principal credentials. The steps needed are same as earlier example. 
   - The secret can be obtained from the command, terraform output app_name_password_value
   - You need to set them in this file. ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/Services/ProductService.cs 
+  - You need to set them in this file. ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/Services/ProductService.cs
   - The following are the variable you need to set.
 ```tf
 var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";

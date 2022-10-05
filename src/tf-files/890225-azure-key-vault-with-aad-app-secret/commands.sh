@@ -27,9 +27,18 @@ terraform output app_name_password_value
 
 # See the images 10AfterDeploymentReview20.jpg etc, they should help.
 
+# Web App
 dotnet build ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/AzureKeyVaultSecretsSqlAppAccess.csproj
-
 dotnet run --project ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/AzureKeyVaultSecretsSqlAppAccess.csproj
+
+# Press Ctrl + C to exit.
+
+# Now try Web Api. First update the vars in the file.
+# ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/Services/ProductService.cs
+dotnet build ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/AzureKeyVaultSecretsWebApiAccess.csproj
+dotnet run --project ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/AzureKeyVaultSecretsWebApiAccess.csproj
+
+# Once running, browse to something like, https://localhost:7291/swagger/index.html
 
 terraform state list
 
