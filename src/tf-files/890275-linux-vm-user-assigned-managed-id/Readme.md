@@ -9,54 +9,9 @@
 
 - This builds from [890250-linux-vm-system-assigned-managed-id](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/890250-linux-vm-system-assigned-managed-id). But this example has UserAssigned as againest SystemAssigned.
 
-- Once successfully applied, Review the resources.
 
-- Get the blob url from the storage account. It should look somehting like this. See the images.
-
-- var blobURI = "https://staticwebsitepdismj.blob.core.windows.net/content/index.html";
-
-- Then update in the file.
-  
-    ./../../dotnet-apps/0300-ManagedIdVmToStorageAcc/Program.cs
-
-- Now build, ensure no errors and publish. 
-
-    dotnet build ./../../dotnet-apps/0300-ManagedIdVmToStorageAcc/ManagedIdVmToStorageAcc.csproj
-
-- First ensure the simple web app is published. 
-- Run either of the following two comands
-- Debug
-
-```
-dotnet publish ./../../dotnet-apps/0300-ManagedIdVmToStorageAcc/ManagedIdVmToStorageAcc.csproj
-
-dotnet publish ..\..\dotnet-apps\0300-ManagedIdVmToStorageAcc\ManagedIdVmToStorageAcc.csproj
-```
--c Release
-
-```
-dotnet publish -c Release ./../../dotnet-apps/0300-ManagedIdVmToStorageAcc/ManagedIdVmToStorageAcc.csproj
-
-dotnet publish -c Release ..\..\dotnet-apps\0300-ManagedIdVmToStorageAcc\ManagedIdVmToStorageAcc.csproj
-```
-
-
-- Similarly you need to do for the second app as well.
-
-
-
-![Resources Created on Azure](./images/20AfterDeploymentReview20.jpg)
-
-![Resources Created on Azure](./images/20AfterDeploymentReview30.jpg)
-
-![Resources Created on Azure](./images/20AfterDeploymentReview32.jpg)
-
-![Resources Created on Azure](./images/20AfterDeploymentReview33.jpg)
-
-
-![Resources Created on Azure](./images/30RunningTheApp10.jpg)
-
-- What is different?
+- What is different? Take a look at the vm resource file. Take a look at the resource azurerm_linux_virtual_machine.web_linuxvm. in the file **tf7-05-web-linuxvm-resource.tf**. And note the follwing. 
+  - Its user assigned and not system assigned.
 
 ```
   # identity {
@@ -68,4 +23,29 @@ dotnet publish -c Release ..\..\dotnet-apps\0300-ManagedIdVmToStorageAcc\Managed
     identity_ids = [azurerm_user_assigned_identity.appag_umid.id]
   }
 ```
+
+  - Also take a look at the file **tf11-azurerm-user-assigned-identity.tf**. Look for azurerm_user_assigned_identity resource. Also take a look at the azurerm_role_assignment resource. Now take a look at the images. 
+
+![Resources Created on Azure](./images/20AfterDeploymentReview20.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview30.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview32.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview33.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview50.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview51.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview55.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview56.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview57.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview60.jpg)
+
+![Resources Created on Azure](./images/20AfterDeploymentReview61.jpg)
+
 
