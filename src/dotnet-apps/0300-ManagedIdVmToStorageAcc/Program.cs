@@ -6,7 +6,7 @@ using Azure.Storage.Blobs;
 // The vm is configured with a SystemAssigned Managed Service identity.
 // This identity is assigned the roles of Reader and Storage Blob Data Reader scoped to the storage account.
 
-var blobURI = "https://staticwebsitezdmdcy.blob.core.windows.net/content/index.html";
+var blobURI = "https://staticwebsitevhmizx.blob.core.windows.net/content/index.html";
 var filePath = "downloaded_file_index.html";
 
 var tokenCredential = new DefaultAzureCredential();

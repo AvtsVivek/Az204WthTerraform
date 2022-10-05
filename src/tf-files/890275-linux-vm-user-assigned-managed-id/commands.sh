@@ -1,7 +1,7 @@
 cd ../../..
 
 # cd into the directory.
-cd ./src/tf-files/890250-linux-vm-system-assigned-managed-id/
+cd ./src/tf-files/890275-linux-vm-user-assigned-managed-id/
 
 # Preparing the dotnet apps.
 
@@ -71,6 +71,7 @@ terraform apply main.tfplan
 # Get the blob url from the storage account. It should look somehting like this. See the images.
 
 # var blobURI = "https://staticwebsitepdismj.blob.core.windows.net/content/index.html";
+# https://staticwebsitevhmizx.blob.core.windows.net/content/index.html
 
 # Then update in the file.
 # ./../../dotnet-apps/0300-ManagedIdVmToStorageAcc/Program.cs
@@ -119,9 +120,9 @@ dotnet publish -c Release ..\..\dotnet-apps\0325-ManagedIdGetAccessToken\Managed
 cd ..
 
 # cd into the directory.
-cd ./src/tf-files/890250-linux-vm-system-assigned-managed-id/
+cd ./src/tf-files/890275-linux-vm-user-assigned-managed-id/
 
-ssh -i ssh-keys/terraform-azure.pem azureuser@20.169.254.35
+ssh -i ssh-keys/terraform-azure.pem azureuser@20.163.234.237
 
 cd /var/log
 
@@ -165,7 +166,7 @@ ls -lrta
 
 ps -ef | grep dotnet
 
-cd ./src/tf-files/630100-simple-web-app-to-linux-vm-ngnx/
+cd ./src/tf-files/890275-linux-vm-user-assigned-managed-id/
 
 # Just to check before uploading.
 sudo find / -iname 'ManagedIdVmToStorageAcc.dll'
@@ -173,10 +174,10 @@ sudo find / -iname 'ManagedIdGetAccessToken.dll'
 
 # Upload the published folder on to the server.
 # First App
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0300-ManagedIdVmToStorageAcc/bin/Release/net6.0/publish azureuser@20.169.254.35:/home/azureuser/ManagedIdVmToStorageAcc
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0300-ManagedIdVmToStorageAcc/bin/Release/net6.0/publish azureuser@20.163.234.237:/home/azureuser/ManagedIdVmToStorageAcc
 
 # Second App
-scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0325-ManagedIdGetAccessToken/bin/Release/net6.0/publish azureuser@20.169.254.35:/home/azureuser/ManagedIdGetAccessToken
+scp -r -i ssh-keys/terraform-azure.pem ./../../dotnet-apps/0325-ManagedIdGetAccessToken/bin/Release/net6.0/publish azureuser@20.163.234.237:/home/azureuser/ManagedIdGetAccessToken
 
 # Ensure that it has got uploaded successifully.
 sudo find / -iname 'ManagedIdVmToStorageAcc.dll'

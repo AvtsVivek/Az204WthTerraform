@@ -1,0 +1,14 @@
+[Unit]
+Description=Aspnet 6 Web Api running on Linux
+[Service]
+WorkingDirectory=/home/azureuser/simple-web-app/
+ExecStart=dotnet /home/azureuser/simple-web-api/simple-web-api.dll --urls "http://localhost:5100"
+Restart=always
+RestartSec=10
+SyslogIdentifier=dotnet-demo-api
+# Use your username to keep things simple.
+# In this case, this can root or azureuser
+User=azureuser
+Environment=ASPNETCORE_ENVIRONMENT=Production
+[Install]
+WantedBy=multi-user.target

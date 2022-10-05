@@ -7,12 +7,7 @@
 
 - Deploy a linux vm. Install dotnet run time. 
 
-- This builds from [630100-simple-web-app-to-linux-vm-ngnx](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/630100-simple-web-app-to-linux-vm-ngnx)
-
-- Next [810035-acr-docker-vm-system-assigned](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/810035-acr-docker-vm-system-assigned) shows a system assigned example. Role assignment is picked from there.
-
-- Also finally 
-
+- This builds from [890250-linux-vm-system-assigned-managed-id](https://github.com/AvtsVivek/Az204WthTerraform/tree/main/src/tf-files/890250-linux-vm-system-assigned-managed-id). But this example has UserAssigned as againest SystemAssigned.
 
 - Once successfully applied, Review the resources.
 
@@ -60,4 +55,17 @@ dotnet publish -c Release ..\..\dotnet-apps\0300-ManagedIdVmToStorageAcc\Managed
 
 
 ![Resources Created on Azure](./images/30RunningTheApp10.jpg)
+
+- What is different?
+
+```
+  # identity {
+  #   type = "SystemAssigned"
+  # }
+
+  identity {
+    type         = "UserAssigned" #"SystemAssigned"
+    identity_ids = [azurerm_user_assigned_identity.appag_umid.id]
+  }
+```
 
