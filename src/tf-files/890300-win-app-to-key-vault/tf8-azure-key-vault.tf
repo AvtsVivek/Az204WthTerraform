@@ -16,8 +16,6 @@ resource "azurerm_key_vault" "key_vault" {
     tenant_id = data.azurerm_client_config.current.tenant_id
     # https://stackoverflow.com/a/73918886/1977871
     # application_id = azuread_application.app.application_id
-    # object_id = azuread_service_principal.app_sp.object_id # Or just id instead of object_id, both are same.
-    # object_id = azurerm_windows_function_app.win_function_app.identity[0].principal_id
     object_id = azurerm_windows_web_app.windows_web_app.identity[0].principal_id
 
     certificate_permissions = [

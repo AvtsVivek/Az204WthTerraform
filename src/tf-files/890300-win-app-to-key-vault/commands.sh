@@ -14,29 +14,23 @@ terraform plan -out main.tfplan
 
 terraform apply main.tfplan
 
-# Output the password
-terraform output app_name_password_value
 
 # Need to update the following variable in the file 
-# ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/Services/ProductService.cs
+# ./../../dotnet-apps/0350-AzureKeyValutFromWebApiAccess/Controllers\ConnectionController.cs
+# var keyvaultUrl = "https://s-by-s-yuxxwo-keyvault.vault.azure.net/";
+# # See the images 20PostDeploymentReview22.jpg 
 
-# var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";
-# var clientId = "ab0adc88-52b7-4c2b-b47d-66814eb84af0";
-# var clientSecret = "0iO8Q~fsNhL97YRXpYcqLwIekgJziyOyfPRGPcA0";
-# var keyvaultUrl = "https://vivek-jgybpk-my-rg.vault.azure.net/";
+# Web App, Open Vs code 
 
-# See the images 10AfterDeploymentReview20.jpg etc, they should help.
+dotnet build ./../../dotnet-apps/0350-AzureKeyValutFromWebApiAccess/AzureKeyValutFromWebApiAccess.csproj
 
-# Web App
-dotnet build ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/AzureKeyVaultSecretsSqlAppAccess.csproj
-dotnet run --project ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/AzureKeyVaultSecretsSqlAppAccess.csproj
+dotnet run --project ./../../dotnet-apps/0350-AzureKeyValutFromWebApiAccess/AzureKeyValutFromWebApiAccess.csproj
+
+# Browse to something like this. https://localhost:7291/swagger/index.html. Dont forget to add swagger/index.html
 
 # Press Ctrl + C to exit.
 
-# Now try Web Api. First update the vars in the file.
-# ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/Services/ProductService.cs
-dotnet build ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/AzureKeyVaultSecretsWebApiAccess.csproj
-dotnet run --project ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/AzureKeyVaultSecretsWebApiAccess.csproj
+# Now deploy this dotnet app. See the folder src\tf-files\650700-web-with-db\images to know how to deploy using VS Code
 
 # Once running, browse to something like, https://localhost:7291/swagger/index.html
 

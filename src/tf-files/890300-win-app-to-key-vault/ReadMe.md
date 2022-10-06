@@ -6,44 +6,45 @@
 
 - This example extends a previous example. This example, deploys an Azure Key Vault. And then inside of it a secret. That secret will contain a connection string. 
 
-- This example also deploys a application object along with a service principal. Necessary Access Policy is also configured on the key vault which allows access to this applicatioin object. Find the following in the code.
+- This example does not contain any application object. But instead, it has a Windows Web app Service. This Web App Service has SystemAssigned identity. Find the following code in the resource **azurerm_windows_web_app** in file **tf10-2-win-web-app.tf**
 
-- This is built from 890225-azure-key-vault-with-aad-app-secret
+```tf
+identity {
+  type = "SystemAssigned"
+}
+```
+
+- Also find the following access policy settings in Azure Key Vault. So here the system assigned id from Windows Web App Service is used for the access policy.
 
 ```tf
 access_policy {
   tenant_id = data.azurerm_client_config.current.tenant_id
   # https://stackoverflow.com/a/73918886/1977871
   # application_id = azuread_application.app.application_id
-  object_id = azuread_service_principal.app_sp.object_id # Or just id instead of object_id, both are same.
+  object_id = azurerm_windows_web_app.windows_web_app.identity[0].principal_id
   ...
 }
 ```
 
-- Apart from those two, an sql server and a database is also deployed. 
+- Here there is no database. 
 
-![Sql Server](./images/20AfterDeploymentReview40.jpg)
+- Once the resources are deployed, Review them.
 
-- Once the database is deployed, add your client ip address, see the image 20AfterDeploymentReview50.jpg
+![Resources Created on Azure](./images/20PostDeploymentReview20.jpg)
 
-![Sql Server](./images/20AfterDeploymentReview50.jpg)
+![Resources Created on Azure](./images/20PostDeploymentReview22.jpg)
 
-- Once the client address is added, try connecting to that database using SSMS. And then load the data. See the images 
+![Resources Created on Azure](./images/20PostDeploymentReview25.jpg)
 
-![SSMS Connection](./images/20AfterDeploymentReview60.jpg)
+![Resources Created on Azure](./images/20PostDeploymentReview30.jpg)
 
-![SSMS Connection](./images/20AfterDeploymentReview70.jpg)
+![Resources Created on Azure](./images/20PostDeploymentReview35.jpg)
 
-- Once the database is ready with necessary data, collect the application object/service principal credentials. The steps needed are same as earlier example. 
-  - The secret can be obtained from the command, terraform output app_name_password_value
-  - You need to set them in this file. ./../../dotnet-apps/0280-AzureKeyVaultSecretsSqlAppAccess/Services/ProductService.cs 
-  - You need to set them in this file. ./../../dotnet-apps/0285-AzureKeyVaultSecretsWebApiAccess/Services/ProductService.cs
-  - The following are the variable you need to set.
-```tf
-var tenantId = "35b02984-c026-40c5-8cb3-2267c184d48a";
-var clientId = "ab0adc88-52b7-4c2b-b47d-66814eb84af0";
-var clientSecret = "0iO8Q~fsNhL97YRXpYcqLwIekgJziyOyfPRGPcA0";
-var keyvaultUrl = "https://vivek-jgybpk-my-rg.vault.azure.net/";
+- # Need to update the following variable in the file 
+
+    ./../../dotnet-apps/0350-AzureKeyValutFromWebApiAccess/Controllers\ConnectionController.cs
+
+```tf    
+var keyvaultUrl = "https://s-by-s-yuxxwo-keyvault.vault.azure.net/";
 ```
 
-- Then build and run.
