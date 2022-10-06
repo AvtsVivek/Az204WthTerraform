@@ -19,11 +19,16 @@ namespace AzureKeyValutFromWebApiAccess.Controllers
             var tokenCredential = new DefaultAzureCredential();
             var secretClient = new SecretClient(new Uri(AppConstants.KeyvaultUrl), tokenCredential);
 
-            var secret = secretClient.GetSecret(secretName);
-
-            var connectionString = secret.Value.Value;
-
-            return connectionString;
+            try
+            {
+                var secret = secretClient.GetSecret(secretName);
+                var connectionString = secret.Value.Value;
+                return connectionString;
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
         }
      }
 }
