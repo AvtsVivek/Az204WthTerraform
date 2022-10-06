@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/890325-win-app-sql-all-system-assigned
+cd ./src/tf-files/890300-win-app-sql-all-system-assigned
 
 terraform fmt
 
