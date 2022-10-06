@@ -38,4 +38,20 @@ Sql Server and Sql Database with web app service
 - There seems to be some problem with deployment currently. 
 ![Vs code Extension](./images/SomeProblemWithDeployment.jpg)
 
+- Its working now.
+
+![Vs code Extension](./images/20VsCodeOpen20.jpg)
+
+![Deployment Success](./images/20VsCodeOpen30.jpg)
+
+![Deployment Success](./images/20VsCodeOpen40.jpg)
+
+- You can even deploy Web api project. 
+
+![Web Api](./images/30WebApi10.jpg)
+
+![Web Api](./images/30WebApi15.jpg)
+
+![Web Api](./images/30WebApi20.jpg)
+
 

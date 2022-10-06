@@ -36,9 +36,14 @@ dotnet run --project ./../../dotnet-apps/0040-ConnectToSqlapp/ConnectToSqlapp/Co
 
 dotnet run --project ./../../dotnet-apps/0050-ConnectToSqlAppWithConString/ConnectToSqlAppWithConString/ConnectToSqlAppWithConString.csproj
 
+# The following is a web api project
+dotnet run --project ./../../dotnet-apps/0042-ConnectToSqlWebApi/ConnectToSqlWebApi.csproj
+
 # To deploy first open VsCode in the folder of the project you want to deploy. 
 # So if you want to deploy dotnet-apps/0020-simple-webapp/simple-webapp.csproj, first go to that folder
 # cd dotnet-apps/0020-simple-webapp. Then follow the steps in the ReadMe.md file to deploy.
+
+# Similarly you can deploy other web apps as well. 0040-ConnectToSqlapp and 0042-ConnectToSqlWebApi and 0050-ConnectToSqlAppWithConString
 
 terraform state show 
 

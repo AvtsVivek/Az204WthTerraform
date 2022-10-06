@@ -7,7 +7,7 @@ namespace sqlapp.Pages
 {
     public class IndexModel : PageModel
     {
-        public List<Product> Products; 
+        public List<Product> Products = default!; 
         public void OnGet()
         {
             ProductService productService = new ProductService();
