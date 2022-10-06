@@ -16,15 +16,14 @@ terraform apply main.tfplan
 
 
 # Need to update the following variable in the file 
-# ./../../dotnet-apps/0350-AzureKeyValutFromWebApiAccess/Controllers\ConnectionController.cs
-# var keyvaultUrl = "https://s-by-s-yuxxwo-keyvault.vault.azure.net/";
-# # See the images 20PostDeploymentReview22.jpg 
+# ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/Constants.cs
+# public static string KeyvaultUrl = "https://s-by-s-wyiyot-keyvault.vault.azure.net/";
 
 # Web App, Open Vs code 
 
-dotnet build ./../../dotnet-apps/0350-AzureKeyValutFromWebApiAccess/AzureKeyValutFromWebApiAccess.csproj
+dotnet build ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
 
-dotnet run --project ./../../dotnet-apps/0350-AzureKeyValutFromWebApiAccess/AzureKeyValutFromWebApiAccess.csproj
+dotnet run --project ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
 
 # Browse to something like this. https://localhost:7291/swagger/index.html. Dont forget to add swagger/index.html
 
