@@ -18,6 +18,7 @@ namespace AzureKeyValutFromWebApiAccess.Controllers
 
             var tokenCredential = new DefaultAzureCredential();
             var secretClient = new SecretClient(new Uri(AppConstants.KeyvaultUrl), tokenCredential);
+            // var secretClient = new SecretClient(new Uri(AppConstants.KeyvaultUrl), new ManagedIdentityCredential());
 
             try
             {
@@ -27,7 +28,7 @@ namespace AzureKeyValutFromWebApiAccess.Controllers
             }
             catch (Exception exception)
             {
-                return exception.Message;
+                return "Failure: " + exception.Message;
             }
         }
      }

@@ -2,6 +2,7 @@
 {
     public static class AppConstants
     {
-        public static string KeyvaultUrl = "https://s-by-s-mgtoim-keyvault.vault.azure.net/";
+        // https://s-by-s-vmppth-keyvault.vault.azure.net//
+        public static string KeyvaultUrl = "https://s-by-s-vmppth-keyvault.vault.azure.net/";
     }
 }

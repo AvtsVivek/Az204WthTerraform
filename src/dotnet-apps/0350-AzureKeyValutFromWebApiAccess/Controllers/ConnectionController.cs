@@ -13,17 +13,29 @@ namespace AzureKeyValutFromWebApiAccess.Controllers
         [HttpGet(Name = "GetConnectionString")]
         public string GetConnectionString()
         {
-            var keyvaultUrl = "https://s-by-s-tnkdmg-keyvault.vault.azure.net/";
+            var keyvaultUrl = "https://s-by-s-vmppth-keyvault.vault.azure.net/";
             var secretName = "sql-connection-string";
 
             var tokenCredential = new DefaultAzureCredential();
             var secretClient = new SecretClient(new Uri(keyvaultUrl), tokenCredential);
 
-            var secret = secretClient.GetSecret(secretName);
+            //var secret = secretClient.GetSecret(secretName);
 
-            var connectionString = secret.Value.Value;
+            //var connectionString = secret.Value.Value;
 
-            return connectionString;
+            //return connectionString;
+
+            try
+            {
+                var secret = secretClient.GetSecret(secretName);
+                var connectionString = secret.Value.Value;
+                return connectionString;
+            }
+            catch (Exception exception)
+            {
+                return "Failure: " + exception.Message;
+            }
+
         }
      }
 }
