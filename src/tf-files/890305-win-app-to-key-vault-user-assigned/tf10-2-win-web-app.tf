@@ -30,6 +30,12 @@ resource "azurerm_windows_web_app" "windows_web_app" {
     # type = "SystemAssigned"
   }
 
+  app_settings = {
+    # https://github.com/Azure/azure-sdk-for-net/issues/13564#issuecomment-660431926
+    # https://github.com/Azure/azure-sdk-for-net/issues/11400#issuecomment-620179175
+    "AZURE_CLIENT_ID" = azurerm_user_assigned_identity.appag_umid.client_id
+  }
+
 }
 
 

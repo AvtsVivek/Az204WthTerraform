@@ -13,17 +13,15 @@ namespace AzureKeyValutFromWebApiAccess.Controllers
         [HttpGet(Name = "GetConnectionString")]
         public string GetConnectionString()
         {
-            var keyvaultUrl = "https://s-by-s-blurfx-keyvault.vault.azure.net/";
+            var keyvaultUrl = "https://s-by-s-imaoon-keyvault.vault.azure.net/";
             var secretName = "sql-connection-string";
 
             var tokenCredential = new DefaultAzureCredential();
             var secretClient = new SecretClient(new Uri(keyvaultUrl), tokenCredential);
+            // https://github.com/Azure/azure-sdk-for-net/issues/13564#issuecomment-660431926
+            // https://github.com/Azure/azure-sdk-for-net/issues/11400#issuecomment-620179175
 
-            //var secret = secretClient.GetSecret(secretName);
-
-            //var connectionString = secret.Value.Value;
-
-            //return connectionString;
+            // var tokenCredential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ManagedIdentityClientId = "bc783ad4-77a7-4d5d-9151-8e9aad5d9fec" });
 
             try
             {
@@ -35,7 +33,6 @@ namespace AzureKeyValutFromWebApiAccess.Controllers
             {
                 return "Failure: " + exception.Message;
             }
-
         }
      }
 }
