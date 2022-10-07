@@ -1,11 +1,13 @@
-# Azure Key Vault
-
-# Currently this is not working. Need to look into this a bit latter. May be after completing the Az500 course.
+# Azure Key Vault example.
 
 - Reference: 
   - https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/identity/Azure.Identity/TROUBLESHOOTING.md#azure-app-service-and-azure-functions-managed-identity
 
   - https://github.com/Azure/Azure-Functions/issues/2100
+
+
+# Currently this is not working. Getting the follwiong error.
+
 
 ```
 ManagedIdentityCredential authentication failed: Service request failed.
@@ -18,7 +20,7 @@ Status: 400 (Bad Request)
 
 - This example extends a previous example. This example, deploys an Azure Key Vault. And then inside of it a secret. That secret will contain a connection string. 
 
-- This example does not contain any application object. But instead, it has a Windows Web app Service. This Web App Service has UserAssigned identity as againest SystemAssigned identity. Find the following code in the resource **azurerm_windows_web_app** in file **tf10-2-win-web-app.tf**
+- This example does not contain any application object. But instead, it has a Windows Web app Service. This Web App Service has UserAssigned identity (in contrast to SystemAssigned identity). Find the following code in the resource **azurerm_windows_web_app** in file **tf10-2-win-web-app.tf**
 
 ```tf
   identity {
@@ -39,19 +41,29 @@ access_policy {
 }
 ```
 
-- Here there is no database. 
+- Here in this example, there is no database.
 
 - Once the resources are deployed, Review them.
 
 ![Resources Created on Azure](./images/20PostDeploymentReview20.jpg)
 
+![Resources Created on Azure](./images/20PostDeploymentReview21.jpg)
+
 ![Resources Created on Azure](./images/20PostDeploymentReview22.jpg)
+
+![Resources Created on Azure](./images/20PostDeploymentReview23.jpg)
+
+![Resources Created on Azure](./images/20PostDeploymentReview24.jpg)
 
 ![Resources Created on Azure](./images/20PostDeploymentReview25.jpg)
 
-![Resources Created on Azure](./images/20PostDeploymentReview30.jpg)
+![Resources Created on Azure](./images/20PostDeploymentReview26.jpg)
 
-![Resources Created on Azure](./images/20PostDeploymentReview35.jpg)
+![Resources Created on Azure](./images/20PostDeploymentReview27.jpg)
+
+![Resources Created on Azure](./images/20PostDeploymentReview28.jpg)
+
+![Resources Created on Azure](./images/20PostDeploymentReview29.jpg)
 
 - # Need to update the following variable in the file 
 
@@ -60,4 +72,12 @@ access_policy {
 ```tf    
 var keyvaultUrl = "https://s-by-s-yuxxwo-keyvault.vault.azure.net/";
 ```
+
+![Resources Created on Azure](./images/25PostDeploymentReview22.jpg)
+
+![Deploy](./images/21DeployWebApiApp20.jpg)
+
+![Deploy](./images/21DeployWebApiApp25.jpg)
+
+![Deploy](./images/21DeployWebApiApp26.jpg)
 

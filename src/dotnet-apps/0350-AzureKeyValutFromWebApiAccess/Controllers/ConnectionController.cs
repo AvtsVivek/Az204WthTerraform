@@ -13,7 +13,7 @@ namespace AzureKeyValutFromWebApiAccess.Controllers
         [HttpGet(Name = "GetConnectionString")]
         public string GetConnectionString()
         {
-            var keyvaultUrl = "https://s-by-s-vmppth-keyvault.vault.azure.net/";
+            var keyvaultUrl = "https://s-by-s-blurfx-keyvault.vault.azure.net/";
             var secretName = "sql-connection-string";
 
             var tokenCredential = new DefaultAzureCredential();
