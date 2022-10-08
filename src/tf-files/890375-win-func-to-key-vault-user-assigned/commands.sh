@@ -1,6 +1,6 @@
 cd ../../..
 
-cd ./src/tf-files/890375-win-func-to-key-vault-sql-app-user-assigned
+cd ./src/tf-files/890375-win-func-to-key-vault-user-assigned
 
 terraform fmt
 
@@ -20,20 +20,10 @@ terraform apply main.tfplan
 # public static string KeyvaultUrl = "https://s-by-s-wyiyot-keyvault.vault.azure.net/";
 
 # Web App, Open Vs code 
+# dotnet-apps\0500-AzureFuncKeyVaultAccess
+dotnet build ./../../dotnet-apps/0500-AzureFuncKeyVaultAccess/AzureFuncKeyVaultAccess.csproj
 
-dotnet build ./../../dotnet-apps/0090-AzureFuncVs2022/AzureFuncVs2022.csproj
-
-# dotnet build ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
-
-# dotnet run --project ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
-
-# Browse to something like this. https://localhost:7291/swagger/index.html. Dont forget to add swagger/index.html
-
-# Press Ctrl + C to exit.
-
-# Now deploy this dotnet app. See the folder src\tf-files\650700-web-with-db\images to know how to deploy using VS Code
-
-# Once running, browse to something like, https://localhost:7291/swagger/index.html
+# Now deloy this project to app. See the images. 20FunctionApp35.jpg
 
 terraform state list
 

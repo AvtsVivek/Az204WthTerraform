@@ -53,7 +53,7 @@ namespace AzureFuncKeyVaultAccess
             return new OkObjectResult(connString);
         }
 
-        public static async Task<string> GetConnectionStringFromKeyVault()
+        private static async Task<string> GetConnectionStringFromKeyVault()
         {
             var secretName = "sql-connection-string";
 
@@ -84,6 +84,5 @@ namespace AzureFuncKeyVaultAccess
                 return await Task.Run(() => "Failure: " + exception.Message);
             }
         }
-
     }
 }

@@ -8,6 +8,6 @@ namespace AzureFuncKeyVaultAccess
 {
     public static class AppConstants
     {
-        public static string KeyvaultUrl = "https://s-by-s-hfcbkw-keyvault.vault.azure.net/";
+        public static string KeyvaultUrl = "https://s-by-s-idxqko-keyvault.vault.azure.net/";
     }
 }
