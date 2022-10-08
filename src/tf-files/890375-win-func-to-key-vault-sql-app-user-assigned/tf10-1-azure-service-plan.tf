@@ -27,21 +27,4 @@ resource "azurerm_service_plan" "service_plan_for_azure_func" {
 
   os_type  = var.windows_os_type
   sku_name = var.windows_sku_name
-
-  # kind     = "FunctionApp"
-  # reserved = false
-
-  # sku {
-  #   tier = "Dynamic"
-  #   size = "Y1"
-  # }
-
-  # Windows Premium 
-  # kind     = "elastic"
-  # reserved = false
-  # sku {
-  #   tier = "ElasticPremium"
-  #   size = "EP1"
-  # }
-
 }
