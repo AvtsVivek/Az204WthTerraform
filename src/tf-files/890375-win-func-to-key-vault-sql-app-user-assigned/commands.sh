@@ -21,9 +21,11 @@ terraform apply main.tfplan
 
 # Web App, Open Vs code 
 
-dotnet build ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
+dotnet build ./../../dotnet-apps/0090-AzureFuncVs2022/AzureFuncVs2022.csproj
 
-dotnet run --project ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
+# dotnet build ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
+
+# dotnet run --project ./../../dotnet-apps/0375-AzureKeyValutFromWebSqlApiAccess/AzureKeyValutFromWebSqlApiAccess.csproj
 
 # Browse to something like this. https://localhost:7291/swagger/index.html. Dont forget to add swagger/index.html
 
