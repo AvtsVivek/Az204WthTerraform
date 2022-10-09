@@ -6,17 +6,17 @@ output "app_name" {
 
 output "app_name_password_object_id" {
   description = "App Password object id"
-  value       = azuread_application_password.simple_app.application_object_id
+  value       = azuread_application_password.simple_app_pass.application_object_id
 }
 
 output "app_name_password_display_name" {
   description = "App Password display name"
-  value       = azuread_application_password.simple_app.display_name
+  value       = azuread_application_password.simple_app_pass.display_name
 }
 
 output "app_name_password_value" {
   description = "App Password value"
-  value       = azuread_application_password.simple_app.value
+  value       = azuread_application_password.simple_app_pass.value
   sensitive   = true
 }
 
