@@ -33,11 +33,11 @@
 ![App Registration](./images/40AppRegistration30.jpg)
 ![App Registration](./images/40AppRegistration40.jpg)
 
-![App Role Assignment](./images/50AppRoleAssignment10.jpg.jpg)
-![App Role Assignment](./images/50AppRoleAssignment20.jpg.jpg)
-![App Role Assignment](./images/50AppRoleAssignment30.jpg.jpg)
-![App Role Assignment](./images/50AppRoleAssignment40.jpg.jpg)
-![App Role Assignment](./images/50AppRoleAssignment50.jpg.jpg)
+![App Role Assignment](./images/50AppRoleAssignment10.jpg)
+![App Role Assignment](./images/50AppRoleAssignment20.jpg)
+![App Role Assignment](./images/50AppRoleAssignment30.jpg)
+![App Role Assignment](./images/50AppRoleAssignment40.jpg)
+![App Role Assignment](./images/50AppRoleAssignment50.jpg)
 
 
 
