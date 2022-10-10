@@ -10,8 +10,12 @@ resource "azuread_service_principal" "msgraph" {
   use_existing   = true
 }
 
-resource "azuread_service_principal" "app_sp" {
+resource "azuread_service_principal" "sp_app" {
   application_id = azuread_application.app.application_id
+
+  # What is the significance of the following feature_tags block? If we dont have this, then 
+  # You will NOT see enterprise application in AAD -> Enterprise Applications -> All Application
+  # The application is there, but it will not be visible, its filtered out.
 
   feature_tags {
     enterprise = true
@@ -21,7 +25,7 @@ resource "azuread_service_principal" "app_sp" {
 }
 
 resource "azuread_service_principal_password" "app_sp_pass" {
-  service_principal_id = azuread_service_principal.app_sp.object_id
+  service_principal_id = azuread_service_principal.sp_app.object_id
 
   display_name = "App_ServicePrinciple_PasswordGeneratedFromTerraform"
 
