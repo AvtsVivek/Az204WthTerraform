@@ -16,7 +16,36 @@ resource "azuread_application" "app" {
   }
 
   web {
-    redirect_uris = ["https://localhost/"]
+
+    # Notes about the following redirect uri. 
+    # Where does 7192 come from.
+    # Its from the web app launchSettings.json file.
+    # Look for the following profile in launchSettings.json file.
+    # ./../../dotnet-apps/0600-WebAppOAuthWithAAD/Properties/launchSettings.json
+    # "WebAppOAuthWithAAD": {
+    #   "commandName": "Project",
+    #   "dotnetRunMessages": true,
+    #   "launchBrowser": true,
+    #   "applicationUrl": "https://localhost:7192;http://localhost:5192",
+    #   "environmentVariables": {
+    #     "ASPNETCORE_ENVIRONMENT": "Development"
+    #   }
+    # },
+
+    # Where does signin-oidc come from?
+    # It comes from appsettings.json file. 
+    # ./../../dotnet-apps/0600-WebAppOAuthWithAAD/appsettings.json
+    # Look for the following setting in that file
+
+    #   "AadAppInfo": {
+    #   "Instance": "https://login.microsoftonline.com/",
+    #   "TenantId": "35b02984-c026-40c5-8cb3-2267c184d48a",
+    #   "ClientId": "06531c0c-ec2b-42ca-9c54-ec2dea752e48",
+    #   "CallbackPath": "/signin-oidc",
+    #   "SignedOutCallbackPath": "/signout-oidc"
+    # }
+
+    redirect_uris = ["https://localhost:7192/signin-oidc"]
 
     implicit_grant {
       access_token_issuance_enabled = false

@@ -14,6 +14,11 @@ terraform plan -out main.tfplan
 
 terraform apply main.tfplan
 
+# Now the time to run the dotnet app. 
+dotnet build ./../../dotnet-apps/0600-WebAppOAuthWithAAD/WebAppOAuthWithAAD.csproj
+
+dotnet run --project ./../../dotnet-apps/0600-WebAppOAuthWithAAD/WebAppOAuthWithAAD.csproj
+
 terraform state list
 
 # You can now update the 
