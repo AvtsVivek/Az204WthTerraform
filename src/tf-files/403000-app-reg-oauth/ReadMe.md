@@ -32,5 +32,33 @@ required_resource_access {
 - See the images.
 
 
+- How this(./../../dotnet-apps/0600-WebAppOAuthWithAAD/appsettings.json) app is crated.
+  - First create a regular web app project, using visual studio 2022 or using dotnet cli 
+    - dotnet new webapp --name Test
+  - Now 4 changes are to be done.
+    - Firsts go to appsettings.json, get the client id and tenant id. In portal, go to AAD -> App Registrations -> Select the application object -> Overview.
+      - Find ClientId and TenantId. 
+      - Then fill them up in the appsettings.json file.
+    - Add the nuget packages for the project.
+```
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Identity.Web" Version="1.25.3" />
+    <PackageReference Include="Microsoft.Identity.Web.UI" Version="1.25.3" />
+  </ItemGroup>
 
-
+```
+    - In the Program.cs, configure service and pipeline.
+```
+builder.Services.AddMicrosoftIdentityWebAppAuthentication(builder.Configuration, "AadAppInfo");
+and 
+app.UseAuthentication();
+```
+    - Add Authorize Attributre to Index page
+```
+    [Authorize]
+    public class IndexModel : PageModel
+    {
+      ...
+    }
+```
+    - 
